@@ -146,6 +146,7 @@
 
 :root {
     --backgroud-color: #010242;
+    --highlight-background-color: #00009D;
 }
 
 h1,
@@ -940,8 +941,8 @@ h1.title {
 }
 
 .folio-content .folio-item .img-folio img {
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%)
+    -webkit-filter: grayscale(40%);
+    filter: grayscale(40%)
 }
 
 .folio-content .folio-item .img-folio:hover img {
@@ -954,9 +955,9 @@ h1.title {
     font-family: 'Poppins', sans-serif;
     color: transparent;
     font-weight: 900;
-    font-size: 40px;
+    font-size: 30px;
     letter-spacing: 2px;
-    -webkit-text-stroke: 1px #fff;
+    -webkit-text-stroke: 2px #fff;
     z-index: 4;
     left: 50%;
     bottom: 1px;
@@ -972,7 +973,7 @@ h1.title {
     font-family: 'Poppins', sans-serif;
     color: #fff;
     font-weight: 900;
-    font-size: 40px;
+    font-size: 30px;
     letter-spacing: 2px;
     z-index: 1;
     left: 50%;
@@ -1037,7 +1038,7 @@ h1.title {
 
 .abt-text {
     margin-left: -200px;
-    background: var(--backgroud-color);
+    background: var(--highlight-background-color);
     padding: 40px 40px
 }
 

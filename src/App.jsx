@@ -77,6 +77,11 @@ echarts.use(
   [TitleComponent, GeoComponent, DatasetComponent, TooltipComponent, GridComponent, BarChart, CanvasRenderer, MapChart]
 );
 
+// turnjs
+import { initFlipbook } from './assets/js/load_flipbook.js'
+
+initFlipbook()
+
 function App() {
   // const code = Map.getCodeByName('广西')
   // const province = Map.getProvince(code)
@@ -181,15 +186,15 @@ function App() {
         <section className="about">
           <div className="container">
             <div className="row centered">
-              <ReactEChartsCore option={mapOptions()} style={{width: '300px', height: '300px'}} echarts={echarts} />
-              {/* <div className="col-lg-7">
-                <div className="img-about luxy-el" data-horizontal="1" data-speed-x="1"><img className="img-fluid" src="assets/img/about.jpg" alt="" /></div>
+              <div className="col-lg-7">
+                <ReactEChartsCore option={mapOptions()} echarts={echarts} />
+                {/* <div className="img-about luxy-el" data-horizontal="1" data-speed-x="1"><img className="img-fluid" src="assets/img/about.jpg" alt="" /></div> */}
               </div>
               <div className="col-lg-5">
                 <div className="abt-text">
-                  <p>We create digital experiences,social media content,interactive concept,commercials,and branding assets for direct client or together with Agencies. With a wide set of skills and an extended network of specialists we function as a scalable and fully operative team.</p>
+                  <p>以本科院校为例，<br />2021年，广西有普通本科高校35所，其中普通高校32所，独立学院3所<br />公办本科院校24所，民办本科院校11所<br />其中，南宁、桂林院校相对较多</p>
                   <a className="hover-target load-spiral" href="about.html">Explore more</a></div>
-              </div> */}
+              </div>
             </div>
           </div>
         </section>
@@ -199,15 +204,19 @@ function App() {
             <div className="row">
               <div className="col-md-12">
                 <div className="main-title text-center">
-                  <h2>Projects from the <span>Studio</span></h2>
+                  <h2>院校发展<span>详情</span></h2>
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="folio-item">
-                  <div className="img-folio cursorExplore"><a className="load-spiral" href="work-detail-2.html"><img className="img-fluid" src="assets/img/port/2.jpg" draggable="false" alt="" /></a></div>
+                  <div className="img-folio cursorExplore">
+                    <a className="load-spiral">
+                      <img className="img-fluid" src="assets/img/book/1.png" draggable="false" alt="" />
+                    </a>
+                  </div>
                   <div className="text-folio text-center">
-                    <h2 className="text-1">OLDMAN</h2>
-                    <h2 className="text-2">OLDMAN</h2>
+                    <h2 className="text-1">桂林电子科技大学</h2>
+                    <h2 className="text-2">桂林电子科技大学</h2>
                   </div>
                 </div>
                 <div className="folio-item">
@@ -245,6 +254,19 @@ function App() {
             </div>
           </div>
         </section>
+        <div id="canvas">
+          {/* <div className="zoom-icon zoom-icon-in">
+          </div> */}
+          <div className="flipbook-viewport">
+            <div className="container">
+              <div className="flipbook"></div>
+            </div>
+            {/* <div ignore="1" className="next-button">
+            </div>
+            <div ignore="1" className="previous-button">
+            </div> */}
+          </div>
+        </div>
         {/* <!-- Footer --> */}
         <div className="footer">
           <div className="container">
