@@ -482,7 +482,7 @@ nav .container {
 .toggle-btn::before {
     content: 'MENU';
     position: absolute;
-    width: 80px;
+    width: 124px;
     font-size: 10px;
     letter-spacing: 2px;
     color: #fff;
@@ -811,7 +811,7 @@ a {
     z-index: 4
 }
 
-.heading-text-front h1 {
+.heading-text-front h1, h3 {
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     color: transparent;
@@ -819,6 +819,12 @@ a {
     font-size: 60px;
     -webkit-text-stroke: 1px #fff;
     letter-spacing: 1px
+}
+
+
+.heading-text-front h3 {
+    font-weight: 600;
+    font-size: 40px;
 }
 
 .heading-text-back {
@@ -835,7 +841,7 @@ a {
     z-index: -1
 }
 
-.heading-text-back h1 {
+.heading-text-back h1, h2, h3 {
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     color: #fff;
@@ -843,6 +849,11 @@ a {
     font-size: 60px;
     -webkit-text-stroke: 0 #fff;
     letter-spacing: 1px
+}
+
+.heading-text-back h3 {
+    font-weight: 600;
+    font-size: 40px;
 }
 
 .main-head {

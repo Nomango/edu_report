@@ -2,7 +2,87 @@ import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
+import ReactEChartsCore from 'echarts-for-react/lib/core';
+// Import the echarts core module, which provides the necessary interfaces for using echarts.
+import * as echarts from 'echarts/core';
+// Import charts, all with Chart suffix
+import {
+  // LineChart,
+  BarChart,
+  // PieChart,
+  // ScatterChart,
+  // RadarChart,
+  MapChart,
+  // TreeChart,
+  // TreemapChart,
+  // GraphChart,
+  // GaugeChart,
+  // FunnelChart,
+  // ParallelChart,
+  // SankeyChart,
+  // BoxplotChart,
+  // CandlestickChart,
+  // EffectScatterChart,
+  // LinesChart,
+  // HeatmapChart,
+  // PictorialBarChart,
+  // ThemeRiverChart,
+  // SunburstChart,
+  // CustomChart,
+} from 'echarts/charts';
+// import components, all suffixed with Component
+import {
+  // GridSimpleComponent,
+  GridComponent,
+  // PolarComponent,
+  // RadarComponent,
+  GeoComponent,
+  // SingleAxisComponent,
+  // ParallelComponent,
+  // CalendarComponent,
+  // GraphicComponent,
+  // ToolboxComponent,
+  TooltipComponent,
+  // AxisPointerComponent,
+  // BrushComponent,
+  TitleComponent,
+  // TimelineComponent,
+  // MarkPointComponent,
+  // MarkLineComponent,
+  // MarkAreaComponent,
+  // LegendComponent,
+  // LegendScrollComponent,
+  // LegendPlainComponent,
+  // DataZoomComponent,
+  // DataZoomInsideComponent,
+  // DataZoomSliderComponent,
+  // VisualMapComponent,
+  // VisualMapContinuousComponent,
+  // VisualMapPiecewiseComponent,
+  // AriaComponent,
+  // TransformComponent,
+  DatasetComponent,
+} from 'echarts/components';
+// Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
+import {
+  CanvasRenderer,
+  // SVGRenderer,
+} from 'echarts/renderers';
+
+import GuangXiJSON from './assets/json/guangxi.json'
+// const Map = require('china-echarts-map')
+
+// Register the required components
+echarts.use(
+  [TitleComponent, GeoComponent, DatasetComponent, TooltipComponent, GridComponent, BarChart, CanvasRenderer, MapChart]
+);
+
 function App() {
+  // const code = Map.getCodeByName('广西')
+  // const province = Map.getProvince(code)
+  // const areaJSON = Map.getAreaJSON({type: 'province', map: province.map})
+  // echarts.registerMap(province.map, areaJSON)
+  echarts.registerMap('guangxi', GuangXiJSON)
   return (
     <div className="App">
       {/* <!-- Start Preload --> */}
@@ -86,12 +166,14 @@ function App() {
           </div>
           <div className="heading-text">
             <div className="heading-text-front">
-              <h1>Hello. WE ARE SAMBAT,<br />
-                INDEPENDENT DESIGN STUDIO.</h1>
+              <h1>广东新工科教育论坛</h1>
+              <h3>暨新工科建设推进研讨会</h3>
+              <h3>2022</h3>
             </div>
             <div className="heading-text-back">
-              <h1>Hello. WE ARE SAMBAT,<br />
-                INDEPENDENT DESIGN STUDIO.</h1>
+              <h1>广东新工科教育论坛</h1>
+              <h3>暨新工科建设推进研讨会</h3>
+              <h3>2022</h3>
             </div>
           </div>
         </div>
@@ -99,14 +181,15 @@ function App() {
         <section className="about">
           <div className="container">
             <div className="row centered">
-              <div className="col-lg-7">
+              <ReactEChartsCore option={mapOptions()} style={{width: '300px', height: '300px'}} echarts={echarts} />
+              {/* <div className="col-lg-7">
                 <div className="img-about luxy-el" data-horizontal="1" data-speed-x="1"><img className="img-fluid" src="assets/img/about.jpg" alt="" /></div>
               </div>
               <div className="col-lg-5">
                 <div className="abt-text">
                   <p>We create digital experiences,social media content,interactive concept,commercials,and branding assets for direct client or together with Agencies. With a wide set of skills and an extended network of specialists we function as a scalable and fully operative team.</p>
                   <a className="hover-target load-spiral" href="about.html">Explore more</a></div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -201,3 +284,76 @@ function App() {
 }
 
 export default App
+
+function mapOptions() {
+  return {
+    tooltip: {
+      show: false
+    },
+    geo: {
+      map: 'guangxi',
+      roam: false,
+      // zoom: 1.23,
+      label: {
+        normal: {
+          show: false,
+          fontSize: "10",
+          color: "rgba(0,0,0,0.7)"
+        }
+      },
+      itemStyle: {
+        normal: {
+          areaColor: "#0d0059",
+          borderColor: "#389dff",
+          borderWidth: 1, //设置外层边框
+          shadowBlur: 5,
+          shadowOffsetY: 8,
+          shadowOffsetX: 0,
+          shadowColor: "#01012a"
+        },
+        emphasis: {
+          areaColor: "#184cff",
+          shadowOffsetX: 0,
+          shadowOffsetY: 0,
+          shadowBlur: 5,
+          borderWidth: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    },
+    series: [
+      {
+        type: "map",
+        map: 'guangxi',
+        roam: false,
+        showLegendSymbol: false, // 存在legend时显示
+        label: {
+          normal: {
+            show: false
+          },
+          emphasis: {
+            show: false,
+            textStyle: {
+              color: "#fff"
+            }
+          }
+        },
+        itemStyle: {
+          normal: {
+            areaColor: "#0d0059",
+            borderColor: "#389dff",
+            borderWidth: 0.5
+          },
+          emphasis: {
+            areaColor: "#17008d",
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowBlur: 5,
+            borderWidth: 0,
+            shadowColor: "rgba(0, 0, 0, 0.5)"
+          }
+        }
+      }
+    ]
+  };
+}
