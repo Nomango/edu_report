@@ -1,3 +1,48 @@
+//--------------------------------------------------
+// Web Load
+//--------------------------------------------------
+function RevealLoad() {
+    var loadTL = new TimelineMax();
+    var block1 = $('.block-1');
+    var block2 = $('.block-2');
+    var logo = $('.logo-load');
+
+    loadTL
+        .to(block1, 0.5, {
+            height: '0',
+            delay: '0'
+        })
+        .to(block2, 0.5, {
+            height: '0',
+        })
+        .to(logo, 0, {
+            autoAlpha: 0,
+            delay: '-0.4',
+        })
+    loadTL.play();
+}
+
+function HideLoad() {
+    var loadTL = new TimelineMax();
+    var block1 = $('.block-1');
+    var block2 = $('.block-2');
+    var logo = $('.logo-load');
+
+    loadTL
+        .to(block1, 0.5, {
+            height: '100%',
+            delay: '0'
+        })
+        .to(block2, 0.5, {
+            height: '100%',
+        })
+        .to(logo, 0, {
+            autoAlpha: 1,
+            delay: '-0.5'
+        })
+    loadTL.play();
+}
+
 $(function () {
     "use strict";
 
@@ -68,54 +113,6 @@ $(function () {
         scalarX: 14,
         hoverOnly: false,
     });
-
-
-    //--------------------------------------------------
-    // Web Load
-    //--------------------------------------------------
-    function RevealLoad() {
-        var loadTL = new TimelineMax();
-        var block1 = $('.block-1');
-        var block2 = $('.block-2');
-        var logo = $('.logo-load');
-
-        loadTL
-            .to(block1, 0.5, {
-                height: '0',
-                delay: '0'
-            })
-            .to(block2, 0.5, {
-                height: '0',
-            })
-            .to(logo, 0, {
-                autoAlpha: 0,
-                delay: '-0.4',
-            })
-
-        loadTL.play();
-    }
-
-    function HideLoad() {
-        var loadTL = new TimelineMax();
-        var block1 = $('.block-1');
-        var block2 = $('.block-2');
-        var logo = $('.logo-load');
-
-        loadTL
-            .to(block1, 0.5, {
-                height: '100%',
-                delay: '0'
-            })
-            .to(block2, 0.5, {
-                height: '100%',
-            })
-            .to(logo, 0, {
-                autoAlpha: 1,
-                delay: '-0.5'
-            })
-
-        loadTL.play();
-    }
 
     $('.load-spiral').on('click', function (e) {
         e.preventDefault();
@@ -453,7 +450,7 @@ $(function () {
     $('.toggle-btn').on("click", function () {
         t1.reversed(!t1.reversed()); //toggles the orientation
     })
-  
+
 
     //--------------------------------------------------
     // Magnetic
@@ -507,44 +504,36 @@ $(function () {
     })
 
     var workSlide = new Swiper('.swiper-container', {
-
         slidesPerView: 1,
         pagination: {
             el: '.swiper-pagination',
             type: 'progressbar',
-          },
+        },
         loop: false,
         centeredSlides: false,
         speed: 900,
         spaceBetween: 0,
         mousewheel: true,
-
     });
 
     workSlide.on('slideChange', function () {
         TweenMax.to('.text-1', 0.3, {
             y: '80',
-         
+
         })
         TweenMax.to('.text-2', 0.3, {
             y: '80',
-         
         })
-
-      
-        
     });
 
     workSlide.on('slideChangeTransitionEnd', function () {
         TweenMax.to('.text-1', 0.3, {
             y: '0',
-         
+
         })
         TweenMax.to('.text-2', 0.3, {
             y: '0',
-         
         })
-   
     });
 
 

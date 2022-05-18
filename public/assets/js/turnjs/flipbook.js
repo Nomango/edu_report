@@ -105,6 +105,9 @@ function disableControls(page) {
 // Set the width and height for the viewport
 function resizeViewport() {
 
+    if (!$('.flipbook').turn('is'))
+        return;
+
     var width = $(window).width(),
         height = $(window).height(),
         options = $('.flipbook').turn('options');
@@ -139,26 +142,6 @@ function resizeViewport() {
             left: -bound.width / 2
         });
     }
-
-    var magazineOffset = $('.flipbook').offset(),
-        boundH = height - magazineOffset.top - $('.flipbook').height(),
-        marginTop = (boundH - $('.thumbnails > div').height()) / 2;
-
-    if (marginTop < 0) {
-        $('.thumbnails').css({
-            height: 1
-        });
-    } else {
-        $('.thumbnails').css({
-            height: boundH
-        });
-        $('.thumbnails > div').css({
-            marginTop: marginTop
-        });
-    }
-
-    if (magazineOffset.top < $('.made').height()) $('.made').hide();
-    else $('.made').show();
 
     $('.flipbook').addClass('animated');
 }

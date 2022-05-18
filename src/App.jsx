@@ -7,66 +7,20 @@ import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 // Import charts, all with Chart suffix
 import {
-  // LineChart,
   BarChart,
-  // PieChart,
-  // ScatterChart,
-  // RadarChart,
   MapChart,
-  // TreeChart,
-  // TreemapChart,
-  // GraphChart,
-  // GaugeChart,
-  // FunnelChart,
-  // ParallelChart,
-  // SankeyChart,
-  // BoxplotChart,
-  // CandlestickChart,
-  // EffectScatterChart,
-  // LinesChart,
-  // HeatmapChart,
-  // PictorialBarChart,
-  // ThemeRiverChart,
-  // SunburstChart,
-  // CustomChart,
 } from 'echarts/charts';
 // import components, all suffixed with Component
 import {
-  // GridSimpleComponent,
   GridComponent,
-  // PolarComponent,
-  // RadarComponent,
   GeoComponent,
-  // SingleAxisComponent,
-  // ParallelComponent,
-  // CalendarComponent,
-  // GraphicComponent,
-  // ToolboxComponent,
   TooltipComponent,
-  // AxisPointerComponent,
-  // BrushComponent,
   TitleComponent,
-  // TimelineComponent,
-  // MarkPointComponent,
-  // MarkLineComponent,
-  // MarkAreaComponent,
-  // LegendComponent,
-  // LegendScrollComponent,
-  // LegendPlainComponent,
-  // DataZoomComponent,
-  // DataZoomInsideComponent,
-  // DataZoomSliderComponent,
-  // VisualMapComponent,
-  // VisualMapContinuousComponent,
-  // VisualMapPiecewiseComponent,
-  // AriaComponent,
-  // TransformComponent,
   DatasetComponent,
 } from 'echarts/components';
 // Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
 import {
   CanvasRenderer,
-  // SVGRenderer,
 } from 'echarts/renderers';
 
 import GuangXiJSON from './assets/json/guangxi.json'
@@ -78,9 +32,54 @@ echarts.use(
 );
 
 // turnjs
-import { initFlipbook } from './assets/js/load_flipbook.js'
+import { initFlipbook, loadBook, closeBook } from './assets/js/load_flipbook.js'
 
 initFlipbook()
+
+var books = [
+  {
+    name: "桂林电子科技大学",
+    cover: "assets/img/book/1.png",
+    pages: 7,
+  },
+  {
+    name: "广西大学",
+    cover: "assets/img/book/1.png",
+    pages: 2,
+  },
+  {
+    name: "广西科技大学",
+    cover: "assets/img/book/1.png",
+    pages: 4,
+  },
+  {
+    name: "桂林理工大学",
+    cover: "assets/img/book/1.png",
+    pages: 5,
+  },
+  {
+    name: "广西民族师范学院",
+    cover: "assets/img/book/1.png",
+    pages: 6,
+  },
+]
+
+function Book(props) {
+  let book = props.book;
+  return (
+    <div className="folio-item">
+      <div className="img-folio cursorExplore">
+        <a role="button" onClick={() => loadBook(book)}>
+          <img className="img-fluid" src={book.cover} draggable="false" alt={book.name} />
+        </a>
+      </div>
+      <div className="text-folio text-center">
+        <h2 className="text-1">{book.name}</h2>
+        <h2 className="text-2">{book.name}</h2>
+      </div>
+    </div>
+  )
+}
 
 function App() {
   // const code = Map.getCodeByName('广西')
@@ -88,6 +87,7 @@ function App() {
   // const areaJSON = Map.getAreaJSON({type: 'province', map: province.map})
   // echarts.registerMap(province.map, areaJSON)
   echarts.registerMap('guangxi', GuangXiJSON)
+  console.log("???")
   return (
     <div className="App">
       {/* <!-- Start Preload --> */}
@@ -207,42 +207,29 @@ function App() {
                   <h2>院校发展<span>详情</span></h2>
                 </div>
               </div>
-              <div className="col-md-6">
-                <div className="folio-item">
-                  <div className="img-folio cursorExplore">
-                    <a className="load-spiral">
-                      <img className="img-fluid" src="assets/img/book/1.png" draggable="false" alt="" />
-                    </a>
-                  </div>
-                  <div className="text-folio text-center">
-                    <h2 className="text-1">桂林电子科技大学</h2>
-                    <h2 className="text-2">桂林电子科技大学</h2>
-                  </div>
-                </div>
-                <div className="folio-item">
-                  <div className="img-folio cursorExplore"><a className="load-spiral" href="work-detail.html"><img className="img-fluid" src="assets/img/port/1.jpg" draggable="false" alt="" /></a></div>
-                  <div className="text-folio text-center">
-                    <h2 className="text-1">SMITHY</h2>
-                    <h2 className="text-2">SMITHY</h2>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="folio-item">
-                  <div className="img-folio cursorExplore"><a className="load-spiral" href="work-detail.html"><img className="img-fluid" src="assets/img/port/3.jpg" draggable="false" alt="" /></a></div>
-                  <div className="text-folio text-center">
-                    <h2 className="text-1">DETECTIVE</h2>
-                    <h2 className="text-2">DETECTIVE</h2>
-                  </div>
-                </div>
-                <div className="folio-item">
-                  <div className="img-folio cursorExplore"><a className="load-spiral" href="work-detail-2.html"><img className="img-fluid" src="assets/img/port/4.jpg" draggable="false" alt="" /></a></div>
-                  <div className="text-folio text-center">
-                    <h2 className="text-1">SHANGHAI</h2>
-                    <h2 className="text-2">SHANGHAI</h2>
-                  </div>
-                </div>
-              </div>
+              {
+                console.log("what") ||
+                books.map((book, i) => {
+                  if (i % 2 == 1)
+                    return
+                  if (i == books.length - 1) {
+                    console.log(i)
+                    return (
+                      <div className="col-md-6">
+                        <Book book={book} key={`book-${i}`} />
+                      </div>
+                    )
+                  }
+                  console.log(i)
+                  console.log(i + 1)
+                  return (
+                    <div className="col-md-6">
+                      <Book book={book} key={`book-${i}`} />
+                      <Book book={books[i + 1]} key={`book-${i + 1}`} />
+                    </div>
+                  )
+                })
+              }
             </div>
             <div className="row">
               <div className="col-md-12"><a href="work.html" className="next-project centered text-center load-spiral">
@@ -254,19 +241,6 @@ function App() {
             </div>
           </div>
         </section>
-        <div id="canvas">
-          {/* <div className="zoom-icon zoom-icon-in">
-          </div> */}
-          <div className="flipbook-viewport">
-            <div className="container">
-              <div className="flipbook"></div>
-            </div>
-            {/* <div ignore="1" className="next-button">
-            </div>
-            <div ignore="1" className="previous-button">
-            </div> */}
-          </div>
-        </div>
         {/* <!-- Footer --> */}
         <div className="footer">
           <div className="container">
@@ -292,6 +266,19 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div id="canvas">
+        <div className="close-icon" onClick={closeBook}></div>
+        <div className="zoom-icon zoom-icon-in"></div>
+        <div className="flipbook-viewport">
+          <div className="container">
+            <div className="flipbook"></div>
+          </div>
+          <div ignore="1" className="next-button">
+          </div>
+          <div ignore="1" className="previous-button">
           </div>
         </div>
       </div>

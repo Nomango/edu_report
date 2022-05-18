@@ -1,18 +1,44 @@
-function loadApp() {
+function setArrows() {
+    setTimeout(function () {
+        var width = $(window).width();
+        var bookWidth = $(".flipbook").width();
+        var magaLeft = $(".flipbook").offset().left;
+        var nextLeft = (width - bookWidth - magaLeft - 60) / 2;
+        $('.next-button').animate({ "right": nextLeft }, 300);
+        $('.previous-button').animate({ "left": nextLeft }, 300);
+    }, 1);
+}
+
+function closeBook() {
+    RevealLoad();
+    $('#canvas').fadeOut(1000);
+}
+
+function loadBook(book) {
+    HideLoad();
+    setArrows();
+
     $('#canvas').fadeIn(1000);
     var flipbook = $('.flipbook');
 
     // Check if the CSS was already loaded	
     if (flipbook.width() == 0 || flipbook.height() == 0) {
-        setTimeout(loadApp, 10);
+        setTimeout(loadBook, 10, book);
         return;
     }
 
+    console.log('加载书籍 ' + book.name);
+
     // 创建flipbook
+    var flipbook = $('.flipbook');
+
+    if (flipbook.turn('is'))
+        flipbook.turn('destroy');
+
     flipbook.turn({
         width: 1200,
-        height: 781,
-        duration: 1000,   //翻页速度，值越小越快
+        height: 800,
+        duration: 1000,   // 翻页速度，值越小越快
         // Hardware acceleration
         acceleration: !isChrome(),
         // Enables gradients
@@ -22,7 +48,7 @@ function loadApp() {
         // Elevation from the edge of the flipbook when turning a page
         elevation: 50,
         // The number of pages
-        pages: 7,
+        pages: book.pages,
         // Events
         when: {
             turning: function (event, page, view) {
@@ -65,7 +91,7 @@ function loadApp() {
             },
 
             resize: function (event, scale, page, pageElement) {
-                loadSmallPage(page, pageElement);
+                // loadSmallPage(page, pageElement);
                 // if (scale == 1)
                 //     loadSmallPage(page, pageElement);
                 // else
@@ -73,25 +99,25 @@ function loadApp() {
             },
 
             zoomIn: function () {
-                $('.made').hide();
+                // $('.made').hide();
                 $('.flipbook').removeClass('animated').addClass('zoom-in');
                 $('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
-                if (!window.escTip && !$.isTouch) {
-                    escTip = true;
-                    $('<div />', { 'class': 'exit-message' }).
-                        html('<div>Press ESC to exit</div>').
-                        appendTo($('body')).
-                        delay(2000).
-                        animate({ opacity: 0 }, 500, function () {
-                            $(this).remove();
-                        });
-                }
+                // if (!window.escTip && !$.isTouch) {
+                //     // escTip = true;
+                //     $('<div />', { 'class': 'exit-message' }).
+                //         html('<div>Press ESC to exit</div>').
+                //         appendTo($('body')).
+                //         delay(2000).
+                //         animate({ opacity: 0 }, 500, function () {
+                //             $(this).remove();
+                //         });
+                // }
             },
 
             zoomOut: function () {
-                $('.exit-message').hide();
-                $('.thumbnails').fadeIn();
-                $('.made').fadeIn();
+                // $('.exit-message').hide();
+                // $('.thumbnails').fadeIn();
+                // $('.made').fadeIn();
                 $('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
                 setTimeout(function () {
                     $('.flipbook').addClass('animated').removeClass('zoom-in');
@@ -106,6 +132,30 @@ function loadApp() {
         $('.flipbook-viewport').bind('zoom.doubleTap', zoomTo);
     else
         $('.flipbook-viewport').bind('zoom.tap', zoomTo);
+
+    Hash.go('page/1').update();
+
+    resizeViewport();
+
+    $('.flipbook').addClass('animated');
+}
+
+var initTurnjs = () => {
+
+    // URIs - Format #/page/1
+    Hash.on('^page\/([0-9]*)$', {
+        yep: function (path, parts) {
+            var page = parts[1];
+            if (page !== undefined) {
+                if ($('.flipbook').turn('is'))
+                    $('.flipbook').turn('page', page);
+            }
+        },
+        nop: function (path) {
+            if ($('.flipbook').turn('is'))
+                $('.flipbook').turn('page', 1);
+        }
+    });
 
     // // Using arrow keys to turn the page
     // $(document).keydown(function (e) {
@@ -128,21 +178,6 @@ function loadApp() {
     //     }
     // });
 
-    // URIs - Format #/page/1 
-    Hash.on('^page\/([0-9]*)$', {
-        yep: function (path, parts) {
-            var page = parts[1];
-            if (page !== undefined) {
-                if ($('.flipbook').turn('is'))
-                    $('.flipbook').turn('page', page);
-            }
-        },
-        nop: function (path) {
-            if ($('.flipbook').turn('is'))
-                $('.flipbook').turn('page', 1);
-        }
-    });
-
     $(window).resize(function () {
         resizeViewport();
     }).bind('orientationchange', function () {
@@ -161,9 +196,7 @@ function loadApp() {
         $(this).removeClass('next-button-down');
     }).click(function () {
         $('.flipbook').turn('next');
-        setTimeout(function () {
-            setArrows();
-        }, 300);
+        setArrows();
     });
 
     // Events for the previous button	
@@ -178,17 +211,9 @@ function loadApp() {
         $(this).removeClass('previous-button-down');
     }).click(function () {
         $('.flipbook').turn('previous');
-        setTimeout(function () {
-            setArrows();
-        }, 300);
+        setArrows();
     });
 
-    resizeViewport();
-
-    $('.flipbook').addClass('animated');
-}
-
-$(() => {
     // Zoom icon
     $('.zoom-icon').bind('mouseover', function () {
         if ($(this).hasClass('zoom-icon-in'))
@@ -208,7 +233,7 @@ $(() => {
     });
 
     $('#canvas').hide();
-})
+}
 
 // http://code.google.com/p/chromium/issues/detail?id=128488
 function isChrome() {
@@ -217,7 +242,7 @@ function isChrome() {
 
 // Load the HTML4 version if there's not CSS transform
 
-export { initFlipbook }
+export { initFlipbook, loadBook, closeBook }
 
 var initFlipbook = () => {
     yepnope({
@@ -225,6 +250,6 @@ var initFlipbook = () => {
         yep: ['/assets/js/turnjs/turn.min.js'],
         nope: ['/assets/js/turnjs/turn.html4.min.js'],
         both: ['/assets/js/turnjs/zoom.min.js', '/assets/js/turnjs/flipbook.js', '/assets/css/flipbook.css'],
-        complete: loadApp
+        complete: initTurnjs,
     });
 }
