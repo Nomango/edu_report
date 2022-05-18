@@ -177,12 +177,12 @@ function App() {
           </div>
           <div className="heading-text">
             <div className="heading-text-front">
-              <h1>广东新工科教育论坛</h1>
+              <h1>广西新工科教育论坛</h1>
               <h3>暨新工科建设推进研讨会</h3>
               <h3>2022</h3>
             </div>
             <div className="heading-text-back">
-              <h1>广东新工科教育论坛</h1>
+              <h1>广西新工科教育论坛</h1>
               <h3>暨新工科建设推进研讨会</h3>
               <h3>2022</h3>
             </div>
