@@ -110,7 +110,7 @@ function App() {
       <header>
         <nav>
           {/* <!-- Logo --> */}
-          <div className="logo hover-target"><a className="load-spiral" href="index.html"><img src="assets/img/logo.svg" alt="logo" /></a></div>
+          <div className="logo hover-target magnetic"><a className="load-spiral" href="index.html"><img src="assets/img/logo.svg" alt="logo" /></a></div>
           {/* <!-- Menu bar --> */}
           <div className="toggle-btn magnetic hover-target">
             <div className="burger-menu"><span className="one"></span><span className="two"></span><span className="tre"></span></div>
@@ -271,6 +271,7 @@ function App() {
           </div>
         </div>
       </div>
+      {/* <!-- Flip book -->*/}
       <div id="canvas">
         <div className="close-icon" onClick={closeBook}></div>
         <div className="zoom-icon zoom-icon-in"></div>
@@ -284,20 +285,7 @@ function App() {
           </div>
         </div>
       </div>
-      {/* <!-- End Content --><!-- Toggle menu --> */}
-      {/* <div className="menus">
-        <a className="hover-target" href="index.html">Home</a>
-        <a className="hover-target" href="index-2.html">Home Slider</a>
-        <a className="hover-target" href="index-3.html">Home Image</a>
-        <a className="hover-target" href="work.html">Work</a>
-        <a className="hover-target" href="about.html">About</a>
-        <a className="hover-target" href="work-detail.html">Work Detail</a>
-        <a className="hover-target" href="work-detail-2.html">Work Detail 2</a>
-        <a className="hover-target" href="blog.html">Blog</a>
-        <a className="hover-target" href="blog-detail.html">Blog Detail</a>
-        <a className="hover-target" href="error.html">Error 404 Page</a>
-      </div>
-      <div className="menu__toggler hover-target magnetic"><span></span></div> */}
+      {/* <!-- End Content -->*/}
       {/* <!-- Cursor --> */}
       <div className="cursor1" id="cursor1"></div>
       <div className="cursor" id="cursor"></div>

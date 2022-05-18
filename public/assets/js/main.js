@@ -453,19 +453,4 @@ $(function () {
     function calcDistance(elem, mouseX, mouseY) {
         return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left + (elem.width() / 2)), 2) + Math.pow(mouseY - (elem.offset().top + (elem.height() / 2)), 2)));
     }
-
-    //--------------------------------------------------
-    // Zoom Image
-    //--------------------------------------------------
-
-    mediumZoom(document.querySelectorAll('.cover'), {
-        background: '#000',
-    })
-
-    var toggler = $('.menu__toggler');
-    var menu = $('.menus');
-    toggler.on("click", function () {
-        toggler.toggleClass('activez');
-        menu.toggleClass('activez');
-    });
 });
