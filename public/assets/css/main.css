@@ -812,7 +812,7 @@ a {
     z-index: 4
 }
 
-.heading-text-front h1, h3 {
+.heading-text-front h1 {
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     color: transparent;
@@ -822,10 +822,14 @@ a {
     letter-spacing: 1px
 }
 
-
 .heading-text-front h3 {
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    color: transparent;
     font-weight: 600;
     font-size: 40px;
+    -webkit-text-stroke: 1px #fff;
+    letter-spacing: 1px
 }
 
 .heading-text-back {
@@ -957,7 +961,7 @@ h1.title {
     font-weight: 900;
     font-size: 30px;
     letter-spacing: 2px;
-    -webkit-text-stroke: 2px #fff;
+    -webkit-text-stroke: 2px var(--highlight-background-color);
     z-index: 4;
     left: 50%;
     bottom: 1px;
@@ -971,7 +975,7 @@ h1.title {
 .folio-content .folio-item .text-folio h2.text-2 {
     position: absolute;
     font-family: 'Poppins', sans-serif;
-    color: #fff;
+    color: var(--highlight-background-color);
     font-weight: 900;
     font-size: 30px;
     letter-spacing: 2px;

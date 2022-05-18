@@ -38,7 +38,6 @@ var hashes = {},
 	},
 
 	startTimer = function() {
-		
 		if (!timer)
 			timer = setInterval(function() {
 				if (num>0 && currentUrl!=window.location.href) {
@@ -46,16 +45,13 @@ var hashes = {},
 					window.Hash.check();
 				}
 			}, freq);
-
 	},
 
 	stopTimer = function() {
-
 		if (timer) {
 			clearInterval(timer);
 			timer = null;
 		}
-
 	};
 
 window.Hash = freeze({

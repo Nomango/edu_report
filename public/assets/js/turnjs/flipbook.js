@@ -13,22 +13,22 @@ function setArrows() {
     }, 100);
 }
 
-function addPage(page, book) {
-    var id, pages = book.turn('pages');
+function addPage(page, flipbook, book) {
+    var id, pages = flipbook.turn('pages');
     // Create a new element for this page
     var element = $('<div />', {});
 
     // Add the page to the flipbook
-    if (book.turn('addPage', element, page)) {
+    if (flipbook.turn('addPage', element, page)) {
         // Add the initial HTML
         // It will contain a loader indicator and a gradient
         element.html('<div class="gradient"></div><div class="loader"></div>');
         // Load the page
-        loadPage(page, element);
+        loadPage(page, element, book);
     }
 }
 
-function loadPage(page, pageElement) {
+function loadPage(page, pageElement, book) {
     // Create an image element
     var img = $('<img />');
     img.mousedown(function (e) {
@@ -46,7 +46,7 @@ function loadPage(page, pageElement) {
         pageElement.find('.loader').remove();
     });
     // Load the page
-    img.attr('src', '/assets/img/book/' + page + '.png');
+    img.attr('src', book.base_url + '/' + page + book.img_suffix);
 }
 
 // Zoom in / Zoom out

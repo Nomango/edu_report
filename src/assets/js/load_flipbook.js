@@ -70,7 +70,7 @@ function loadBook(book) {
             missing: function (event, pages) {
                 // Add pages that aren't in the flipbook
                 for (var i = 0; i < pages.length; i++)
-                    addPage(pages[i], $(this));
+                    addPage(pages[i], $(this), book);
             }
         }
     });
@@ -79,7 +79,7 @@ function loadBook(book) {
     $('.flipbook-viewport').zoom({
         flipbook: $('.flipbook'),
         max: function () {
-            return 1.5;
+            return 3.0;
         },
         when: {
             swipeLeft: function () {

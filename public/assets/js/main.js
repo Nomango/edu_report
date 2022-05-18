@@ -406,36 +406,36 @@ $(function () {
     var t1 = new TimelineMax({
         paused: true
     });
-    t1.to(".one", 0.4, {
+    t1.to(".one", 0.1, {
         y: 9,
         autoAlpha: 0,
         ease: Expo.easeInOut
     });
-    t1.to(".two", 0.4, {
+    t1.to(".two", 0.1, {
         ease: Expo.easeInOut,
-        delay: -0.4
+        // delay: -0.1
     });
-    t1.to(".tre", 0.4, {
+    t1.to(".tre", 0.1, {
         y: -9,
         autoAlpha: 0,
         ease: Expo.easeInOut,
-        delay: -0.4
+        // delay: -0.1
     });
-    t1.to(".over-all", 0.6, {
+    t1.to(".over-all", 0.4, {
         autoAlpha: 1,
         ease: Expo.easeOut,
     })
-    t1.to(".bg-nav", 0.6, {
+    t1.to(".bg-nav", 0.4, {
         autoAlpha: 1,
         ease: Power4.easeOut,
-        delay: -0.6
+        delay: -0.2
     })
 
 
     t1.to(".menu", 0.6, {
         autoAlpha: 1,
         ease: Expo.easeOut,
-        delay: -0.6
+        delay: -0.2
     })
 
     t1.staggerFrom(".menu ul li", 1.5, {
@@ -448,6 +448,10 @@ $(function () {
     t1.reverse();
 
     $('.toggle-btn').on("click", function () {
+        t1.reversed(!t1.reversed()); //toggles the orientation
+    })
+
+    $('.menu-link').on("click", function () {
         t1.reversed(!t1.reversed()); //toggles the orientation
     })
 
@@ -536,13 +540,10 @@ $(function () {
         })
     });
 
-
-
     var toggler = $('.menu__toggler');
     var menu = $('.menus');
     toggler.on("click", function () {
         toggler.toggleClass('activez');
         menu.toggleClass('activez');
     });
-
 });

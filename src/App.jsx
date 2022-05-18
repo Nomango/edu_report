@@ -39,27 +39,37 @@ initFlipbook()
 var books = [
   {
     name: "桂林电子科技大学",
-    cover: "assets/img/book/1.png",
-    pages: 7,
+    base_url: "/assets/img/book/桂电",
+    img_suffix: ".jpg",
+    cover: "/assets/img/book/桂电/1.jpg",
+    pages: 9,
   },
   {
     name: "广西大学",
-    cover: "assets/img/book/1.png",
+    base_url: "/assets/img/book/桂电",
+    img_suffix: ".jpg",
+    cover: "/assets/img/book/桂电/1.jpg",
     pages: 2,
   },
   {
     name: "广西科技大学",
-    cover: "assets/img/book/1.png",
+    base_url: "/assets/img/book/桂电",
+    img_suffix: ".jpg",
+    cover: "/assets/img/book/桂电/1.jpg",
     pages: 4,
   },
   {
     name: "桂林理工大学",
-    cover: "assets/img/book/1.png",
+    base_url: "/assets/img/book/桂电",
+    img_suffix: ".jpg",
+    cover: "/assets/img/book/桂电/1.jpg",
     pages: 5,
   },
   {
     name: "广西民族师范学院",
-    cover: "assets/img/book/1.png",
+    base_url: "/assets/img/book/桂电",
+    img_suffix: ".jpg",
+    cover: "/assets/img/book/桂电/1.jpg",
     pages: 6,
   },
 ]
@@ -87,7 +97,6 @@ function App() {
   // const areaJSON = Map.getAreaJSON({type: 'province', map: province.map})
   // echarts.registerMap(province.map, areaJSON)
   echarts.registerMap('guangxi', GuangXiJSON)
-  console.log("???")
   return (
     <div className="App">
       {/* <!-- Start Preload --> */}
@@ -110,16 +119,13 @@ function App() {
           <div className="scr socials">
             <div className="list-social">
               <ul>
-                <li className="hover-target"><a href="#">Db.</a></li>
-                <li className="hover-target"><a href="#">Tw.</a></li>
-                <li className="hover-target"><a href="#">Ig.</a></li>
-                <li className="hover-target"><a href="#">Bg.</a></li>
+                <li className="hover-target"><a href="#">CN.</a></li>
               </ul>
             </div>
           </div>
           {/* <!-- Copyright --> */}
           <div className="scr copyright-top">
-            <p>Sambat &copy;2019</p>
+            <p>主办方 &copy;2019</p>
           </div>
           <div className="bg-nav"></div>
           {/* <!-- menu --> */}
@@ -133,23 +139,23 @@ function App() {
                         <ul>
                           <li>
                             <p>01</p>
-                            <a className="menu-link hover-target load-spiral" href="index.html">Home</a></li>
+                            <a className="menu-link hover-target" href="#">Home</a></li>
                           <li>
                             <p>02</p>
-                            <a className="menu-link hover-target load-spiral" href="work.html">Work</a></li>
+                            <a className="menu-link hover-target" href="#brief">Brief</a></li>
                           <li>
                             <p>03</p>
-                            <a className="menu-link hover-target load-spiral" href="about.html">About</a></li>
+                            <a className="menu-link hover-target" href="about.html">Work</a></li>
                           <li>
                             <p>04</p>
-                            <a className="menu-link hover-target load-spiral" href="blog.html">Blog</a></li>
+                            <a className="menu-link hover-target" href="#about">About</a></li>
                         </ul>
                       </div>
                     </div>
                     <div className="col-md-4 offset-md-2 centered text-right">
                       <div className="address-menu">
-                        <h3>SAMBAT DESIGN STUDIO</h3>
-                        <h4>Flower 03/11 Street Klaten,Central Java,Indonesia</h4>
+                        <h3>主办方信息</h3>
+                        <h4>2022/05/27 暨新工科建设推进研讨会</h4>
                       </div>
                     </div>
                   </div>
@@ -208,20 +214,16 @@ function App() {
                 </div>
               </div>
               {
-                console.log("what") ||
                 books.map((book, i) => {
                   if (i % 2 == 1)
                     return
                   if (i == books.length - 1) {
-                    console.log(i)
                     return (
                       <div className="col-md-6">
                         <Book book={book} key={`book-${i}`} />
                       </div>
                     )
                   }
-                  console.log(i)
-                  console.log(i + 1)
                   return (
                     <div className="col-md-6">
                       <Book book={book} key={`book-${i}`} />
@@ -232,10 +234,11 @@ function App() {
               }
             </div>
             <div className="row">
-              <div className="col-md-12"><a href="work.html" className="next-project centered text-center load-spiral">
+              <div className="col-md-12">
+                <a name="about" className="next-project centered text-center">
                 <div className="col-md-12">
-                  <p>View</p>
-                  <h3>ALL PROJECTS</h3>
+                  <p>About</p>
+                  <h3>Sponsor</h3>
                 </div>
               </a></div>
             </div>
@@ -246,7 +249,7 @@ function App() {
           <div className="container">
             <div className="row">
               <div className="col-md-4 text-center text-md-left mt-30">
-                <div className="mail hover-target"><a href="#">hello@spiral.design</a></div>
+                <div className="mail hover-target"><a href="#">主办方信息</a></div>
               </div>
               <div className="col-md-4 text-center mt-30">
                 <div className="logo-foot"><img src="assets/img/logo.svg" alt="" /></div>
@@ -254,15 +257,14 @@ function App() {
               <div className="col-md-4 text-center text-md-right mt-30">
                 <div className="sosmed">
                   <ul>
-                    <li className="hover-target"><a href="#">Dribbble.</a></li>
-                    <li className="hover-target"><a href="#">Twitter.</a></li>
-                    <li className="hover-target"><a href="#">Instagram.</a></li>
-                    <li className="hover-target"><a href="#">Behance.</a></li>
+                    <li className="hover-target"><a href="#">WeChat.</a></li>
+                    <li className="hover-target"><a href="#">Weibo.</a></li>
+                    <li className="hover-target"><a href="#">Website.</a></li>
                   </ul>
                 </div>
                 <div className="copyright">
-                  <p>Sambat &copy;2019. All Rights Reserved</p>
-                  <p>Made with ♥ By <a href="http://www.bootstrapmb.com/">bootstrapmb</a>.</p>
+                  <p>主办方 &copy;2022. All Rights Reserved</p>
+                  {/* <p>Made with ♥ By <a href="http://www.bootstrapmb.com/">bootstrapmb</a>.</p> */}
                 </div>
               </div>
             </div>
@@ -283,8 +285,19 @@ function App() {
         </div>
       </div>
       {/* <!-- End Content --><!-- Toggle menu --> */}
-      <div className="menus"><a className="hover-target" href="index.html">Home</a><a className="hover-target" href="index-2.html">Home Slider</a><a className="hover-target" href="index-3.html">Home Image</a><a className="hover-target" href="work.html">Work</a><a className="hover-target" href="about.html">About</a><a className="hover-target" href="work-detail.html">Work Detail</a><a className="hover-target" href="work-detail-2.html">Work Detail 2</a><a className="hover-target" href="blog.html">Blog</a><a className="hover-target" href="blog-detail.html">Blog Detail</a><a className="hover-target" href="error.html">Error 404 Page</a></div>
-      <div className="menu__toggler hover-target magnetic"><span></span></div>
+      {/* <div className="menus">
+        <a className="hover-target" href="index.html">Home</a>
+        <a className="hover-target" href="index-2.html">Home Slider</a>
+        <a className="hover-target" href="index-3.html">Home Image</a>
+        <a className="hover-target" href="work.html">Work</a>
+        <a className="hover-target" href="about.html">About</a>
+        <a className="hover-target" href="work-detail.html">Work Detail</a>
+        <a className="hover-target" href="work-detail-2.html">Work Detail 2</a>
+        <a className="hover-target" href="blog.html">Blog</a>
+        <a className="hover-target" href="blog-detail.html">Blog Detail</a>
+        <a className="hover-target" href="error.html">Error 404 Page</a>
+      </div>
+      <div className="menu__toggler hover-target magnetic"><span></span></div> */}
       {/* <!-- Cursor --> */}
       <div className="cursor1" id="cursor1"></div>
       <div className="cursor" id="cursor"></div>
