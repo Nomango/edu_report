@@ -355,51 +355,6 @@ $(function () {
     }
 
 
-
-
-    //--------------------------------------------------
-    // Work detail slider
-    //--------------------------------------------------
-    workSlider();
-
-    function workSlider() {
-        var workSlide = $('.work-slider .owl-carousel');
-        workSlide.owlCarousel({
-            loop: true,
-            margin: 30,
-            mouseDrag: false,
-            autoplay: false,
-            center: false,
-            dots: false,
-            dragEndSpeed: 700,
-            smartSpeed: 2000,
-            responsiveClass: true,
-            autoplayHoverPause: true,
-            autoplayTimeout: 9000,
-            responsive: {
-                0: {
-                    items: 1,
-                    margin: 0,
-                },
-                600: {
-                    items: 1,
-                    margin: 0,
-                },
-                1000: {
-                    items: 1,
-                    margin: 0,
-                }
-            }
-        });
-
-        $('.right-over-next').on("click", function () {
-            workSlide.trigger('next.owl.carousel');
-        })
-        $('.right-over-prev').on("click", function () {
-            workSlide.trigger('prev.owl.carousel');
-        })
-    }
-
     //--------------------------------------------------
     // Toggle Menu
     //--------------------------------------------------
@@ -506,39 +461,6 @@ $(function () {
     mediumZoom(document.querySelectorAll('.cover'), {
         background: '#000',
     })
-
-    var workSlide = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'progressbar',
-        },
-        loop: false,
-        centeredSlides: false,
-        speed: 900,
-        spaceBetween: 0,
-        mousewheel: true,
-    });
-
-    workSlide.on('slideChange', function () {
-        TweenMax.to('.text-1', 0.3, {
-            y: '80',
-
-        })
-        TweenMax.to('.text-2', 0.3, {
-            y: '80',
-        })
-    });
-
-    workSlide.on('slideChangeTransitionEnd', function () {
-        TweenMax.to('.text-1', 0.3, {
-            y: '0',
-
-        })
-        TweenMax.to('.text-2', 0.3, {
-            y: '0',
-        })
-    });
 
     var toggler = $('.menu__toggler');
     var menu = $('.menus');
