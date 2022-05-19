@@ -132,33 +132,25 @@ $(function () {
         var bodyScroll = wind.scrollTop();
 
         if (bodyScroll > 300) {
-
             TweenMax.to('.scr', .5, {
                 autoAlpha: 0,
                 y: '100',
-
             })
 
             TweenMax.to('.scrolls', .5, {
                 autoAlpha: 0,
                 y: '100',
-
             })
-
-
         } else {
             TweenMax.to('.scr', 1, {
                 autoAlpha: 1,
                 y: '00',
-
             })
 
             TweenMax.to('.scrolls', .5, {
                 autoAlpha: 1,
                 y: '0',
-
             })
-
         }
     });
 
@@ -176,10 +168,10 @@ $(function () {
     });
 
 
-    luxy.init({
-        wrapper: '#spiral',
-        wrapperSpeed: '0.07',
-    });
+    // luxy.init({
+    //     wrapper: '#spiral',
+    //     wrapperSpeed: '0.07',
+    // });
 
     //--------------------------------------------------
     // Cursor

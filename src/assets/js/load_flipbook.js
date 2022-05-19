@@ -249,7 +249,7 @@ var initFlipbook = () => {
         test: Modernizr.csstransforms,
         yep: ['/assets/js/turnjs/turn.min.js'],
         nope: ['/assets/js/turnjs/turn.html4.min.js'],
-        both: ['/assets/js/turnjs/zoom.min.js', '/assets/js/turnjs/flipbook.js', '/assets/css/flipbook.css'],
+        both: ['/assets/js/turnjs/zoom.min.js', '/assets/js/turnjs/flipbook.js'],
         complete: initTurnjs,
     });
 }
