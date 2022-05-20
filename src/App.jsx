@@ -101,7 +101,6 @@ function App() {
         pagination={{
           clickable: true,
         }}
-        forceToAxis={true}
         modules={[Mousewheel, Pagination]}
         onSlideChange={(swiper) => {
           // console.log(swiper)
