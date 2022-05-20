@@ -36,7 +36,7 @@ function Map(props) {
   let province = props.province;
   let opts = {
     tooltip: {
-      show: false
+      show: true
     },
     geo: {
       map: province,
@@ -77,10 +77,13 @@ function Map(props) {
         showLegendSymbol: false, // 存在legend时显示
         label: {
           normal: {
-            show: false
+            show: true,
+            textStyle: {
+              color: "#fff8"
+            }
           },
           emphasis: {
-            show: false,
+            show: true,
             textStyle: {
               color: "#fff"
             }

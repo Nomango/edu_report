@@ -5,7 +5,7 @@ import Map from './Components/Map';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, Pagination, FreeMode, EffectCoverflow } from "swiper";
+import { Mousewheel, Pagination, EffectCoverflow } from "swiper";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -98,11 +98,11 @@ function App() {
       <Swiper
         direction={"vertical"}
         mousewheel={true}
-        freeMode={true}
         pagination={{
           clickable: true,
         }}
-        modules={[Mousewheel, Pagination, FreeMode]}
+        forceToAxis={true}
+        modules={[Mousewheel, Pagination]}
         onSlideChange={(swiper) => {
           // console.log(swiper)
           if (swiper.activeIndex == 0) {
@@ -181,7 +181,10 @@ function App() {
                   modifier: 1,
                   slideShadows: false,
                 }}
-                modules={[EffectCoverflow]}
+                mousewheel={true}
+                nested={true}
+                loop={true}
+                modules={[EffectCoverflow, Mousewheel]}
                 className={'inner-swiper'}
               >
                 {
