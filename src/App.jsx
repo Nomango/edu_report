@@ -1,11 +1,11 @@
 import React from 'react'
 
 import Map from './Components/Map';
-import Flipbook from './Components/Flipbook';
+// import Flipbook from './Components/Flipbook';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from "swiper";
+import { Mousewheel, Pagination, FreeMode } from "swiper";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -14,10 +14,12 @@ import 'swiper/css/pagination';
 import './assets/css/plugin.css'
 import './assets/css/main.css'
 import './assets/css/responsive.css'
+import './assets/css/anim.css'
+import './assets/css/swiper.css'
 
 function App() {
   let books = getAllBooks();
-  let flipbook = <Flipbook books={books} />
+  // let flipbook = <Flipbook books={books} />
   return (
     <>
       {/* <!-- Start Preload --> */}
@@ -26,6 +28,7 @@ function App() {
       <div className="block-2"></div>
       <div className="logo-load"><img src="assets/img/logo.svg" alt="" /></div>
       <div className="logo-load spinning"></div>
+      <div className="bg-all"></div>
       <div className="over-all"></div>
       {/* <!-- End Preload --> */}
       {/* <!-- Start Header --> */}
@@ -88,36 +91,55 @@ function App() {
         </nav>
       </header>
       {/* <!-- End Header --> */}
+      {/* <!-- Animation --> */}
+      <div className="anim-container"></div>
       {/* <!-- Start Content --> */}
       <Swiper
         direction={"vertical"}
+        mousewheel={true}
+        freeMode={true}
         pagination={{
-          clickable: true
+          clickable: true,
         }}
-        modules={[Pagination]}
+        modules={[Mousewheel, Pagination, FreeMode]}
+        onSlideChange={(swiper) => {
+          // console.log(swiper)
+          if (swiper.activeIndex == 0) {
+            TweenMax.to('.scr', 1, {
+              autoAlpha: 1,
+              y: '00',
+            })
+          } else {
+            TweenMax.to('.scr', .5, {
+              autoAlpha: 0,
+              y: '100',
+            })
+          }
+        }}
         className={'main-swiper'}
       >
         <SwiperSlide>
           {/* <!-- Cover --> */}
           <div className="main-head">
-            <div id="headmove">
+            {/* <div id="headmove">
               <div data-depth="0.2">
                 <div className="bg-right"></div>
               </div>
-            </div>
+            </div> */}
             <div className="heading-text">
               <div className="heading-text-front">
                 <h1>广西新工科教育论坛</h1>
                 <h3>暨新工科建设推进研讨会</h3>
                 <h3>2022</h3>
               </div>
-              <div className="heading-text-back">
+              {/* <div className="heading-text-back">
                 <h1>广西新工科教育论坛</h1>
                 <h3>暨新工科建设推进研讨会</h3>
                 <h3>2022</h3>
-              </div>
+              </div> */}
             </div>
           </div>
+          <div className="scrolls"><img draggable="false" src="assets/img/sroll.svg" alt="scroll" /></div>
         </SwiperSlide>
         <SwiperSlide>
           {/* <!-- Brief --> */}
@@ -212,7 +234,7 @@ function App() {
         </SwiperSlide>
       </Swiper>
       {/* <!-- Flip book -->*/}
-      {flipbook}
+      {/* {flipbook} */}
       {/* <!-- End Content -->*/}
       {/* <!-- Cursor --> */}
       <div className="cursor1" id="cursor1"></div>

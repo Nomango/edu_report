@@ -72,7 +72,7 @@ function StartAnim() {
         container.appendChild(grid);
     }
 
-    var tl = new TimelineMax({ repeat: -1, repeatDelay: 0, delay: 1 });
+    var tl = new TimelineMax({ repeat: 0, repeatDelay: 0, delay: 1 });
 
     function animateBoxes() {
         tl.to(".anim-cell", {
@@ -84,8 +84,8 @@ function StartAnim() {
             z: "random(-400,400)",
             rotateX: "random(-360, 360, 180)",
             rotateY: "random(-360, 360, 180)",
-            repeat: -1,
-            repeatDelay: 2,
+            repeat: 1,
+            repeatDelay: 1,
             repeatRefresh: true,
             ease: "power2.inOut",
             stagger: {
@@ -95,7 +95,22 @@ function StartAnim() {
                 from: "center"
             }
         });
-        TweenMax.to('.anim-grid', { duration: 36, rotateX: 2160, rotateY: 720, ease: "none", repeat: -1 });
+
+        var opt = { duration: 8.5, rotateX: 240, rotateY: 80, ease: "sine.out", repeat: 0 };
+        opt.rotateX *= opt.duration / 4
+        opt.rotateY *= opt.duration / 4
+        TweenMax.to('.anim-grid', opt);
+
+        $('.main-head').hide();
+        setTimeout(() => {
+            $('.main-head').fadeIn();
+            TweenMax.to('.bg-all', 1, {
+                autoAlpha: 1,
+            });
+            TweenMax.to('.scrolls', 1, {
+                autoAlpha: 1,
+            });
+        }, opt.duration * 1000);
     }
 
     createGrid();
@@ -142,6 +157,12 @@ $(function () {
         })
         TweenMax.from('.scr', 1, {
             y: '100',
+            ease: Power4.easeInOut,
+            autoAlpha: 0,
+        })
+        TweenMax.from('.scrolls', 1, {
+            y: '100',
+            delay: 1,
             ease: Power4.easeInOut,
             autoAlpha: 0,
         })
@@ -212,6 +233,64 @@ $(function () {
     //     wrapperSpeed: '0.07',
     // });
 
+
+    //--------------------------------------------------
+    // Toggle Menu
+    //--------------------------------------------------
+    var t1 = new TimelineMax({
+        paused: true
+    });
+    t1.to(".one", 0.1, {
+        y: 9,
+        autoAlpha: 0,
+        ease: Expo.easeInOut
+    });
+    t1.to(".two", 0.1, {
+        ease: Expo.easeInOut,
+        // delay: -0.1
+    });
+    t1.to(".tre", 0.1, {
+        y: -9,
+        autoAlpha: 0,
+        ease: Expo.easeInOut,
+        // delay: -0.1
+    });
+    t1.to(".over-all", 0.4, {
+        autoAlpha: 1,
+        ease: Expo.easeOut,
+    })
+    t1.to(".bg-nav", 0.4, {
+        autoAlpha: 1,
+        ease: Power4.easeOut,
+        delay: -0.2
+    })
+
+
+    t1.to(".menu", 0.6, {
+        autoAlpha: 1,
+        ease: Expo.easeOut,
+        delay: -0.2
+    })
+
+    t1.staggerFrom(".menu ul li", 1.5, {
+        y: 50,
+        opacity: 0,
+        ease: Power4.easeInOut,
+    }, '0.1', '-0.01');
+
+
+    t1.reverse();
+
+    $('.toggle-btn').on("click", function () {
+        t1.reversed(!t1.reversed()); //toggles the orientation
+    })
+
+    $('.menu-link').on("click", function () {
+        t1.reversed(!t1.reversed()); //toggles the orientation
+    })
+
+
+
     //--------------------------------------------------
     // Cursor
     //--------------------------------------------------
@@ -224,7 +303,56 @@ $(function () {
         // $('html').addClass('no-touch');
         isMobile = false;
     }
+    if (!isMobile) {
+        // InitCursor();
+    }
 
+
+    //--------------------------------------------------
+    // Magnetic
+    //--------------------------------------------------
+
+    $(document).on('mousemove', function (e) {
+        $('.magnetic').each(function () {
+            if (!isMobile) {
+                magnetic(this, e); //Init effect magnetic 
+            }
+        });
+    });
+
+    function magnetic(el, e) {
+        var mX = e.pageX,
+            mY = e.pageY;
+        const obj = $(el);
+
+        const customDist = 20 * obj.data('dist') || 80,
+            centerX = obj.offset().left + obj.width() / 2,
+            centerY = obj.offset().top + obj.height() / 2;
+
+        var deltaX = Math.floor((centerX - mX)) * -.4,
+            deltaY = Math.floor((centerY - mY)) * -.4;
+
+        var distance = calcDistance(obj, mX, mY);
+
+        if (distance < customDist) {
+            TweenMax.to(obj, .4, {
+                y: deltaY,
+                x: deltaX
+            });
+        } else {
+            TweenMax.to(obj, .4, {
+                y: 0,
+                x: 0
+            });
+        }
+    }
+
+    function calcDistance(elem, mouseX, mouseY) {
+        return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left + (elem.width() / 2)), 2) + Math.pow(mouseY - (elem.offset().top + (elem.height() / 2)), 2)));
+    }
+});
+
+function InitCursor() {
     var isMacLike = /(Mac)/i.test(navigator.platform);
 
     var cursor = {
@@ -381,107 +509,5 @@ $(function () {
         }
     }
 
-    if (!isMobile) {
-        cursor.init(); //Init custom cursor
-    }
-
-
-    //--------------------------------------------------
-    // Toggle Menu
-    //--------------------------------------------------
-    var t1 = new TimelineMax({
-        paused: true
-    });
-    t1.to(".one", 0.1, {
-        y: 9,
-        autoAlpha: 0,
-        ease: Expo.easeInOut
-    });
-    t1.to(".two", 0.1, {
-        ease: Expo.easeInOut,
-        // delay: -0.1
-    });
-    t1.to(".tre", 0.1, {
-        y: -9,
-        autoAlpha: 0,
-        ease: Expo.easeInOut,
-        // delay: -0.1
-    });
-    t1.to(".over-all", 0.4, {
-        autoAlpha: 1,
-        ease: Expo.easeOut,
-    })
-    t1.to(".bg-nav", 0.4, {
-        autoAlpha: 1,
-        ease: Power4.easeOut,
-        delay: -0.2
-    })
-
-
-    t1.to(".menu", 0.6, {
-        autoAlpha: 1,
-        ease: Expo.easeOut,
-        delay: -0.2
-    })
-
-    t1.staggerFrom(".menu ul li", 1.5, {
-        y: 50,
-        opacity: 0,
-        ease: Power4.easeInOut,
-    }, '0.1', '-0.01');
-
-
-    t1.reverse();
-
-    $('.toggle-btn').on("click", function () {
-        t1.reversed(!t1.reversed()); //toggles the orientation
-    })
-
-    $('.menu-link').on("click", function () {
-        t1.reversed(!t1.reversed()); //toggles the orientation
-    })
-
-
-    //--------------------------------------------------
-    // Magnetic
-    //--------------------------------------------------
-
-    $(document).on('mousemove', function (e) {
-        $('.magnetic').each(function () {
-            if (!isMobile) {
-                magnetic(this, e); //Init effect magnetic 
-            }
-        });
-    });
-
-    function magnetic(el, e) {
-        var mX = e.pageX,
-            mY = e.pageY;
-        const obj = $(el);
-
-        const customDist = 20 * obj.data('dist') || 80,
-            centerX = obj.offset().left + obj.width() / 2,
-            centerY = obj.offset().top + obj.height() / 2;
-
-        var deltaX = Math.floor((centerX - mX)) * -.4,
-            deltaY = Math.floor((centerY - mY)) * -.4;
-
-        var distance = calcDistance(obj, mX, mY);
-
-        if (distance < customDist) {
-            TweenMax.to(obj, .4, {
-                y: deltaY,
-                x: deltaX
-            });
-        } else {
-            TweenMax.to(obj, .4, {
-                y: 0,
-                x: 0
-            });
-        }
-    }
-
-    function calcDistance(elem, mouseX, mouseY) {
-        return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left + (elem.width() / 2)), 2) + Math.pow(mouseY - (elem.offset().top + (elem.height() / 2)), 2)));
-    }
-});
+    cursor.init(); //Init custom cursor
+}
