@@ -43,6 +43,65 @@ function HideLoad() {
     loadTL.play();
 }
 
+function StartAnim() {
+    select = e => document.querySelector(e);
+    selectAll = e => document.querySelectorAll(e);
+
+    var gridNum = 19,
+        gridSize = [gridNum, gridNum], // number of cells in cols and rows
+        gutter = 1, // in px
+        container = select('.anim-container');
+
+    function createGrid() {
+        var grid = document.createElement("div"),
+            cols = gridSize[0],
+            rows = gridSize[1],
+            width = (100 - (cols - 1) * gutter) / cols,
+            height = width,
+            numCells = cols * rows,
+            box;
+
+        grid.style.cssText = `grid-template-columns: repeat(${cols}, 1fr); grid-template-rows: repeat(${rows}, 1fr); grid-gap: ${gutter}px;`;
+        grid.setAttribute("class", "anim-grid");
+
+        for (i = 0; i < numCells; i++) {
+            box = document.createElement("div");
+            box.setAttribute("class", "anim-cell");
+            grid.appendChild(box);
+        }
+        container.appendChild(grid);
+    }
+
+    var tl = new TimelineMax({ repeat: -1, repeatDelay: 0, delay: 1 });
+
+    function animateBoxes() {
+        tl.to(".anim-cell", {
+            duration: 2,
+            scale: "random(0.1, 2)",
+            opacity: "random(0.3, 1)",
+            x: "random(-300,300)",
+            y: "random(-300,300)",
+            z: "random(-400,400)",
+            rotateX: "random(-360, 360, 180)",
+            rotateY: "random(-360, 360, 180)",
+            repeat: -1,
+            repeatDelay: 2,
+            repeatRefresh: true,
+            ease: "power2.inOut",
+            stagger: {
+                amount: 1,
+                grid: gridSize,
+                ease: "sine.inOut",
+                from: "center"
+            }
+        });
+        TweenMax.to('.anim-grid', { duration: 36, rotateX: 2160, rotateY: 720, ease: "none", repeat: -1 });
+    }
+
+    createGrid();
+    animateBoxes();
+}
+
 $(function () {
     "use strict";
 
@@ -81,38 +140,28 @@ $(function () {
             ease: Power4.easeInOut,
             delay: '.3',
         })
-
         TweenMax.from('.scr', 1, {
             y: '100',
             ease: Power4.easeInOut,
             autoAlpha: 0,
         })
-
-        TweenMax.from('.scrolls', 1, {
-            y: '100',
-            delay: 1,
-            ease: Power4.easeInOut,
-            autoAlpha: 0,
-        })
-
-
         TweenMax.to('.menu', 0, {
             autoAlpha: 0,
         })
 
-
+        StartAnim();
     }
 
 
     //--------------------------------------------------
     // Parralax
     //--------------------------------------------------
-    var headermove = $('#headmove').get(0);
-    var parallaxInstance = new Parallax(headermove, {
-        relativeInput: true,
-        scalarX: 14,
-        hoverOnly: false,
-    });
+    // var headermove = $('#headmove').get(0);
+    // var parallaxInstance = new Parallax(headermove, {
+    //     relativeInput: true,
+    //     scalarX: 14,
+    //     hoverOnly: false,
+    // });
 
     $('.load-spiral').on('click', function (e) {
         e.preventDefault();
@@ -126,33 +175,23 @@ $(function () {
     //--------------------------------------------------
     // Animation on navbar scrolling background
     //--------------------------------------------------
-    var wind = $(window);
+    // TODO 监听swiper滚动事件
+    // var wind = $(window);
 
-    wind.on("scroll", function () {
-        var bodyScroll = wind.scrollTop();
-
-        if (bodyScroll > 300) {
-            TweenMax.to('.scr', .5, {
-                autoAlpha: 0,
-                y: '100',
-            })
-
-            TweenMax.to('.scrolls', .5, {
-                autoAlpha: 0,
-                y: '100',
-            })
-        } else {
-            TweenMax.to('.scr', 1, {
-                autoAlpha: 1,
-                y: '00',
-            })
-
-            TweenMax.to('.scrolls', .5, {
-                autoAlpha: 1,
-                y: '0',
-            })
-        }
-    });
+    // wind.on("scroll", function () {
+    //     var bodyScroll = wind.scrollTop();
+    //     if (bodyScroll > 300) {
+    //         TweenMax.to('.scr', .5, {
+    //             autoAlpha: 0,
+    //             y: '100',
+    //         })
+    //     } else {
+    //         TweenMax.to('.scr', 1, {
+    //             autoAlpha: 1,
+    //             y: '00',
+    //         })
+    //     }
+    // });
 
 
     $('.img-folio').on('mouseenter', function () {
@@ -179,10 +218,10 @@ $(function () {
 
     var isMobile = false;
     if (/Android|webOS|iPhone|iPod|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        $('html').addClass('touch');
+        // $('html').addClass('touch');
         isMobile = true;
     } else {
-        $('html').addClass('no-touch');
+        // $('html').addClass('no-touch');
         isMobile = false;
     }
 
