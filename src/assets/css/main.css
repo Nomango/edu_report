@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 :root {
-    --backgroud-color: #12100e;
+    --background-color: #12100e;
     --highlight-background-color: #2b4162;
 }
 
@@ -20,9 +20,9 @@ body {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* background: var(--backgroud-color); */
+    /* background: var(--background-color); */
     background-color: #2b4162;
-	background-image: linear-gradient(10deg, #2b4162 0%, #12100e 74%);
+    background-image: linear-gradient(10deg, #2b4162 0%, #12100e 74%);
 }
 
 h1,
@@ -57,7 +57,7 @@ a:hover {
     top: 0;
     left: 0;
     z-index: 90;
-    background: var(--backgroud-color);
+    background: var(--background-color);
     mix-blend-mode: color;
     pointer-events: none;
     opacity: 0
@@ -94,7 +94,7 @@ a:hover {
     height: 100vh;
     bottom: 0;
     left: 0;
-    background: var(--backgroud-color);
+    background: var(--background-color);
     position: fixed;
     z-index: 998
 }
@@ -104,7 +104,7 @@ a:hover {
     height: 100vh;
     top: 0;
     left: 0;
-    background: var(--backgroud-color);
+    background: var(--background-color);
     position: fixed;
     z-index: 999
 }
@@ -139,7 +139,7 @@ a:hover {
     top: 0;
     left: 0;
     z-index: 90;
-    background: var(--backgroud-color);
+    background: var(--background-color);
     mix-blend-mode: color;
     pointer-events: none;
     opacity: 0 */
@@ -276,7 +276,7 @@ a:hover {
 }
 
 .bg-darks {
-    background: var(--backgroud-color)
+    background: var(--background-color)
 }
 
 ::-moz-selection {
@@ -419,7 +419,7 @@ nav .container {
     z-index: 97;
     height: 100vh;
     width: 100%;
-    background: var(--backgroud-color);
+    background: var(--background-color);
     opacity: 0;
     pointer-events: none
 }
@@ -647,9 +647,9 @@ a {
 }
 
 .bg-right {
-    /* background: var(--backgroud-color); */
+    /* background: var(--background-color); */
     background-color: #2b4162;
-	background-image: linear-gradient(10deg, #2b4162 0%, #12100e 74%);
+    background-image: linear-gradient(10deg, #2b4162 0%, #12100e 74%);
     z-index: 3;
     position: fixed;
     transform: translate(-50%, -50%);
@@ -678,7 +678,7 @@ a {
 
 .heading-text {
     background-color: #2b4162;
-	background-image: linear-gradient(10deg, #2b4162 0%, #12100e 74%);
+    background-image: linear-gradient(10deg, #2b4162 0%, #12100e 74%);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -792,6 +792,10 @@ h1.title {
     }
 }
 
+.main-title {
+    margin-bottom: 2rem;
+}
+
 .main-title::before {
     position: absolute;
     width: 70px;
@@ -818,7 +822,8 @@ h1.title {
 }
 
 .folio-content {
-    background: var(--backgroud-color)
+    width: 50%;
+    background: var(--background-color)
 }
 
 .folio-content .folio-item {
@@ -904,11 +909,11 @@ h1.title {
 }
 
 .about {
-    background: var(--backgroud-color)
+    background: var(--background-color)
 }
 
 .about-page {
-    background: var(--backgroud-color)
+    background: var(--background-color)
 }
 
 #img-about {
@@ -922,7 +927,7 @@ h1.title {
     left: 0;
     top: 0;
     z-index: 2;
-    background: var(--backgroud-color)
+    background: var(--background-color)
 }
 
 .about-text h3 {
@@ -933,8 +938,8 @@ h1.title {
 }
 
 .abt-text {
-    margin-left: -200px;
-    background: var(--highlight-background-color);
+    /* margin-left: -200px; */
+    background: var(--background-color);
     padding: 40px 40px
 }
 
@@ -991,7 +996,12 @@ h1.title {
 }
 
 .footer .logo-foot {
-    mix-blend-mode: difference
+    margin-top: 1rem;
+    mix-blend-mode: difference;
+}
+
+.footer .logo-foot img {
+    margin: auto;
 }
 
 .footer a {
@@ -1252,7 +1262,7 @@ h3.detail-title {
 
 .next-project {
     color: #fff;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     background-size: cover
 }
 
@@ -1361,7 +1371,7 @@ h3.detail-title {
     content: '';
     width: 25px;
     height: 2.5px;
-    background: var(--backgroud-color);
+    background: var(--background-color);
     border-radius: 20px;
     left: 12px;
     -webkit-transition: 500ms cubic-bezier(0.77, 0, 0.175, 1);
@@ -1384,7 +1394,7 @@ h3.detail-title {
 
 .menu__toggler.activez>span::before,
 .menu__toggler.activez>span::after {
-    background: var(--backgroud-color);
+    background: var(--background-color);
     top: 0
 }
 

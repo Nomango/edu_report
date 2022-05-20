@@ -5,11 +5,12 @@ import Map from './Components/Map';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, Pagination, FreeMode } from "swiper";
+import { Mousewheel, Pagination, FreeMode, EffectCoverflow } from "swiper";
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
 
 import './assets/css/plugin.css'
 import './assets/css/main.css'
@@ -128,12 +129,12 @@ function App() {
             </div> */}
             <div className="heading-text">
               <div className="heading-text-front">
-                <h1>广西新工科教育论坛</h1>
+                <h1>广西新工科教育成果展</h1>
                 <h3>暨新工科建设推进研讨会</h3>
                 <h3>2022</h3>
               </div>
               {/* <div className="heading-text-back">
-                <h1>广西新工科教育论坛</h1>
+                <h1>广西新工科教育成果展</h1>
                 <h3>暨新工科建设推进研讨会</h3>
                 <h3>2022</h3>
               </div> */}
@@ -146,11 +147,11 @@ function App() {
           <section className="brief">
             <div className="container">
               <div className="row centered">
-                <div className="col-lg-7">
+                <div className="col-lg-4">
                   <Map province={'guangxi'} />
                   {/* <div className="img-about luxy-el" data-horizontal="1" data-speed-x="1"><img className="img-fluid" src="assets/img/about.jpg" alt="" /></div> */}
                 </div>
-                <div className="col-lg-5">
+                <div className="col-lg-8">
                   <div className="abt-text">
                     <p>以本科院校为例，<br />2021年，广西有普通本科高校35所，其中普通高校32所，独立学院3所<br />公办本科院校24所，民办本科院校11所<br />其中，南宁、桂林院校相对较多</p>
                     <a className="hover-target load-spiral" href="#">查看更多详情</a></div>
@@ -160,15 +161,40 @@ function App() {
           </section>
         </SwiperSlide>
         <SwiperSlide>
-          <section className="folio-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="main-title text-center">
-                    <h2>院校发展<span>详情</span></h2>
-                  </div>
+          {/* <section className="folio-content"> */}
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="main-title text-center">
+                  <h2>院校发展<span>详情</span></h2>
                 </div>
-                {/* {
+              </div>
+              <Swiper
+                effect={"coverflow"}
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView={"auto"}
+                coverflowEffect={{
+                  rotate: 50,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 1,
+                  slideShadows: false,
+                }}
+                modules={[EffectCoverflow]}
+                className={'inner-swiper'}
+              >
+                {
+                  books.map((book, i) => {
+                    return (
+                      <SwiperSlide>
+                        <BookCover book={book} key={`book-${i}`} />
+                      </SwiperSlide>
+                    )
+                  })
+                }
+              </Swiper>
+              {/* {
                   books.map((book, i) => {
                     if (i % 2 == 1)
                       return
@@ -187,9 +213,9 @@ function App() {
                     )
                   })
                 } */}
-              </div>
             </div>
-          </section>
+          </div>
+          {/* </section> */}
         </SwiperSlide>
         <SwiperSlide>
           <section className="folio-content">
@@ -201,7 +227,31 @@ function App() {
                       <p>About</p>
                       <h3>Sponsor</h3>
                     </div>
-                  </a></div>
+                  </a>
+                </div>
+              </div>
+              <div className="footer">
+                <div className="row">
+                  <div className="col-md-12 text-center text-md-left mt-30">
+                    <div className="mail hover-target text-center"><a href="#">主办方信息</a></div>
+                  </div>
+                </div>
+                <div className="logo-foot"><img src="assets/img/logo.svg" alt="" /></div>
+                <div className="row">
+                  <div className="col-md-12 text-center mt-30">
+                    <div className="sosmed">
+                      <ul>
+                        <li className="hover-target"><a href="#">WeChat.</a></li>
+                        <li className="hover-target"><a href="#">Weibo.</a></li>
+                        <li className="hover-target"><a href="#">Website.</a></li>
+                      </ul>
+                    </div>
+                    <div className="copyright">
+                      <p>主办方 &copy;2022. All Rights Reserved</p>
+                      {/* <p>Made with ♥ By <a href="http://www.bootstrapmb.com/">bootstrapmb</a>.</p> */}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -209,25 +259,6 @@ function App() {
           <div className="footer">
             <div className="container">
               <div className="row">
-                <div className="col-md-4 text-center text-md-left mt-30">
-                  <div className="mail hover-target"><a href="#">主办方信息</a></div>
-                </div>
-                <div className="col-md-4 text-center mt-30">
-                  <div className="logo-foot"><img src="assets/img/logo.svg" alt="" /></div>
-                </div>
-                <div className="col-md-4 text-center text-md-right mt-30">
-                  <div className="sosmed">
-                    <ul>
-                      <li className="hover-target"><a href="#">WeChat.</a></li>
-                      <li className="hover-target"><a href="#">Weibo.</a></li>
-                      <li className="hover-target"><a href="#">Website.</a></li>
-                    </ul>
-                  </div>
-                  <div className="copyright">
-                    <p>主办方 &copy;2022. All Rights Reserved</p>
-                    {/* <p>Made with ♥ By <a href="http://www.bootstrapmb.com/">bootstrapmb</a>.</p> */}
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -259,6 +290,16 @@ function Book(props) {
         <h2 className="text-2">{book.name}</h2>
       </div>
     </div>
+  )
+}
+
+function BookCover(props) {
+  let book = props.book;
+  return (
+    <a role="button" onClick={() => book.open()}>
+      <img className="cover-img" src={book.cover} draggable="false" alt={book.name} />
+      <p className="cover-text">{book.name}</p>
+    </a>
   )
 }
 
