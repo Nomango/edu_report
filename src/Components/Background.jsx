@@ -64,6 +64,7 @@ class Background extends Component {
             this.player.seekTo(6.0);
           }, 1000);
         }}
+        onError={e => console.log('onError', e)}
         style={{
           position: 'fixed',
           // top: '50%',
