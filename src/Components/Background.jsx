@@ -80,9 +80,9 @@ class Background extends Component {
               // disablePictureInPicture: true,
               controlsList: "nodownload",
               style: {
-                'object-fit': 'cover',
-                'width': '100%',
-                'height': '100%',
+                objectFit: 'cover',
+                width: '100%',
+                height: '100%',
               },
             },
             forceVideo: true
