@@ -23,10 +23,8 @@ function InitAll() {
     //--------------------------------------------------
     // Preloader
     //--------------------------------------------------
-    $('.preloader').fadeOut('slow');
     RevealLoad();
     startAnim();
-    $('.preloader').removeClass();
 
     $('.main-head').hide();
 
@@ -47,11 +45,6 @@ function InitAll() {
             ease: Power4.easeInOut,
         })
         TweenMax.from('.bg-right', 1, {
-            x: 100,
-            ease: Power4.easeInOut,
-            delay: '.3',
-        })
-        TweenMax.from('.bg-about', 1, {
             x: 100,
             ease: Power4.easeInOut,
             delay: '.3',

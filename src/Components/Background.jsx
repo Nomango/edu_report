@@ -11,7 +11,7 @@ class Background extends Component {
   state = {
     url: StartVideo,
     pip: false,
-    playing: true,
+    playing: false,
     controls: false,
     light: false,
     volume: null,
@@ -24,7 +24,11 @@ class Background extends Component {
   constructor(props) {
     super(props);
     this.onReady = props.onReady;
+  }
+
+  play() {
     console.log('start playing');
+    this.setState({ playing: true });
   }
 
   render() {
@@ -64,7 +68,14 @@ class Background extends Component {
             this.player.seekTo(6.0);
           }, 1000);
         }}
-        onError={e => console.log('onError', e)}
+        onError={e => {
+          console.log('onError', e);
+          setTimeout(() => {
+            // 设置一个延迟播放，因为chrome禁止自动播放声音
+            this.setState({ muted: true });
+            this.player.seekTo(0);
+          }, 100);
+        }}
         style={{
           position: 'fixed',
           // top: '50%',

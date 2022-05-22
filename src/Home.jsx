@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import Map from './Components/Map';
 // import Flipbook from './Components/Flipbook';
@@ -27,12 +27,30 @@ import Background from './Components/Background';
 
 function Home() {
   // $(CreateAnimGrid);
-  $(InitAll);
   let books = GetAllSchools();
   // let flipbook = <Flipbook books={books} />
   const [controlledSwiper, setControlledSwiper] = useState(null);
+  const background = useRef(null);
+  useEffect(() => {
+    console.log('ready');
+    $('.logo-load-img').fadeOut();
+    $('.logo-load.spinning').fadeOut();
+    $('.logo-load-text').fadeIn();
+  })
   return (
     <>
+      <div className="block-1"></div>
+      <div className="block-2"></div>
+      <div className="logo-load">
+        <img className='logo-load-img' src="assets/img/logo.svg" alt="" />
+        <h1 className='logo-load-text' style={{ display: 'none', cursor: 'pointer' }} onClick={
+          () => {
+            InitAll();
+            background.current.play();
+          }
+        }>进入</h1>
+      </div>
+      <div className="logo-load spinning"></div>
       {/* <!-- Start Header --> */}
       <header>
         <nav>
@@ -93,6 +111,7 @@ function Home() {
         </nav>
       </header>
       <Background
+        ref={background}
         onReady={StartAll}
       />
       {/* <div className="anim-container"></div> */}
