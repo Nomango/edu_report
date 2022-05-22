@@ -5,6 +5,7 @@ import StartVideo from '../assets/videos/start.mp4';
 class Background extends Component {
   ref = player => {
     this.player = player;
+    console.log('player=', player);
   }
 
   state = {
@@ -23,10 +24,12 @@ class Background extends Component {
   constructor(props) {
     super(props);
     this.onReady = props.onReady;
+    console.log('start playing');
   }
 
   render() {
     const { url, playing, controls, light, volume, muted, loop, playbackRate, pip } = this.state;
+    console.log('playing=', playing);
     return (
       <ReactPlayer
         className={'start-video'}
