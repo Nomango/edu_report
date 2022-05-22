@@ -9,7 +9,7 @@
     height: 100%;
     margin: auto;
     perspective: 600px;
-    z-index: -2;
+    z-index: 0;
 }
 
 .anim-grid {

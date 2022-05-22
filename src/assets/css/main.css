@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 :root {
-    --background-color: #12100e;
-    --highlight-background-color: #2b4162;
+    --background-color: #2b4162;
+    --highlight-background-color: #004481;
 }
 
 * {
@@ -21,8 +21,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* background: var(--background-color); */
-    background-color: #2b4162;
-    background-image: linear-gradient(10deg, #2b4162 0%, #12100e 74%);
+}
+
+#root {
+    background-color: var(--highlight-background-color);
+    background-image: linear-gradient(10deg, var(--highlight-background-color) 0%, var(--background-color) 74%);
 }
 
 h1,
@@ -648,8 +651,8 @@ a {
 
 .bg-right {
     /* background: var(--background-color); */
-    background-color: #2b4162;
-    background-image: linear-gradient(10deg, #2b4162 0%, #12100e 74%);
+    background-color: var(--highlight-background-color);
+    background-image: linear-gradient(10deg, var(--highlight-background-color) 0%, var(--background-color) 74%);
     z-index: 3;
     position: fixed;
     transform: translate(-50%, -50%);
@@ -677,8 +680,8 @@ a {
 }
 
 .heading-text {
-    background-color: #2b4162;
-    background-image: linear-gradient(10deg, #2b4162 0%, #12100e 74%);
+    background-color: var(--highlight-background-color);
+    background-image: linear-gradient(10deg, var(--highlight-background-color) 0%, var(--background-color) 74%);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -823,7 +826,7 @@ h1.title {
 
 .folio-content {
     width: 50%;
-    background: var(--background-color)
+    background: var(--highlight-background-color)
 }
 
 .folio-content .folio-item {
@@ -939,7 +942,7 @@ h1.title {
 
 .abt-text {
     /* margin-left: -200px; */
-    background: var(--background-color);
+    background: var(--highlight-background-color);
     padding: 40px 40px
 }
 
