@@ -1,11 +1,11 @@
 import React from 'react'
-import {render} from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from './App'
 import Detail from './Detail'
 import Home from './Home';
 
-render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
   <BrowserRouter>
     <Routes>
@@ -18,4 +18,4 @@ render(
     </Routes>
   </BrowserRouter>
   // </React.StrictMode>
-, document.getElementById('root'));
+)

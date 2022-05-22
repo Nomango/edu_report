@@ -3,11 +3,23 @@ import $ from "jquery";
 window.jQuery = $;
 
 export {
+    InitAll,
     StartAll,
     CreateAnimGrid
 }
 
 function StartAll() {
+    $('.main-head').fadeIn();
+    TweenMax.to('.scrolls', 1, {
+        autoAlpha: 1,
+    });
+    TweenMax.to('.scr', 1, {
+        autoAlpha: 1,
+        y: '00',
+    })
+}
+
+function InitAll() {
     //--------------------------------------------------
     // Preloader
     //--------------------------------------------------
@@ -16,6 +28,7 @@ function StartAll() {
     startAnim();
     $('.preloader').removeClass();
 
+    $('.main-head').hide();
 
     //--------------------------------------------------
     // Animation Start
@@ -58,7 +71,7 @@ function StartAll() {
             autoAlpha: 0,
         })
 
-        StartAnim();
+        // StartAnim();
     }
 
 

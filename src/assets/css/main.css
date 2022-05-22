@@ -126,27 +126,6 @@ a:hover {
 }
 
 .bg-all {
-    /* display: fixed;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #12100e7d;
-    opacity: 0;
-    z-index: -1; */
-
-    /* width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 90;
-    background: var(--background-color);
-    mix-blend-mode: color;
-    pointer-events: none;
-    opacity: 0 */
-
     position: fixed;
     top: 0;
     z-index: 5;

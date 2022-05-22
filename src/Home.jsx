@@ -18,20 +18,16 @@ import './assets/css/responsive.css'
 import './assets/css/anim.css'
 import './assets/css/swiper.css'
 
-// video-react
-import '~video-react/dist/video-react.css';
-import { Player } from 'video-react';
-import StartVideo from './assets/videos/start.mp4';
-
-import { StartAll, CreateAnimGrid } from './assets/js/main.js'
+import { InitAll, StartAll, CreateAnimGrid } from './assets/js/main.js'
 import $ from "jquery";
 
 import { Link } from 'react-router-dom';
 import { GetAllSchools } from './Schools';
+import Background from './Components/Background';
 
 function Home() {
   // $(CreateAnimGrid);
-  // $(StartAll);
+  $(InitAll);
   let books = GetAllSchools();
   // let flipbook = <Flipbook books={books} />
   const [controlledSwiper, setControlledSwiper] = useState(null);
@@ -41,7 +37,7 @@ function Home() {
       <header>
         <nav>
           {/* <!-- Logo --> */}
-          {/* <div className="logo hover-target magnetic"><a className="load-spiral" href="/index.html"><img src="assets/img/logo.svg" alt="logo" /></a></div> */}
+          <div className="logo hover-target magnetic"><a className="load-spiral" href="/index.html"><img src="assets/img/logo.svg" alt="logo" /></a></div>
           {/* <!-- Menu bar --> */}
           <div className="toggle-btn magnetic hover-target">
             <div className="burger-menu"><span className="one"></span><span className="two"></span><span className="tre"></span></div>
@@ -56,7 +52,7 @@ function Home() {
           </div>
           {/* <!-- Copyright --> */}
           <div className="scr copyright-top">
-            <p>主办方 &copy;2019</p>
+            <p>广西新工科教育研究中心 &copy;2022</p>
           </div>
           <div className="bg-nav"></div>
           {/* <!-- menu --> */}
@@ -85,8 +81,8 @@ function Home() {
                     </div>
                     <div className="col-md-4 offset-md-2 centered text-right">
                       <div className="address-menu">
-                        <h3>主办方信息</h3>
-                        <h4>2022/05/27 暨新工科建设推进研讨会</h4>
+                        <h3>广西新工科教育研究中心</h3>
+                        <h4>2022年 广西新工科教育成果展</h4>
                       </div>
                     </div>
                   </div>
@@ -96,9 +92,9 @@ function Home() {
           </div>
         </nav>
       </header>
-      <Player>
-        <source src={StartVideo} />
-      </Player>
+      <Background
+        onReady={StartAll}
+      />
       {/* <div className="anim-container"></div> */}
       <Swiper
         direction={"vertical"}
@@ -136,8 +132,8 @@ function Home() {
             <div className="heading-text">
               <div className="heading-text-front">
                 <h1>广西新工科教育成果展</h1>
-                {/* <h3>暨新工科建设推进研讨会</h3> */}
-                <h3>2022</h3>
+                <h3>广西新工科教育研究中心</h3>
+                <h3>2022年</h3>
               </div>
               {/* <div className="heading-text-back">
                 <h1>广西新工科教育成果展</h1>
