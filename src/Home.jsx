@@ -132,7 +132,7 @@ function Home() {
             <div className="heading-text">
               <div className="heading-text-front">
                 <h1>广西新工科教育成果展</h1>
-                <h3>广西新工科教育研究中心</h3>
+                {/* <h3>广西新工科教育研究中心</h3> */}
                 <h3>2022年</h3>
               </div>
               {/* <div className="heading-text-back">

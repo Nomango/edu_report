@@ -4,7 +4,7 @@ import StartVideo from '../assets/videos/start.mp4';
 
 class Background extends Component {
   ref = player => {
-    this.player = player
+    this.player = player;
   }
 
   state = {
@@ -26,7 +26,7 @@ class Background extends Component {
   }
 
   render() {
-    const { url, playing, controls, light, volume, muted, loop, playbackRate, pip } = this.state
+    const { url, playing, controls, light, volume, muted, loop, playbackRate, pip } = this.state;
     return (
       <ReactPlayer
         className={'start-video'}
@@ -41,8 +41,8 @@ class Background extends Component {
         volume={volume}
         muted={muted}
 
-        width={'auto'}
-        height={'100vh'}
+        width={'100%'}
+        height={'100%'}
         onProgress={(state) => {
           if (this.state.firstDone && state.playedSeconds >= 5.5) {
             console.log('start video first done');
@@ -63,12 +63,12 @@ class Background extends Component {
         }}
         style={{
           position: 'fixed',
-          top: '50%',
-          left: '50%',
+          // top: '50%',
+          // left: '50%',
           zIndex: 5,
           // height: '100vh',
           // width: '100%',
-          transform: 'translate(-50%, -50%)',
+          // transform: 'translate(-50%, -50%)',
           pointerEvents: 'none',
         }}
         config={{
@@ -76,6 +76,11 @@ class Background extends Component {
             attributes: {
               // disablePictureInPicture: true,
               controlsList: "nodownload",
+              style: {
+                'object-fit': 'cover',
+                'width': '100%',
+                'height': '100%',
+              },
             },
             forceVideo: true
           }
