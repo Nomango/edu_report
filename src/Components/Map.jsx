@@ -54,7 +54,7 @@ function Map(props) {
         normal: {
           show: true,
           textStyle: {
-            color: "#fff8"
+            color: "#fffb"
           }
         },
         emphasis: {
@@ -67,8 +67,8 @@ function Map(props) {
       itemStyle: {
         normal: {
           areaColor: "#0d0059",
-          borderColor: "#389dff",
-          borderWidth: 0.5
+          borderColor: "#21c2ff",
+          borderWidth: 1.5
         },
         emphasis: {
           areaColor: "#17008d",
@@ -133,7 +133,7 @@ function Map(props) {
       }}
       echarts={echarts}
       style={{
-        height: '30rem',
+        height: '38rem',
         width: '100%',
         margin: 'auto',
         // position: 'relative',
