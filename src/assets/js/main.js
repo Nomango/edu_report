@@ -5,7 +5,7 @@ window.jQuery = $;
 export {
     InitAll,
     StartAll,
-    CreateAnimGrid,
+    // CreateAnimGrid,
     RevealLoad
 }
 
@@ -14,10 +14,10 @@ function StartAll() {
     TweenMax.to('.scrolls', 1, {
         autoAlpha: 1,
     });
-    TweenMax.to('.scr', 1, {
-        autoAlpha: 1,
-        y: '00',
-    })
+    // TweenMax.to('.scr', 1, {
+    //     autoAlpha: 1,
+    //     y: '00',
+    // })
 }
 
 function InitAll() {
@@ -45,22 +45,22 @@ function InitAll() {
             autoAlpha: 0,
             ease: Power4.easeInOut,
         })
-        TweenMax.from('.bg-right', 1, {
-            x: 100,
-            ease: Power4.easeInOut,
-            delay: '.3',
-        })
-        TweenMax.from('.scr', 1, {
-            y: '100',
-            ease: Power4.easeInOut,
-            autoAlpha: 0,
-        })
-        TweenMax.from('.scrolls', 1, {
-            y: '100',
-            delay: 1,
-            ease: Power4.easeInOut,
-            autoAlpha: 0,
-        })
+        // TweenMax.from('.bg-right', 1, {
+        //     x: 100,
+        //     ease: Power4.easeInOut,
+        //     delay: '.3',
+        // })
+        // TweenMax.from('.scr', 1, {
+        //     y: '100',
+        //     ease: Power4.easeInOut,
+        //     autoAlpha: 0,
+        // })
+        // TweenMax.from('.scrolls', 1, {
+        //     y: '100',
+        //     delay: 1,
+        //     ease: Power4.easeInOut,
+        //     autoAlpha: 0,
+        // })
         TweenMax.to('.menu', 0, {
             autoAlpha: 0,
         })
@@ -277,250 +277,250 @@ function HideLoad() {
     loadTL.play();
 }
 
-function StartAnim() {
-    let select = e => document.querySelector(e);
-    let selectAll = e => document.querySelectorAll(e);
+// function StartAnim() {
+//     let select = e => document.querySelector(e);
+//     let selectAll = e => document.querySelectorAll(e);
 
-    var gridNum = 19,
-        gridSize = [gridNum, gridNum], // number of cells in cols and rows
-        gutter = 1, // in px
-        container = select('.anim-container');
+//     var gridNum = 19,
+//         gridSize = [gridNum, gridNum], // number of cells in cols and rows
+//         gutter = 1, // in px
+//         container = select('.anim-container');
 
-    var tl = new TimelineMax({ repeat: 0, repeatDelay: 0, delay: 1 });
+//     var tl = new TimelineMax({ repeat: 0, repeatDelay: 0, delay: 1 });
 
-    function animateBoxes() {
-        tl.to(".anim-cell", {
-            duration: 2,
-            scale: "random(0.1, 2)",
-            opacity: "random(0.3, 1)",
-            x: "random(-300,300)",
-            y: "random(-300,300)",
-            z: "random(-400,400)",
-            rotateX: "random(-360, 360, 180)",
-            rotateY: "random(-360, 360, 180)",
-            repeat: 1,
-            repeatDelay: 1,
-            repeatRefresh: true,
-            ease: "power2.inOut",
-            stagger: {
-                amount: 1,
-                grid: gridSize,
-                ease: "sine.inOut",
-                from: "center"
-            }
-        });
+//     function animateBoxes() {
+//         tl.to(".anim-cell", {
+//             duration: 2,
+//             scale: "random(0.1, 2)",
+//             opacity: "random(0.3, 1)",
+//             x: "random(-300,300)",
+//             y: "random(-300,300)",
+//             z: "random(-400,400)",
+//             rotateX: "random(-360, 360, 180)",
+//             rotateY: "random(-360, 360, 180)",
+//             repeat: 1,
+//             repeatDelay: 1,
+//             repeatRefresh: true,
+//             ease: "power2.inOut",
+//             stagger: {
+//                 amount: 1,
+//                 grid: gridSize,
+//                 ease: "sine.inOut",
+//                 from: "center"
+//             }
+//         });
 
-        var opt = { duration: 8.5, rotateX: 240, rotateY: 80, ease: "sine.out", repeat: 0 };
-        opt.rotateX *= opt.duration / 4
-        opt.rotateY *= opt.duration / 4
-        TweenMax.to('.anim-grid', opt);
+//         var opt = { duration: 8.5, rotateX: 240, rotateY: 80, ease: "sine.out", repeat: 0 };
+//         opt.rotateX *= opt.duration / 4
+//         opt.rotateY *= opt.duration / 4
+//         TweenMax.to('.anim-grid', opt);
 
-        $('.main-head').hide();
-        setTimeout(() => {
-            $('.main-head').fadeIn();
-            // TweenMax.to('.bg-all', 1, {
-            //     autoAlpha: 1,
-            // });
-            TweenMax.to('.scrolls', 1, {
-                autoAlpha: 1,
-            });
-        }, opt.duration * 1000);
-    }
+//         $('.main-head').hide();
+//         setTimeout(() => {
+//             $('.main-head').fadeIn();
+//             // TweenMax.to('.bg-all', 1, {
+//             //     autoAlpha: 1,
+//             // });
+//             TweenMax.to('.scrolls', 1, {
+//                 autoAlpha: 1,
+//             });
+//         }, opt.duration * 1000);
+//     }
 
-    animateBoxes();
-}
+//     animateBoxes();
+// }
 
-var alreadyCreated = false;
-function CreateAnimGrid() {
-    if (alreadyCreated) {
-        console.log('???');
-        return;
-    }
-    alreadyCreated = true;
+// var alreadyCreated = false;
+// function CreateAnimGrid() {
+//     if (alreadyCreated) {
+//         console.log('???');
+//         return;
+//     }
+//     alreadyCreated = true;
 
-    let select = e => document.querySelector(e);
-    let selectAll = e => document.querySelectorAll(e);
+//     let select = e => document.querySelector(e);
+//     let selectAll = e => document.querySelectorAll(e);
 
-    var gridNum = 19,
-        gridSize = [gridNum, gridNum], // number of cells in cols and rows
-        gutter = 1, // in px
-        container = select('.anim-container');
+//     var gridNum = 19,
+//         gridSize = [gridNum, gridNum], // number of cells in cols and rows
+//         gutter = 1, // in px
+//         container = select('.anim-container');
 
-    var grid = document.createElement("div"),
-        cols = gridSize[0],
-        rows = gridSize[1],
-        width = (100 - (cols - 1) * gutter) / cols,
-        height = width,
-        numCells = cols * rows,
-        box;
+//     var grid = document.createElement("div"),
+//         cols = gridSize[0],
+//         rows = gridSize[1],
+//         width = (100 - (cols - 1) * gutter) / cols,
+//         height = width,
+//         numCells = cols * rows,
+//         box;
 
-    grid.style.cssText = `grid-template-columns: repeat(${cols}, 1fr); grid-template-rows: repeat(${rows}, 1fr); grid-gap: ${gutter}px;`;
-    grid.setAttribute("class", "anim-grid");
+//     grid.style.cssText = `grid-template-columns: repeat(${cols}, 1fr); grid-template-rows: repeat(${rows}, 1fr); grid-gap: ${gutter}px;`;
+//     grid.setAttribute("class", "anim-grid");
 
-    for (var i = 0; i < numCells; i++) {
-        box = document.createElement("div");
-        box.setAttribute("class", "anim-cell");
-        grid.appendChild(box);
-    }
-    container.appendChild(grid);
-}
+//     for (var i = 0; i < numCells; i++) {
+//         box = document.createElement("div");
+//         box.setAttribute("class", "anim-cell");
+//         grid.appendChild(box);
+//     }
+//     container.appendChild(grid);
+// }
 
-function InitCursor() {
-    var isMacLike = /(Mac)/i.test(navigator.platform);
+// function InitCursor() {
+//     var isMacLike = /(Mac)/i.test(navigator.platform);
 
-    var cursor = {
-        delay: 8,
-        _x: 0,
-        _y: 0,
-        endX: (window.innerWidth / 2),
-        endY: (window.innerHeight / 2),
-        cursorVisible: true,
-        cursorEnlarged: false,
-        $cursor: document.querySelector('.cursor'),
-        $cursor1: document.querySelector('.cursor1'),
+//     var cursor = {
+//         delay: 8,
+//         _x: 0,
+//         _y: 0,
+//         endX: (window.innerWidth / 2),
+//         endY: (window.innerHeight / 2),
+//         cursorVisible: true,
+//         cursorEnlarged: false,
+//         $cursor: document.querySelector('.cursor'),
+//         $cursor1: document.querySelector('.cursor1'),
 
-        init: function () {
-            $('body').css('cursor', 'none');
+//         init: function () {
+//             $('body').css('cursor', 'none');
 
-            // Set up element sizes
-            this.cursorSize = this.$cursor.offsetWidth;
-            this.cursor1Size = this.$cursor1.offsetWidth;
+//             // Set up element sizes
+//             this.cursorSize = this.$cursor.offsetWidth;
+//             this.cursor1Size = this.$cursor1.offsetWidth;
 
-            this.setupEventListeners();
-            this.animateDotOutline();
-            this.cursorDrag();
-            this.cursorExplore();
-            this.cursorZoom();
-            this.cursorNext();
-            this.cursorPrev();
-        },
+//             this.setupEventListeners();
+//             this.animateDotOutline();
+//             this.cursorDrag();
+//             this.cursorExplore();
+//             this.cursorZoom();
+//             this.cursorNext();
+//             this.cursorPrev();
+//         },
 
-        setupEventListeners: function () {
-            var self = this;
+//         setupEventListeners: function () {
+//             var self = this;
 
-            // Anchor hovering
-            Array.prototype.slice.call(document.querySelectorAll('  .zoom-cursor, .hover-target')).forEach(function (el) {
-                el.addEventListener('mouseover', function () {
-                    self.cursorEnlarged = true;
-                    self.toggleCursorSize();
-                });
-                el.addEventListener('mouseout', function () {
-                    self.cursorEnlarged = false;
-                    self.toggleCursorSize();
-                });
-            });
+//             // Anchor hovering
+//             Array.prototype.slice.call(document.querySelectorAll('  .zoom-cursor, .hover-target')).forEach(function (el) {
+//                 el.addEventListener('mouseover', function () {
+//                     self.cursorEnlarged = true;
+//                     self.toggleCursorSize();
+//                 });
+//                 el.addEventListener('mouseout', function () {
+//                     self.cursorEnlarged = false;
+//                     self.toggleCursorSize();
+//                 });
+//             });
 
-            document.addEventListener('mousemove', function (e) {
-                // Show the cursor
-                self.cursorVisible = true;
-                self.toggleCursorVisibility();
+//             document.addEventListener('mousemove', function (e) {
+//                 // Show the cursor
+//                 self.cursorVisible = true;
+//                 self.toggleCursorVisibility();
 
-                // Position the dot
-                self.endX = e.clientX;
-                self.endY = e.clientY;
-                self.$cursor.style.top = self.endY + 'px';
-                self.$cursor.style.left = self.endX + 'px';
-            });
+//                 // Position the dot
+//                 self.endX = e.clientX;
+//                 self.endY = e.clientY;
+//                 self.$cursor.style.top = self.endY + 'px';
+//                 self.$cursor.style.left = self.endX + 'px';
+//             });
 
-            // Hide/show cursor
-            document.addEventListener('mouseenter', function (e) {
-                self.cursorVisible = true;
-                self.toggleCursorVisibility();
-                self.$cursor.style.opacity = 1;
-                self.$cursor1.style.opacity = 1;
-            });
+//             // Hide/show cursor
+//             document.addEventListener('mouseenter', function (e) {
+//                 self.cursorVisible = true;
+//                 self.toggleCursorVisibility();
+//                 self.$cursor.style.opacity = 1;
+//                 self.$cursor1.style.opacity = 1;
+//             });
 
-            document.addEventListener('mouseleave', function (e) {
-                self.cursorVisible = true;
-                self.toggleCursorVisibility();
-                self.$cursor.style.opacity = 0;
-                self.$cursor1.style.opacity = 0;
-            });
-        },
+//             document.addEventListener('mouseleave', function (e) {
+//                 self.cursorVisible = true;
+//                 self.toggleCursorVisibility();
+//                 self.$cursor.style.opacity = 0;
+//                 self.$cursor1.style.opacity = 0;
+//             });
+//         },
 
-        animateDotOutline: function () {
-            var self = this;
+//         animateDotOutline: function () {
+//             var self = this;
 
-            self._x += (self.endX - self._x) / self.delay;
-            self._y += (self.endY - self._y) / self.delay;
-            self.$cursor1.style.top = self._y + 'px';
-            self.$cursor1.style.left = self._x + 'px';
+//             self._x += (self.endX - self._x) / self.delay;
+//             self._y += (self.endY - self._y) / self.delay;
+//             self.$cursor1.style.top = self._y + 'px';
+//             self.$cursor1.style.left = self._x + 'px';
 
-            requestAnimationFrame(this.animateDotOutline.bind(self));
-        },
+//             requestAnimationFrame(this.animateDotOutline.bind(self));
+//         },
 
-        toggleCursorSize: function () {
-            var self = this;
+//         toggleCursorSize: function () {
+//             var self = this;
 
-            if (self.cursorEnlarged) {
-                self.$cursor1.classList.add('expand');
-            } else {
-                self.$cursor1.classList.remove('expand');
-            }
-        },
+//             if (self.cursorEnlarged) {
+//                 self.$cursor1.classList.add('expand');
+//             } else {
+//                 self.$cursor1.classList.remove('expand');
+//             }
+//         },
 
-        toggleCursorVisibility: function () {
-            var self = this;
+//         toggleCursorVisibility: function () {
+//             var self = this;
 
-            if (self.cursorVisible) {
-                self.$cursor.style.opacity = 1;
-                self.$cursor1.style.opacity = 1;
-            } else {
-                self.$cursor.style.opacity = 0;
-                self.$cursor1.style.opacity = 0;
-            }
-        },
+//             if (self.cursorVisible) {
+//                 self.$cursor.style.opacity = 1;
+//                 self.$cursor1.style.opacity = 1;
+//             } else {
+//                 self.$cursor.style.opacity = 0;
+//                 self.$cursor1.style.opacity = 0;
+//             }
+//         },
 
-        cursorDrag: function () {
-            var self = this;
-            $('.cursorDrag').on('mouseenter', function () {
-                self.$cursor1.classList.add('drag', 'expand');
-            });
-            $('.cursorDrag').on('mouseleave', function () {
-                self.$cursor1.classList.remove('drag', 'expand');
-            });
-        },
+//         cursorDrag: function () {
+//             var self = this;
+//             $('.cursorDrag').on('mouseenter', function () {
+//                 self.$cursor1.classList.add('drag', 'expand');
+//             });
+//             $('.cursorDrag').on('mouseleave', function () {
+//                 self.$cursor1.classList.remove('drag', 'expand');
+//             });
+//         },
 
-        cursorExplore: function () {
-            var self = this;
-            $('.cursorExplore').on('mouseenter', function () {
-                self.$cursor1.classList.add('explore');
-            });
-            $('.cursorExplore').on('mouseleave', function () {
-                self.$cursor1.classList.remove('explore');
-            });
-        },
+//         cursorExplore: function () {
+//             var self = this;
+//             $('.cursorExplore').on('mouseenter', function () {
+//                 self.$cursor1.classList.add('explore');
+//             });
+//             $('.cursorExplore').on('mouseleave', function () {
+//                 self.$cursor1.classList.remove('explore');
+//             });
+//         },
 
-        cursorZoom: function () {
-            var self = this;
-            $('.cursorZoom').on('mouseenter', function () {
-                self.$cursor1.classList.add('zoom');
-            });
-            $('.cursorZoom').on('mouseleave', function () {
-                self.$cursor1.classList.remove('zoom');
-            });
-        },
+//         cursorZoom: function () {
+//             var self = this;
+//             $('.cursorZoom').on('mouseenter', function () {
+//                 self.$cursor1.classList.add('zoom');
+//             });
+//             $('.cursorZoom').on('mouseleave', function () {
+//                 self.$cursor1.classList.remove('zoom');
+//             });
+//         },
 
-        cursorNext: function () {
-            var self = this;
-            $('.cursorNext').on('mouseenter', function () {
-                self.$cursor1.classList.add('next');
-            });
-            $('.cursorNext').on('mouseleave', function () {
-                self.$cursor1.classList.remove('next');
-            });
-        },
+//         cursorNext: function () {
+//             var self = this;
+//             $('.cursorNext').on('mouseenter', function () {
+//                 self.$cursor1.classList.add('next');
+//             });
+//             $('.cursorNext').on('mouseleave', function () {
+//                 self.$cursor1.classList.remove('next');
+//             });
+//         },
 
-        cursorPrev: function () {
-            var self = this;
-            $('.cursorPrev').on('mouseenter', function () {
-                self.$cursor1.classList.add('prev');
-            });
-            $('.cursorPrev').on('mouseleave', function () {
-                self.$cursor1.classList.remove('prev');
-            });
-        }
-    }
+//         cursorPrev: function () {
+//             var self = this;
+//             $('.cursorPrev').on('mouseenter', function () {
+//                 self.$cursor1.classList.add('prev');
+//             });
+//             $('.cursorPrev').on('mouseleave', function () {
+//                 self.$cursor1.classList.remove('prev');
+//             });
+//         }
+//     }
 
-    cursor.init(); //Init custom cursor
-}
+//     cursor.init(); //Init custom cursor
+// }

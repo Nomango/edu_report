@@ -5,40 +5,53 @@ import Map from './Components/Map';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Controller, Mousewheel, Pagination, EffectCoverflow } from "swiper";
+import { Controller, Mousewheel, Pagination, EffectCoverflow, Grid } from "swiper";
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
+import "swiper/css/grid";
 
-import './assets/css/plugin.css'
-import './assets/css/main.css'
-import './assets/css/responsive.css'
+// import './assets/css/plugin.css'
+// import './assets/css/main.css'
+import './assets/css/main.less'
+// import './assets/css/responsive.css'
 import './assets/css/anim.css'
-import './assets/css/swiper.css'
+import './assets/css/swiper.less'
 
-import { InitAll, StartAll, CreateAnimGrid, RevealLoad } from './assets/js/main.js'
+import { InitAll, StartAll } from './assets/js/main.js'
 import $ from "jquery";
 
 import { Link } from 'react-router-dom';
 import { GetAllSchools } from './Schools';
 import Background from './Components/Background';
 import useStateRef from 'react-usestateref';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+function useInput(defValue, onValueChange) {
+  const [value, setValue, valueRef] = useStateRef(defValue);
+  const onChange = (e) => {
+    setValue(e.target.value);
+    if (onValueChange) {
+      onValueChange(e.target.value);
+    }
+  }
+  return {
+    value,
+    onChange,
+  }
+}
 
 function Home() {
   // $(CreateAnimGrid);
-  let books = GetAllSchools();
   // let flipbook = <Flipbook books={books} />
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
   useEffect(() => {
     console.log('ready');
-    setTimeout(() => {
-      InitAll();
-      // $('.logo-load').fadeOut();
-      // $('.cover-guide').fadeIn();
-    }, 500);
+    setTimeout(() => { InitAll(); }, 500);
   })
   const PlayVideo = () => {
     background.current.play();
@@ -48,9 +61,20 @@ function Home() {
     $('.cover-guide').hide();
     $('.bg-cover .ball').hide();
     $('.arrow-intro').fadeIn();
+    $('.main-swiper').fadeIn();
+    $('.section-title').fadeIn();
     StartAll();
     mainSwiperRef.current.enable();
   }
+  const allSchools = GetAllSchools();
+  const [schools, setSchools] = useState(allSchools);
+  var searchInputProps = useInput('', (schoolName) => {
+    if (!schoolName) {
+      setSchools(allSchools);
+      return;
+    }
+    setSchools(allSchools.filter(s => s.name.includes(schoolName)));
+  });
   return (
     <div id='home'>
       <div className='bg-cover'>
@@ -84,7 +108,7 @@ function Home() {
           <div className="toggle-btn magnetic hover-target">
             <div className="burger-menu"><span className="one"></span><span className="two"></span><span className="tre"></span></div>
           </div>
-          <div className="scr socials">
+          {/* <div className="scr socials">
             <div className="list-social">
               <ul>
                 <li className="hover-target"><a href="#">CN.</a></li>
@@ -93,7 +117,7 @@ function Home() {
           </div>
           <div className="scr copyright-top">
             <p>广西新工科教育研究中心 &copy;2022</p>
-          </div>
+          </div> */}
           <div className="bg-nav"></div>
           <div className="manu-container">
             <div className="menu">
@@ -135,6 +159,10 @@ function Home() {
         <div className='arrow-1'></div>
         <div className='arrow-2'></div>
       </div>
+      <div className='section-title'>
+        <h2 className='font-hei'>广西新工科教育成果展</h2>
+        <p>Guangxi New Engineering Education</p>
+      </div>
       <Swiper
         enabled={false}
         direction={"vertical"}
@@ -142,96 +170,111 @@ function Home() {
         pagination={{
           clickable: true,
         }}
+        style={{
+          display: 'none',
+        }}
         modules={[Controller, Mousewheel, Pagination]}
         onSwiper={(swiper) => { console.log(swiper); setMainSwiper(swiper); }}
         // controller={{ control: mainSwiper }}
         onSlideChange={(swiper) => {
-          // console.log(swiper)
-          if (swiper.activeIndex == 0) {
-            TweenMax.to('.scr', 1, {
+          if (swiper.activeIndex != swiper.slides.length - 1) {
+            TweenMax.to('.arrow-intro', 1, {
               autoAlpha: 1,
-              y: '00',
+              // y: '00',
             })
           } else {
-            TweenMax.to('.scr', .5, {
+            TweenMax.to('.arrow-intro', .5, {
               autoAlpha: 0,
-              y: '100',
+              // y: '100',
             })
           }
         }}
         className={'main-swiper'}
       >
         <SwiperSlide>
-          {/* <!-- Cover --> */}
-          <div className="main-head">
-            {/* <div id="headmove">
-              <div data-depth="0.2">
-                <div className="bg-right"></div>
-              </div>
-            </div> */}
-            <div className="juuuuuuuuuuuuuuuuuuuuuuuuuuu">
-              <div className="heading-text-front">
-                <h1>广西新工科教育成果展</h1>
-                {/* <h3>广西新工科教育研究中心</h3> */}
-                <h3>2022年</h3>
-              </div>
-              {/* <div className="heading-text-back">
-                <h1>广西新工科教育成果展</h1>
-                <h3>暨新工科建设推进研讨会</h3>
-                <h3>2022</h3>
-              </div> */}
+          <section className='preface'>
+            <div className='section-content'>
+              <div className="border-corner border-corner-lt"></div>
+              <div className="border-corner border-corner-rt"></div>
+              <div className="border-corner border-corner-lb"></div>
+              <div className="border-corner border-corner-rb"></div>
+              <div className='section-content-title font-kai font-bold'>【 序言 】</div>
+              <p>为主动应对新一轮科技革命与产业变革，支撑服务国家战略和广西经济发展，广西本科院校积极推进新工科教育研究与实践，建设高水平新工科人才培养体系，培养创新型、复合型和应用型新工科人才。新工科教育成果展将从广西工科教育建设进展概况和广西本科院校新工科典型案例两个角度展示广西新工科教育取得的成就，以加强高校之间的交流，共促发展。</p>
             </div>
-          </div>
-          {/* <div className="scrolls"><img draggable="false" src="assets/img/sroll.svg" alt="scroll" /></div> */}
+          </section>
         </SwiperSlide>
         <SwiperSlide>
           <section className="map">
-            <div className="container">
-              <div className="col-md-12">
-                <div className="main-title text-center">
-                  <h2>广西新工科<span>概况</span></h2>
-                </div>
-              </div>
-              <div className="row centered">
-                <div className="col-md-12">
-                  <Map province={'guangxi'} />
-                </div>
-                <div className="col-md-12">
-                  <a className="hover-target" onClick={() => mainSwiperRef.current.slideTo(2)}>广西新工科概况</a>
-                  <br />
-                  <a className="hover-target" onClick={() => mainSwiperRef.current.slideTo(3)}>广西工科高校案例展</a>
-                </div>
+            <div className='section-content'>
+              <Map province={'guangxi'} />
+              <div className='nav-buttons'>
+                <a className="nav-button" onClick={() => mainSwiperRef.current.slideTo(2)}>广西新工科概况</a>
+                <br />
+                <a className="nav-button" onClick={() => mainSwiperRef.current.slideTo(3)}>广西工科高校案例展</a>
               </div>
             </div>
           </section>
         </SwiperSlide>
         <SwiperSlide>
-          <section className="brief">
-            <div className="container">
-              <div className="row centered">
-                <div className="col-lg-4">
-                  <Map province={'guangxi'} />
-                  {/* <div className="img-about luxy-el" data-horizontal="1" data-speed-x="1"><img className="img-fluid" src="assets/img/about.jpg" alt="" /></div> */}
-                </div>
-                <div className="col-lg-8">
-                  <div className="abt-text">
-                    <p>以本科院校为例，<br />2021年，广西有普通本科高校35所，其中普通高校32所，独立学院3所<br />公办本科院校24所，民办本科院校11所<br />其中，南宁、桂林院校相对较多</p>
-                    <a className="hover-target load-spiral" href="#">查看更多详情</a></div>
-                </div>
+          <section className="breif with-cities">
+            <div className='cities'><img src="/assets/img/cities.png" alt="cities" /></div>
+            <div className='section-content'>
+              <div className='breif-buttons'>
+                <Link className='button-group' to={`/breif/TODO`}>
+                  <span className='button-left'>广西高校工科专业设置</span>
+                  <span className='button-right'>点击进入</span>
+                </Link>
+                <Link className='button-group' to={`/breif/TODO`}>
+                  <span className='button-left'>广西工科专业大类布点</span>
+                  <span className='button-right'>点击进入</span>
+                </Link>
+                <Link className='button-group' to={`/breif/TODO`}>
+                  <span className='button-left'>工科学校分布点及规模</span>
+                  <span className='button-right'>点击进入</span>
+                </Link>
+                <Link className='button-group' to={`/breif/TODO`}>
+                  <span className='button-left'>广西工科优势特色专业</span>
+                  <span className='button-right'>点击进入</span>
+                </Link>
               </div>
             </div>
           </section>
         </SwiperSlide>
         <SwiperSlide>
-          {/* <section className="folio-content"> */}
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="main-title text-center">
-                  <h2>案例展</h2>
-                </div>
+          <section className="cases with-cities">
+            <div className='cities'><img src="/assets/img/cities.png" alt="cities" /></div>
+            <div className='section-content'>
+              <div className='search-input'>
+                <FontAwesomeIcon className='icon' icon={faSearch} />
+                <input {...searchInputProps} placeholder='查询院校' />
               </div>
-              {/* <Swiper
+              <Swiper
+                grid={{
+                  rows: 4
+                }}
+                slidesPerView={4}
+                grabCursor={true}
+                mousewheel={true}
+                nested={true}
+                pagination={{
+                  clickable: true,
+                }}
+                modules={[Grid, Mousewheel, Pagination]}
+                className={'inner-swiper'}
+              >
+                {
+                  schools.map((school, i) => {
+                    return (
+                      <SwiperSlide key={`school-${i}`}>
+                        <img src={`/assets/img/icons/img_only/${school.icon}`} alt={school.name} />
+                      </SwiperSlide>
+                    )
+                  })
+                }
+              </Swiper>
+            </div>
+          </section>
+          {/* <Swiper
                 effect={"coverflow"}
                 grabCursor={true}
                 centeredSlides={true}
@@ -259,7 +302,7 @@ function Home() {
                   })
                 }
               </Swiper> */}
-              {/* {
+          {/* {
                   books.map((book, i) => {
                     if (i % 2 == 1)
                       return
@@ -278,9 +321,6 @@ function Home() {
                     )
                   })
                 } */}
-            </div>
-          </div>
-          {/* </section> */}
         </SwiperSlide>
         {/* <SwiperSlide>
           <section className="folio-content">
@@ -331,8 +371,8 @@ function Home() {
       {/* {flipbook} */}
       {/* <!-- End Content -->*/}
       {/* <!-- Cursor --> */}
-      <div className="cursor1" id="cursor1"></div>
-      <div className="cursor" id="cursor"></div>
+      {/* <div className="cursor1" id="cursor1"></div> */}
+      {/* <div className="cursor" id="cursor"></div> */}
     </div>
   )
 }

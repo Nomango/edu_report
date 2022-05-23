@@ -133,8 +133,8 @@ function Map(props) {
       }}
       echarts={echarts}
       style={{
-        height: '300px',
-        width: '300px',
+        height: '30rem',
+        width: '100%',
         margin: 'auto',
         // position: 'relative',
         // display: 'fixed',

@@ -76,9 +76,9 @@ class Background extends Component {
             return;
           // console.log('start video ended');
           this.setState({ muted: true });
-          setTimeout(() => {
-            this.player.seekTo(6.0);
-          }, 1000);
+          // setTimeout(() => {
+          //   this.player.seekTo(6.0);
+          // }, 1000);
         }}
         onError={e => {
           console.log('onError', e);
