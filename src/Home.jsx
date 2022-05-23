@@ -49,7 +49,7 @@ function Home() {
   // let flipbook = <Flipbook books={books} />
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
-  $(() => {
+  useEffect(() => {
     console.log('ready');
     setTimeout(() => { InitAll(); }, 500);
   });
@@ -77,10 +77,6 @@ function Home() {
   });
   return (
     <div id='home'>
-      <div className='bg-cover'>
-        <img className='bg' src='/assets/img/cover.png'></img>
-        <img className='ball' src='/assets/img/ball.png'></img>
-      </div>
       <div className='cover-guide'>
         <div className='cover-title'>
           <h1 className='font-hei'>广西新工科教育</h1>
@@ -175,7 +171,7 @@ function Home() {
                   <span className='button-right'>点击进入</span>
                 </Link>
                 <Link className='button-group' to={`/breif/TODO`}>
-                  <span className='button-left'>工科学校分布点及规模</span>
+                  <span className='button-left'>工科分学校布点及规模</span>
                   <span className='button-right'>点击进入</span>
                 </Link>
                 <Link className='button-group' to={`/breif/TODO`}>
