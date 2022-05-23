@@ -49,10 +49,10 @@ function Home() {
   // let flipbook = <Flipbook books={books} />
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
-  useEffect(() => {
+  $(() => {
     console.log('ready');
     setTimeout(() => { InitAll(); }, 500);
-  })
+  });
   const PlayVideo = () => {
     background.current.play();
   }
