@@ -33,18 +33,18 @@ function InitAll() {
     // Animation Start
     //--------------------------------------------------
     function startAnim() {
-        TweenMax.from('.logo', 1, {
-            y: '100',
-            autoAlpha: 0,
-            delay: '.3',
-            ease: Power4.easeInOut,
-        })
-        TweenMax.from('.toggle-btn', 1, {
-            y: '100',
-            delay: '.3',
-            autoAlpha: 0,
-            ease: Power4.easeInOut,
-        })
+        // TweenMax.from('.logo', 1, {
+        //     y: '100',
+        //     autoAlpha: 0,
+        //     delay: '.3',
+        //     ease: Power4.easeInOut,
+        // })
+        // TweenMax.from('.toggle-btn', 1, {
+        //     y: '100',
+        //     delay: '.3',
+        //     autoAlpha: 0,
+        //     ease: Power4.easeInOut,
+        // })
         // TweenMax.from('.bg-right', 1, {
         //     x: 100,
         //     ease: Power4.easeInOut,
@@ -61,9 +61,9 @@ function InitAll() {
         //     ease: Power4.easeInOut,
         //     autoAlpha: 0,
         // })
-        TweenMax.to('.menu', 0, {
-            autoAlpha: 0,
-        })
+        // TweenMax.to('.menu', 0, {
+        //     autoAlpha: 0,
+        // })
 
         // StartAnim();
     }
@@ -110,17 +110,17 @@ function InitAll() {
     // });
 
 
-    $('.img-folio').on('mouseenter', function () {
-        TweenMax.to(this, 0.4, {
-            y: '-30',
-        })
-    });
+    // $('.img-folio').on('mouseenter', function () {
+    //     TweenMax.to(this, 0.4, {
+    //         y: '-30',
+    //     })
+    // });
 
-    $('.img-folio').on('mouseleave', function () {
-        TweenMax.to(this, 0.4, {
-            y: '1',
-        })
-    });
+    // $('.img-folio').on('mouseleave', function () {
+    //     TweenMax.to(this, 0.4, {
+    //         y: '1',
+    //     })
+    // });
 
 
     // luxy.init({
@@ -132,57 +132,57 @@ function InitAll() {
     //--------------------------------------------------
     // Toggle Menu
     //--------------------------------------------------
-    var t1 = new TimelineMax({
-        paused: true
-    });
-    t1.to(".one", 0.1, {
-        y: 9,
-        autoAlpha: 0,
-        ease: Expo.easeInOut
-    });
-    t1.to(".two", 0.1, {
-        ease: Expo.easeInOut,
-        // delay: -0.1
-    });
-    t1.to(".tre", 0.1, {
-        y: -9,
-        autoAlpha: 0,
-        ease: Expo.easeInOut,
-        // delay: -0.1
-    });
-    t1.to(".over-all", 0.4, {
-        autoAlpha: 1,
-        ease: Expo.easeOut,
-    })
-    t1.to(".bg-nav", 0.4, {
-        autoAlpha: 1,
-        ease: Power4.easeOut,
-        delay: -0.2
-    })
+    // var t1 = new TimelineMax({
+    //     paused: true
+    // });
+    // t1.to(".one", 0.1, {
+    //     y: 9,
+    //     autoAlpha: 0,
+    //     ease: Expo.easeInOut
+    // });
+    // t1.to(".two", 0.1, {
+    //     ease: Expo.easeInOut,
+    //     // delay: -0.1
+    // });
+    // t1.to(".tre", 0.1, {
+    //     y: -9,
+    //     autoAlpha: 0,
+    //     ease: Expo.easeInOut,
+    //     // delay: -0.1
+    // });
+    // t1.to(".over-all", 0.4, {
+    //     autoAlpha: 1,
+    //     ease: Expo.easeOut,
+    // })
+    // t1.to(".bg-nav", 0.4, {
+    //     autoAlpha: 1,
+    //     ease: Power4.easeOut,
+    //     delay: -0.2
+    // })
 
 
-    t1.to(".menu", 0.6, {
-        autoAlpha: 1,
-        ease: Expo.easeOut,
-        delay: -0.2
-    })
+    // t1.to(".menu", 0.6, {
+    //     autoAlpha: 1,
+    //     ease: Expo.easeOut,
+    //     delay: -0.2
+    // })
 
-    t1.staggerFrom(".menu ul li", 1.5, {
-        y: 50,
-        opacity: 0,
-        ease: Power4.easeInOut,
-    }, '0.1', '-0.01');
+    // t1.staggerFrom(".menu ul li", 1.5, {
+    //     y: 50,
+    //     opacity: 0,
+    //     ease: Power4.easeInOut,
+    // }, '0.1', '-0.01');
 
 
-    t1.reverse();
+    // t1.reverse();
 
-    $('.toggle-btn').on("click", function () {
-        t1.reversed(!t1.reversed()); //toggles the orientation
-    })
+    // $('.toggle-btn').on("click", function () {
+    //     t1.reversed(!t1.reversed()); //toggles the orientation
+    // })
 
-    $('.menu-link').on("click", function () {
-        t1.reversed(!t1.reversed()); //toggles the orientation
-    })
+    // $('.menu-link').on("click", function () {
+    //     t1.reversed(!t1.reversed()); //toggles the orientation
+    // })
 
 
 
@@ -190,61 +190,61 @@ function InitAll() {
     // Cursor
     //--------------------------------------------------
 
-    var isMobile = false;
-    if (/Android|webOS|iPhone|iPod|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        // $('html').addClass('touch');
-        isMobile = true;
-    } else {
-        // $('html').addClass('no-touch');
-        isMobile = false;
-    }
-    if (!isMobile) {
-        // InitCursor();
-    }
+    // var isMobile = false;
+    // if (/Android|webOS|iPhone|iPod|iPad|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    //     // $('html').addClass('touch');
+    //     isMobile = true;
+    // } else {
+    //     // $('html').addClass('no-touch');
+    //     isMobile = false;
+    // }
+    // if (!isMobile) {
+    //     // InitCursor();
+    // }
 
 
     //--------------------------------------------------
     // Magnetic
     //--------------------------------------------------
 
-    $(document).on('mousemove', function (e) {
-        $('.magnetic').each(function () {
-            if (!isMobile) {
-                magnetic(this, e); //Init effect magnetic 
-            }
-        });
-    });
+    // $(document).on('mousemove', function (e) {
+    //     $('.magnetic').each(function () {
+    //         if (!isMobile) {
+    //             magnetic(this, e); //Init effect magnetic 
+    //         }
+    //     });
+    // });
 
-    function magnetic(el, e) {
-        var mX = e.pageX,
-            mY = e.pageY;
-        const obj = $(el);
+    // function magnetic(el, e) {
+    //     var mX = e.pageX,
+    //         mY = e.pageY;
+    //     const obj = $(el);
 
-        const customDist = 20 * obj.data('dist') || 80,
-            centerX = obj.offset().left + obj.width() / 2,
-            centerY = obj.offset().top + obj.height() / 2;
+    //     const customDist = 20 * obj.data('dist') || 80,
+    //         centerX = obj.offset().left + obj.width() / 2,
+    //         centerY = obj.offset().top + obj.height() / 2;
 
-        var deltaX = Math.floor((centerX - mX)) * -.4,
-            deltaY = Math.floor((centerY - mY)) * -.4;
+    //     var deltaX = Math.floor((centerX - mX)) * -.4,
+    //         deltaY = Math.floor((centerY - mY)) * -.4;
 
-        var distance = calcDistance(obj, mX, mY);
+    //     var distance = calcDistance(obj, mX, mY);
 
-        if (distance < customDist) {
-            TweenMax.to(obj, .4, {
-                y: deltaY,
-                x: deltaX
-            });
-        } else {
-            TweenMax.to(obj, .4, {
-                y: 0,
-                x: 0
-            });
-        }
-    }
+    //     if (distance < customDist) {
+    //         TweenMax.to(obj, .4, {
+    //             y: deltaY,
+    //             x: deltaX
+    //         });
+    //     } else {
+    //         TweenMax.to(obj, .4, {
+    //             y: 0,
+    //             x: 0
+    //         });
+    //     }
+    // }
 
-    function calcDistance(elem, mouseX, mouseY) {
-        return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left + (elem.width() / 2)), 2) + Math.pow(mouseY - (elem.offset().top + (elem.height() / 2)), 2)));
-    }
+    // function calcDistance(elem, mouseX, mouseY) {
+    //     return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left + (elem.width() / 2)), 2) + Math.pow(mouseY - (elem.offset().top + (elem.height() / 2)), 2)));
+    // }
 }
 
 //--------------------------------------------------

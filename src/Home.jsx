@@ -101,60 +101,6 @@ function Home() {
         ref={background}
         onReady={Enter}
       />
-      {/* <div className="anim-container"></div> */}
-      <header>
-        <nav>
-          {/* <div className="logo hover-target magnetic"><a className="load-spiral" href="/index.html"><img src="assets/img/logo.svg" alt="logo" /></a></div> */}
-          <div className="toggle-btn magnetic hover-target">
-            <div className="burger-menu"><span className="one"></span><span className="two"></span><span className="tre"></span></div>
-          </div>
-          {/* <div className="scr socials">
-            <div className="list-social">
-              <ul>
-                <li className="hover-target"><a href="#">CN.</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="scr copyright-top">
-            <p>广西新工科教育研究中心 &copy;2022</p>
-          </div> */}
-          <div className="bg-nav"></div>
-          <div className="manu-container">
-            <div className="menu">
-              <div className="data">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="links text-center text-lg-left">
-                        <ul>
-                          <li>
-                            <p>01</p>
-                            <a className="menu-link hover-target" href="#">Home</a></li>
-                          <li>
-                            <p>02</p>
-                            <a className="menu-link hover-target" href="#brief">Brief</a></li>
-                          <li>
-                            <p>03</p>
-                            <a className="menu-link hover-target" href="about.html">Work</a></li>
-                          <li>
-                            <p>04</p>
-                            <a className="menu-link hover-target" href="#about">About</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="col-md-4 offset-md-2 centered text-right">
-                      <div className="address-menu">
-                        <h3>广西新工科教育研究中心</h3>
-                        <h4>2022年 广西新工科教育成果展</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </header>
       <div className='arrow-intro'>
         <div className='arrow-1'></div>
         <div className='arrow-2'></div>
