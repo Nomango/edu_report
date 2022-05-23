@@ -52,6 +52,7 @@ function Map(props) {
         console.log(params.name, data);
         return `${data.name}<br/>开设学校数：${data.schools.length}<br/>专业布点数：${data.majorNum}<br/>在校生数：${data.studentNum}<br/>开设学校：<br/>${data.schools.join('<br/>')}`
       },
+      position: 'bottom'
     },
     geo: {
       map: province,
