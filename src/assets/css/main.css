@@ -681,7 +681,7 @@ a {
     font-size: 60px;
     color: #fff;
     /* -webkit-text-stroke: 1px #fff; */
-    letter-spacing: 8px
+    letter-spacing: .2rem
 }
 
 .heading-text-front h3 {
@@ -856,28 +856,6 @@ h1.title {
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%)
-}
-
-.bg-about {
-    background: url("/assets/img/about-1.jpg") center no-repeat;
-    z-index: 3;
-    position: fixed;
-    text-align: center;
-    left: 50%;
-    height: 30vh;
-    width: 40vw;
-    top: 20vh
-}
-
-.bg-about-2 {
-    background: url("/assets/img/about-2.jpg") center no-repeat;
-    z-index: 3;
-    position: fixed;
-    text-align: center;
-    left: 10vw;
-    height: 50vh;
-    width: 30vw;
-    top: 30vh
 }
 
 .about {

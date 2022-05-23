@@ -50,8 +50,20 @@ class Background extends Component {
 
         width={'100%'}
         height={'100%'}
+        // onStart={() => {
+        //   if (this.state.firstDone) {
+        //     setTimeout(() => {
+        //       console.log('start video first done');
+        //       this.setState({ firstDone: false });
+        //       if (this.onReady) {
+        //         this.onReady();
+        //       }
+        //     }, 5000);
+        //   }
+        // }}
         onProgress={(state) => {
-          if (this.state.firstDone && state.playedSeconds >= 5.5) {
+          // console.log('process=', state);
+          if (this.state.firstDone && state.playedSeconds >= 5.0) {
             console.log('start video first done');
             this.setState({ firstDone: false });
             if (this.onReady) {

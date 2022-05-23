@@ -24,18 +24,20 @@ import $ from "jquery";
 import { Link } from 'react-router-dom';
 import { GetAllSchools } from './Schools';
 import Background from './Components/Background';
+import useStateRef from 'react-usestateref';
 
 function Home() {
   // $(CreateAnimGrid);
   let books = GetAllSchools();
   // let flipbook = <Flipbook books={books} />
-  const [controlledSwiper, setControlledSwiper] = useState(null);
+  const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
   useEffect(() => {
     console.log('ready');
     $('.logo-load-img').fadeOut();
     $('.logo-load.spinning').fadeOut();
     $('.logo-load-text').fadeIn();
+    mainSwiperRef.current.disable();
   })
   return (
     <>
@@ -55,7 +57,7 @@ function Home() {
       <header>
         <nav>
           {/* <!-- Logo --> */}
-          <div className="logo hover-target magnetic"><a className="load-spiral" href="/index.html"><img src="assets/img/logo.svg" alt="logo" /></a></div>
+          {/* <div className="logo hover-target magnetic"><a className="load-spiral" href="/index.html"><img src="assets/img/logo.svg" alt="logo" /></a></div> */}
           {/* <!-- Menu bar --> */}
           <div className="toggle-btn magnetic hover-target">
             <div className="burger-menu"><span className="one"></span><span className="two"></span><span className="tre"></span></div>
@@ -112,7 +114,7 @@ function Home() {
       </header>
       <Background
         ref={background}
-        onReady={StartAll}
+        onReady={() => { StartAll(); mainSwiperRef.current.enable(); }}
       />
       {/* <div className="anim-container"></div> */}
       <Swiper
@@ -122,8 +124,8 @@ function Home() {
           clickable: true,
         }}
         modules={[Controller, Mousewheel, Pagination]}
-        onSwiper={setControlledSwiper}
-        controller={{ control: controlledSwiper }}
+        onSwiper={(swiper) => { console.log(swiper); setMainSwiper(swiper); }}
+        // controller={{ control: mainSwiper }}
         onSlideChange={(swiper) => {
           // console.log(swiper)
           if (swiper.activeIndex == 0) {
@@ -176,9 +178,9 @@ function Home() {
                   <Map province={'guangxi'} />
                 </div>
                 <div className="col-md-12">
-                  <a className="hover-target" onClick={() => controlledSwiper.slideTo(2)}>广西新工科概况</a>
+                  <a className="hover-target" onClick={() => mainSwiperRef.current.slideTo(2)}>广西新工科概况</a>
                   <br />
-                  <a className="hover-target" onClick={() => controlledSwiper.slideTo(3)}>广西工科高校案例展</a>
+                  <a className="hover-target" onClick={() => mainSwiperRef.current.slideTo(3)}>广西工科高校案例展</a>
                 </div>
               </div>
             </div>
