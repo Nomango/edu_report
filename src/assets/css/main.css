@@ -1,8 +1,20 @@
 @charset "UTF-8";
 
 :root {
-    --background-color: #2b4162;
+    font-size: 10px;
+    --background-color: #070c41;
     --highlight-background-color: #004481;
+}
+
+@font-face {
+    font-family: 'YouSheBiaoTiHei';
+    src: url('/assets/fonts/YouSheBiaoTiHei.ttf');
+}
+
+.font-hei {
+    font-family: 'YouSheBiaoTiHei', tahoma, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
 }
 
 * {
@@ -10,12 +22,11 @@
     margin: 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif
 }
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: tahoma, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -23,25 +34,13 @@ body {
     /* background: var(--background-color); */
 }
 
-#root {
-    background-color: var(--highlight-background-color);
-    background-image: linear-gradient(10deg, var(--highlight-background-color) 0%, var(--background-color) 74%);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-family: 'Poppins', sans-serif
-}
-
 p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    color: #fff;
-    line-height: 30px;
-    letter-spacing: .5px
+    letter-spacing: .1rem;
+}
+
+#home {
+    background-color: var(--background-color);
+    /* background-image: linear-gradient(10deg, var(--highlight-background-color) 0%, var(--background-color) 74%); */
 }
 
 section {
@@ -82,24 +81,74 @@ a:hover {
     mix-blend-mode: normal
 }
 
-.block-1 {
-    width: 100%;
-    height: 100vh;
-    bottom: 0;
-    left: 0;
-    background: var(--background-color);
-    position: fixed;
-    z-index: 998
-}
-
-.block-2 {
+.bg-all {
     width: 100%;
     height: 100vh;
     top: 0;
     left: 0;
     background: var(--background-color);
     position: fixed;
-    z-index: 999
+    z-index: 999;
+    pointer-events: none;
+}
+
+.bg-cover {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: var(--background-color);
+    position: fixed;
+    z-index: 0;
+}
+
+.bg-cover .bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bg-cover .ball {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+@keyframes arrow-intro-moving {
+    0% {
+        margin-bottom: 3rem
+    }
+
+    50% {
+        margin-bottom: 1rem
+    }
+
+    100% {
+        margin-bottom: 3rem
+    }
+}
+
+.arrow-intro {
+    display: none;
+}
+
+.arrow-intro div {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    margin-bottom: 3rem;
+    width: 1rem;
+    height: 1rem;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: translate(-50%, -50%) rotate(135deg);
+    left: 50%;
+    animation: arrow-intro-moving 1s infinite ease-in-out;
+}
+
+.arrow-intro div:last-child {
+    bottom: .8rem;
 }
 
 .logo-load {
@@ -115,15 +164,71 @@ a:hover {
     z-index: 9999
 }
 
-.bg-all {
+.loading-text {
+    color: #fff;
+    margin: auto;
+    font-size: 1rem;
+}
+
+.cover-guide {
     position: fixed;
-    top: 0;
-    z-index: 5;
-    height: 100vh;
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+}
+
+.cover-guide h1 {
+    font-size: 3.5rem;
+}
+
+.cover-guide h3 {
+    font-size: 2rem;
+}
+
+.cover-guide .cover-title {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    background: #12100e7d;
-    opacity: 0;
-    pointer-events: none
+}
+
+.cover-title .spacing {
+    letter-spacing: 2rem;
+    margin-right: -2rem;
+}
+
+.cover-guide .cover-enter {
+    position: fixed;
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.cover-guide .cover-enter p {
+    margin-right: -2.6rem;
+}
+
+.cover-enter h3::after {
+    content: "";
+    top: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 1rem solid transparent;
+    border-left: 1rem solid #fff;
+    border-bottom: 1rem solid transparent;
+    margin-left: 1rem;
+    margin-top: .2rem;
+}
+
+.cover-footer {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
 }
 
 .centered {
@@ -283,7 +388,7 @@ mark {
 }
 
 .copyright-top p {
-    font-size: 12px;
+    font-size: 1.2rem;
     margin: 10px 0 0 0;
     color: #fff;
     font-weight: 700
@@ -306,7 +411,7 @@ mark {
 }
 
 .socials ul li a {
-    font-size: 11px;
+    font-size: 1.1rem;
     color: #fff;
     font-weight: 700
 }
@@ -338,7 +443,7 @@ mark {
     content: 'MENU';
     position: absolute;
     width: 124px;
-    font-size: 10px;
+    font-size: 1rem;
     letter-spacing: 2px;
     color: #fff;
     right: 0;
@@ -452,7 +557,7 @@ a.menu-link {
     color: transparent;
     opacity: .7;
     -webkit-text-stroke: 1px #fff;
-    font-size: 50px;
+    font-size: 4rem;
     font-weight: 900;
     margin: 0 20px;
     overflow: hidden;
@@ -473,14 +578,14 @@ a.menu-link.active {
 }
 
 .address-menu h3 {
-    font-size: 30px;
+    font-size: 3rem;
     color: #fff;
     font-weight: 600
 }
 
 .address-menu h4 {
     color: #fff;
-    font-size: 12px;
+    font-size: 1.2rem;
     opacity: .5
 }
 
@@ -678,7 +783,7 @@ a {
     text-transform: uppercase;
     color: transparent;
     font-weight: 900;
-    font-size: 60px;
+    font-size: 4rem;
     color: #fff;
     /* -webkit-text-stroke: 1px #fff; */
     letter-spacing: .2rem
@@ -689,7 +794,7 @@ a {
     text-transform: uppercase;
     color: transparent;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 3rem;
     color: #fff;
     /* -webkit-text-stroke: 1px #fff; */
     letter-spacing: 1px
@@ -716,14 +821,14 @@ h3 {
     text-transform: uppercase;
     color: #fff;
     font-weight: 900;
-    font-size: 60px;
+    font-size: 4rem;
     -webkit-text-stroke: 0 #fff;
     letter-spacing: 1px
 }
 
 .heading-text-back h3 {
     font-weight: 600;
-    font-size: 40px;
+    font-size: 3rem;
 } */
 
 .main-head {
@@ -733,11 +838,7 @@ h3 {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 1;
-}
-
-h1.title {
-    font-size: 90px
+    z-index: 2;
 }
 
 @-webkit-keyframes spin {
@@ -781,7 +882,7 @@ h1.title {
 .main-title h2 {
     text-transform: uppercase;
     color: #fff;
-    font-size: 40px;
+    font-size: 4rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 900
 }
@@ -828,7 +929,7 @@ h1.title {
     font-family: 'Poppins', sans-serif;
     color: transparent;
     font-weight: 900;
-    font-size: 30px;
+    font-size: 3rem;
     letter-spacing: 2px;
     -webkit-text-stroke: 2px var(--highlight-background-color);
     z-index: 4;
@@ -846,7 +947,7 @@ h1.title {
     font-family: 'Poppins', sans-serif;
     color: var(--highlight-background-color);
     font-weight: 900;
-    font-size: 30px;
+    font-size: 3rem;
     letter-spacing: 2px;
     z-index: 1;
     left: 50%;
@@ -894,7 +995,7 @@ h1.title {
 }
 
 .abt-text a {
-    font-size: 14px;
+    font-size: 1.4rem;
     color: #5c5c5c;
     font-weight: 900;
     position: relative
@@ -955,7 +1056,7 @@ h1.title {
 }
 
 .footer a {
-    font-size: 14px
+    font-size: 1.4rem
 }
 
 .footer a:hover {
@@ -972,7 +1073,7 @@ h1.title {
 }
 
 .footer .sosmed ul li a {
-    font-size: 12px;
+    font-size: 1.2rem;
     color: #fff;
     font-weight: 600
 }
@@ -982,14 +1083,14 @@ h1.title {
 }
 
 .footer .mail a {
-    font-size: 12px;
+    font-size: 1.2rem;
     color: #fff;
     font-weight: 600
 }
 
 .footer .copyright p {
     line-height: normal;
-    font-size: 12px;
+    font-size: 1.2rem;
     margin: 5px 0 0 0;
     color: #5c5c5c
 }
@@ -1021,7 +1122,7 @@ h1.title {
 .service-text h3 {
     color: #fff;
     text-align: left;
-    font-size: 20px;
+    font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 700
 }
@@ -1083,7 +1184,7 @@ h1.title {
 
 .blog-text h3 {
     color: #fff;
-    font-size: 26px;
+    font-size: 2.6rem;
     margin-top: 20px;
     margin-bottom: 10px;
     font-weight: 700
@@ -1109,7 +1210,7 @@ h3.detail-title {
     color: #fff;
     text-transform: uppercase;
     font-weight: 900;
-    font-size: 40px
+    font-size: 4rem
 }
 
 .article {
@@ -1117,7 +1218,7 @@ h3.detail-title {
 }
 
 .article h3 {
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 700
 }
 
@@ -1128,7 +1229,7 @@ h3.detail-title {
 
 .article .quote p {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 2rem;
     text-align: center;
     margin: 50px 0;
     color: #c3c3c3
@@ -1195,18 +1296,18 @@ h3.detail-title {
 
 .about-work h3 {
     color: #fff;
-    font-size: 17px;
+    font-size: 1.7prem;
     font-weight: 700
 }
 
 .about-work p {
     color: #c3c3c3;
-    font-size: 14px;
+    font-size: 1.4rem;
     margin: 0
 }
 
 .about-work a {
-    font-size: 12px;
+    font-size: 1.2rem;
     color: #fff
 }
 
@@ -1223,7 +1324,7 @@ h3.detail-title {
 .next-project h3 {
     font-weight: 900;
     color: transparent;
-    font-size: 40px;
+    font-size: 4rem;
     -webkit-text-stroke: 1px #fff;
     transition: ease-in-out .3s all;
     -webkit-transition: ease-in-out .3s all;
@@ -1278,7 +1379,7 @@ h3.detail-title {
 }
 
 .error-page h2 {
-    font-size: 120px;
+    font-size: 10rem;
     -webkit-text-stroke: 1px #fff;
     color: transparent
 }
@@ -1396,7 +1497,7 @@ h3.detail-title {
 }
 
 .menus a {
-    font-size: 15px;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
     color: #000
 }
@@ -1447,7 +1548,7 @@ h3.detail-title {
     font-family: 'Poppins', sans-serif;
     color: transparent;
     font-weight: 900;
-    font-size: 60px;
+    font-size: 6rem;
     letter-spacing: 2px;
     -webkit-text-stroke: 1px #fff;
     z-index: 4;
@@ -1459,7 +1560,7 @@ h3.detail-title {
     font-family: 'Poppins', sans-serif;
     color: #fff;
     font-weight: 900;
-    font-size: 60px;
+    font-size: 6rem;
     letter-spacing: 2px;
     z-index: 1;
     left: 0;

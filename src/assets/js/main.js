@@ -5,7 +5,8 @@ window.jQuery = $;
 export {
     InitAll,
     StartAll,
-    CreateAnimGrid
+    CreateAnimGrid,
+    RevealLoad
 }
 
 function StartAll() {
@@ -251,40 +252,25 @@ function InitAll() {
 //--------------------------------------------------
 function RevealLoad() {
     var loadTL = new TimelineMax();
-    var block1 = $('.block-1');
-    var block2 = $('.block-2');
-    var logo = $('.logo-load');
-
     loadTL
-        .to(block1, 0.5, {
-            height: '0',
-            delay: '0'
+        .to('.bg-all', 0.6, {
+            height: '0'
         })
-        .to(block2, 0.5, {
-            height: '0',
-        })
-        .to(logo, 0, {
+        .to('.logo-load', 0.5, {
             autoAlpha: 0,
-            delay: '-0.4',
+            delay: '-0.5',
         })
     loadTL.play();
 }
 
 function HideLoad() {
     var loadTL = new TimelineMax();
-    var block1 = $('.block-1');
-    var block2 = $('.block-2');
-    var logo = $('.logo-load');
-
     loadTL
-        .to(block1, 0.5, {
+        .to('.bg-all', 0.6, {
             height: '100%',
             delay: '0'
         })
-        .to(block2, 0.5, {
-            height: '100%',
-        })
-        .to(logo, 0, {
+        .to('.logo-load', 0.5, {
             autoAlpha: 1,
             delay: '-0.5'
         })

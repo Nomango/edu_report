@@ -9,7 +9,7 @@ class Background extends Component {
   }
 
   state = {
-    url: StartVideo,
+    url: null,
     pip: false,
     playing: false,
     controls: false,
@@ -28,7 +28,7 @@ class Background extends Component {
 
   play() {
     console.log('start playing');
-    this.setState({ playing: true });
+    this.setState({ playing: true, url: StartVideo });
   }
 
   render() {

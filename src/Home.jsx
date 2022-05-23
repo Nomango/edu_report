@@ -18,7 +18,7 @@ import './assets/css/responsive.css'
 import './assets/css/anim.css'
 import './assets/css/swiper.css'
 
-import { InitAll, StartAll, CreateAnimGrid } from './assets/js/main.js'
+import { InitAll, StartAll, CreateAnimGrid, RevealLoad } from './assets/js/main.js'
 import $ from "jquery";
 
 import { Link } from 'react-router-dom';
@@ -34,35 +34,56 @@ function Home() {
   const background = useRef(null);
   useEffect(() => {
     console.log('ready');
-    $('.logo-load-img').fadeOut();
-    $('.logo-load.spinning').fadeOut();
-    $('.logo-load-text').fadeIn();
-    mainSwiperRef.current.disable();
+    setTimeout(() => {
+      InitAll();
+      // $('.logo-load').fadeOut();
+      // $('.cover-guide').fadeIn();
+    }, 500);
   })
+  const PlayVideo = () => {
+    background.current.play();
+  }
+  const Enter = () => {
+    $('.start-video').fadeOut();
+    $('.cover-guide').hide();
+    $('.bg-cover .ball').hide();
+    $('.arrow-intro').fadeIn();
+    StartAll();
+    mainSwiperRef.current.enable();
+  }
   return (
-    <>
-      <div className="block-1"></div>
-      <div className="block-2"></div>
-      <div className="logo-load">
-        <img className='logo-load-img' src="assets/img/logo.svg" alt="" />
-        <h1 className='logo-load-text' style={{ display: 'none', cursor: 'pointer' }} onClick={
-          () => {
-            InitAll();
-            background.current.play();
-          }
-        }>进入</h1>
+    <div id='home'>
+      <div className='bg-cover'>
+        <img className='bg' src='/assets/img/cover.png'></img>
+        <img className='ball' src='/assets/img/ball.png'></img>
       </div>
-      <div className="logo-load spinning"></div>
-      {/* <!-- Start Header --> */}
+      <div className='cover-guide'>
+        <div className='cover-title'>
+          <h1 className='font-hei'>广西新工科教育</h1>
+          <p>Guangxi New Engineering Education</p>
+          <h1 className='font-hei spacing'>成果展</h1>
+          <p>Achievements Exhibition</p>
+        </div>
+        <div className='cover-enter' onClick={PlayVideo}>
+          <h3 className='font-hei'>进入观展</h3>
+          <p>ENTER</p>
+        </div>
+        <div className='cover-footer'>
+          <p>广西新工科教育研究中心</p>
+          <p>2022年5月</p>
+        </div>
+      </div>
+      <Background
+        ref={background}
+        onReady={Enter}
+      />
+      {/* <div className="anim-container"></div> */}
       <header>
         <nav>
-          {/* <!-- Logo --> */}
           {/* <div className="logo hover-target magnetic"><a className="load-spiral" href="/index.html"><img src="assets/img/logo.svg" alt="logo" /></a></div> */}
-          {/* <!-- Menu bar --> */}
           <div className="toggle-btn magnetic hover-target">
             <div className="burger-menu"><span className="one"></span><span className="two"></span><span className="tre"></span></div>
           </div>
-          {/* <!-- Social --> */}
           <div className="scr socials">
             <div className="list-social">
               <ul>
@@ -70,12 +91,10 @@ function Home() {
               </ul>
             </div>
           </div>
-          {/* <!-- Copyright --> */}
           <div className="scr copyright-top">
             <p>广西新工科教育研究中心 &copy;2022</p>
           </div>
           <div className="bg-nav"></div>
-          {/* <!-- menu --> */}
           <div className="manu-container">
             <div className="menu">
               <div className="data">
@@ -112,12 +131,12 @@ function Home() {
           </div>
         </nav>
       </header>
-      <Background
-        ref={background}
-        onReady={() => { StartAll(); mainSwiperRef.current.enable(); }}
-      />
-      {/* <div className="anim-container"></div> */}
+      <div className='arrow-intro'>
+        <div className='arrow-1'></div>
+        <div className='arrow-2'></div>
+      </div>
       <Swiper
+        enabled={false}
         direction={"vertical"}
         mousewheel={true}
         pagination={{
@@ -150,7 +169,7 @@ function Home() {
                 <div className="bg-right"></div>
               </div>
             </div> */}
-            <div className="heading-text">
+            <div className="juuuuuuuuuuuuuuuuuuuuuuuuuuu">
               <div className="heading-text-front">
                 <h1>广西新工科教育成果展</h1>
                 {/* <h3>广西新工科教育研究中心</h3> */}
@@ -163,7 +182,7 @@ function Home() {
               </div> */}
             </div>
           </div>
-          <div className="scrolls"><img draggable="false" src="assets/img/sroll.svg" alt="scroll" /></div>
+          {/* <div className="scrolls"><img draggable="false" src="assets/img/sroll.svg" alt="scroll" /></div> */}
         </SwiperSlide>
         <SwiperSlide>
           <section className="map">
@@ -314,7 +333,7 @@ function Home() {
       {/* <!-- Cursor --> */}
       <div className="cursor1" id="cursor1"></div>
       <div className="cursor" id="cursor"></div>
-    </>
+    </div>
   )
 }
 
