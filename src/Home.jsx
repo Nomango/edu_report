@@ -158,23 +158,23 @@ function Home() {
           </section>
         </SwiperSlide>
         <SwiperSlide>
-          <section className="breif with-cities">
+          <section className="brief with-cities">
             <div className='cities'><img src="/assets/img/cities.png" alt="cities" /></div>
             <div className='section-content'>
-              <div className='breif-buttons'>
-                <Link className='button-group' to={`/breif/TODO`}>
+              <div className='brief-buttons'>
+                <Link className='button-group' to={`/detail/brief?p=section1`}>
                   <span className='button-left'>广西高校工科专业设置</span>
                   <span className='button-right'>点击进入</span>
                 </Link>
-                <Link className='button-group' to={`/breif/TODO`}>
+                <Link className='button-group' to={`/detail/brief?p=section2`}>
                   <span className='button-left'>广西工科专业大类布点</span>
                   <span className='button-right'>点击进入</span>
                 </Link>
-                <Link className='button-group' to={`/breif/TODO`}>
+                <Link className='button-group' to={`/detail/brief?p=section3`}>
                   <span className='button-left'>工科分学校布点及规模</span>
                   <span className='button-right'>点击进入</span>
                 </Link>
-                <Link className='button-group' to={`/breif/TODO`}>
+                <Link className='button-group' to={`/detail/brief?p=section4`}>
                   <span className='button-left'>广西工科优势特色专业</span>
                   <span className='button-right'>点击进入</span>
                 </Link>
