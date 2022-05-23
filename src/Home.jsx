@@ -208,7 +208,9 @@ function Home() {
                   schools.map((school, i) => {
                     return (
                       <SwiperSlide key={`school-${i}`}>
-                        <img src={`/assets/img/icons/img_only/${school.icon}`} alt={school.name} />
+                        <Link to={`/detail/${school.name}`}>
+                          <img src={`/assets/img/icons/img_only/${school.icon}`} alt={school.name} />
+                        </Link>
                       </SwiperSlide>
                     )
                   })

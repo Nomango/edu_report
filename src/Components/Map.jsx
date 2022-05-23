@@ -24,11 +24,12 @@ import {
 
 import GuangXiJSON from '../assets/json/guangxi.json'
 import React from 'react';
+import { GetCityData } from '../Schools';
 // const Map = require('china-echarts-map')
 
 // Register the required components
 echarts.use(
-  [GeoComponent, TooltipComponent, SVGRenderer, MapChart]
+  [GeoComponent, TooltipComponent, CanvasRenderer, MapChart]
 );
 
 echarts.registerMap('guangxi', GuangXiJSON)
@@ -40,37 +41,40 @@ function Map(props) {
   let province = props.province;
   let opts = {
     tooltip: {
-      show: true
+      show: true,
+      trigger: 'item',
+      formatter: function(params) {
+        // console.log(params);
+        if (!params.name) {
+          return `Unknown`;
+        }
+        let data = GetCityData(params.name);
+        console.log(params.name, data);
+        return `${data.name}<br/>开设学校数：${data.schools.length}<br/>专业布点数：${data.majorNum}<br/>在校生数：${data.studentNum}<br/>开设学校：<br/>${data.schools.join('<br/>')}`
+      },
     },
     geo: {
       map: province,
       roam: false,
       label: {
-        // normal: {
-        //   show: false,
-        //   fontSize: "10",
-        //   color: "rgba(0,0,0,0.7)"
-        // }
-        normal: {
-          show: true,
-          textStyle: {
-            color: "#fffb"
-          }
-        },
-        emphasis: {
+        show: true,
+        textStyle: {
+          color: "#fffb"
+        }
+      },
+      itemStyle: {
+        areaColor: "#0d0059",
+        borderColor: "#21c2ff",
+        borderWidth: 1.5
+      },
+      emphasis: {
+        label: {
           show: true,
           textStyle: {
             color: "#fff"
           }
-        }
-      },
-      itemStyle: {
-        normal: {
-          areaColor: "#0d0059",
-          borderColor: "#21c2ff",
-          borderWidth: 1.5
         },
-        emphasis: {
+        itemStyle: {
           areaColor: "#17008d",
           shadowOffsetX: 0,
           shadowOffsetY: 0,
@@ -78,47 +82,18 @@ function Map(props) {
           borderWidth: 0,
           shadowColor: "rgba(0, 0, 0, 0.5)"
         }
-      }
+      },
     },
-    // series: [
-    //   {
-    //     name: 'schools',
-    //     type: "scatter",
-    //     map: province,
-    //     roam: false,
-    //     showLegendSymbol: false, // 存在legend时显示
-    //     geoIndex: 0,
-    //     label: {
-    //       normal: {
-    //         show: true,
-    //         textStyle: {
-    //           color: "#fff8"
-    //         }
-    //       },
-    //       emphasis: {
-    //         show: true,
-    //         textStyle: {
-    //           color: "#fff"
-    //         }
-    //       }
-    //     },
-    //     itemStyle: {
-    //       normal: {
-    //         areaColor: "#0d0059",
-    //         borderColor: "#389dff",
-    //         borderWidth: 0.5
-    //       },
-    //       emphasis: {
-    //         areaColor: "#17008d",
-    //         shadowOffsetX: 0,
-    //         shadowOffsetY: 0,
-    //         shadowBlur: 5,
-    //         borderWidth: 0,
-    //         shadowColor: "rgba(0, 0, 0, 0.5)"
-    //       }
-    //     }
-    //   }
-    // ]
+    series: [
+      {
+        name: 'schools',
+        type: "map",
+        map: province,
+        roam: false,
+        showLegendSymbol: false, // 存在legend时显示
+        geoIndex: 0,
+      }
+    ]
   };
   let map = React.createRef();
   const [zoomIn, setZoomIn] = useState(false);
@@ -127,7 +102,7 @@ function Map(props) {
       ref={map}
       option={opts}
       opts={{
-        renderer: 'svg',
+        // renderer: 'svg',
         // width: 300,
         // height: 300,
       }}
@@ -146,7 +121,7 @@ function Map(props) {
       onEvents={{
         click: (params) => {
           // console.log(params);
-          console.log(params.name)
+          // console.log(params.name);
           // console.log(map.current);
           // const echartInstance = map.current.getEchartsInstance();
           // if (!zoomIn) {

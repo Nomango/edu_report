@@ -11,9 +11,9 @@ export {
 
 function StartAll() {
     $('.main-head').fadeIn();
-    TweenMax.to('.scrolls', 1, {
-        autoAlpha: 1,
-    });
+    // TweenMax.to('.scrolls', 1, {
+    //     autoAlpha: 1,
+    // });
     // TweenMax.to('.scr', 1, {
     //     autoAlpha: 1,
     //     y: '00',

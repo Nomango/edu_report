@@ -214,4 +214,60 @@ function GetSchool(schoolName) {
   return null
 }
 
-export { GetAllSchools, GetSchool }
+function GetSchoolData() {
+  return [
+    { name: "桂林电子科技大学", majorNum: 58, studentNum: 18602, city: "桂林市", },
+    { name: "广西大学", majorNum: 40, studentNum: 10216, city: "南宁市", },
+    { name: "桂林理工大学", majorNum: 38, studentNum: 12588, city: "桂林市", },
+    { name: "广西科技大学", majorNum: 34, studentNum: 13674, city: "柳州市", },
+    { name: "北部湾大学", majorNum: 29, studentNum: 9407, city: "钦州市", },
+    { name: "桂林航天工业学院", majorNum: 22, studentNum: 9575, city: "桂林市", },
+    { name: "柳州工学院", majorNum: 22, studentNum: 8545, city: "柳州市", },
+    { name: "梧州学院", majorNum: 20, studentNum: 6249, city: "梧州市", },
+    { name: "广西民族大学", majorNum: 19, studentNum: 3463, city: "南宁市", },
+    { name: "贺州学院", majorNum: 18, studentNum: 5216, city: "贺州市", },
+    { name: "南宁学院", majorNum: 18, studentNum: 8382, city: "南宁市", },
+    { name: "玉林师范学院", majorNum: 17, studentNum: 3806, city: "玉林市", },
+    { name: "桂林信息科技学院", majorNum: 16, studentNum: 7764, city: "桂林市", },
+    { name: "百色学院", majorNum: 14, studentNum: 3701, city: "百色市", },
+    { name: "广西师范大学", majorNum: 14, studentNum: 3406, city: "桂林市", },
+    { name: "河池学院", majorNum: 14, studentNum: 3489, city: "河池市", },
+    { name: "南宁师范大学", majorNum: 14, studentNum: 2998, city: "南宁市", },
+    { name: "南宁理工学院", majorNum: 13, studentNum: 5196, city: "南宁市", },
+    { name: "广西科技师范学院", majorNum: 11, studentNum: 4813, city: "来宾市", },
+    { name: "广西民族大学相思湖学院", majorNum: 10, studentNum: 2263, city: "南宁市", },
+    { name: "广西民族师范学院", majorNum: 8, studentNum: 3523, city: "崇左市", },
+    { name: "桂林学院", majorNum: 8, studentNum: 739, city: "桂林市", },
+    { name: "广西警察学院", majorNum: 6, studentNum: 2089, city: "南宁市", },
+    { name: "广西财经学院", majorNum: 5, studentNum: 974, city: "南宁市", },
+    { name: "桂林旅游学院", majorNum: 5, studentNum: 1240, city: "桂林市", },
+    { name: "广西外国语学院", majorNum: 4, studentNum: 1026, city: "南宁市", },
+    { name: "广西职业师范学院", majorNum: 4, studentNum: 1020, city: "南宁市", },
+    { name: "北海艺术设计学院", majorNum: 3, studentNum: 443, city: "北海市", },
+    { name: "广西医科大学", majorNum: 2, studentNum: 561, city: "南宁市", },
+    { name: "广西艺术学院", majorNum: 2, studentNum: 278, city: "南宁市", },
+    { name: "广西中医药大学", majorNum: 2, studentNum: 297, city: "南宁市", },
+    { name: "南宁师范大学师园学院", majorNum: 2, studentNum: 445, city: "南宁市", },
+    { name: "广西中医药大学赛恩斯新医药学院", majorNum: 1, studentNum: 122, city: "南宁市", },
+    { name: "桂林医学院", majorNum: 1, studentNum: 154, city: "桂林市", },
+  ]
+}
+
+function GetCityData(city) {
+  let data = {
+    name: city,
+    majorNum: 0,
+    studentNum: 0,
+    schools: [],
+  }
+  GetSchoolData().map(d => {
+    if (d.city == city) {
+      data.majorNum += d.majorNum;
+      data.studentNum += d.studentNum;
+      data.schools.push(d.name);
+    }
+  })
+  return data;
+}
+
+export { GetAllSchools, GetSchool, GetSchoolData, GetCityData }
