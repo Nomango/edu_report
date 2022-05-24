@@ -25,6 +25,7 @@ import {
 import GuangXiJSON from '../assets/json/guangxi.json'
 import React from 'react';
 import { GetCityData } from '../Schools';
+import { PlaySoundClick } from './Sound';
 // const Map = require('china-echarts-map')
 
 // Register the required components
@@ -126,6 +127,7 @@ function Map(props) {
       }}
       onEvents={{
         click: (params) => {
+          PlaySoundClick();
           // console.log(params);
           // console.log(params.name);
           // console.log(map.current);

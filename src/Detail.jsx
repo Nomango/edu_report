@@ -1,10 +1,6 @@
 import { useParams, BrowserRouter, Routes, Route, Outlet, useNavigate, useSearchParams } from "react-router-dom";
-import { GetSchool } from "./Schools";
-import React, { useEffect } from 'react'
-
-// tabs
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import { GetSchool, AsyncGetSchoolData } from "./Schools";
+import React, { useEffect, useRef, useState } from 'react'
 
 import './assets/css/detail.less'
 import { InitAll } from "./assets/js/main";
@@ -12,6 +8,7 @@ import { InitAll } from "./assets/js/main";
 import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
+import { BaseTable, features, useTablePipeline } from "ali-react-table";
 
 function Detail() {
     useEffect(() => {
@@ -40,24 +37,32 @@ function SchoolDetail() {
         )
     }
     const navigate = useNavigate();
+    const [tabIndex, setTabIndex] = useState(0);
+
+    const [data, setData] = useState({ data: [], columns: [], article: '' });
+    let pipeline = useTablePipeline()
+        .input({ dataSource: data.data, columns: data.columns })
+        .use(features.autoRowSpan());
+
+    const mounted = useRef(false);
+    useEffect(() => {
+        mounted.current = true;
+        AsyncGetSchoolData(school.name, (data) => setData(data));
+        return () => { mounted.current = false; };
+    }, [])
     return (
         <div className="detail-container">
             <img className="school-icon" src={`/assets/img/icons/with_text/${school.icon}`} alt={school.name} />
-            <a className="goback" onClick={() => navigate(-1)}>
-                <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
-                &nbsp;向上返回
-            </a>
-            <Tabs
-                className={'detail-tabs'}
-                selectedTabClassName={'selected-tab'}
-                selectedTabPanelClassName={'selected-tab-panel'}
-            >
-                <TabList>
-                    <Tab>概况</Tab>
-                    <Tab>案例1</Tab>
-                    {/* <Tab>案例2</Tab> */}
-                </TabList>
-                <TabPanel>
+            <div className="top-bar">
+                <a className="goback flex-full" onClick={() => navigate('/?slide=4')}>
+                    <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
+                    &nbsp;向上返回
+                </a>
+                <div className={["top-bar-tab", tabIndex == 0 ? 'active' : null].join(' ')} onClick={() => setTabIndex(0)}>概况</div>
+                <div className={["top-bar-tab", tabIndex == 1 ? 'active' : null].join(' ')} onClick={() => setTabIndex(1)}>案例1</div>
+            </div>
+            <div className="tabs">
+                <div className={["tab", tabIndex == 0 ? 'active' : null].join(' ')}>
                     <div className="detail-brief-container">
                         <div className="detail-brief-items">
                             <div className="detail-brief-item">
@@ -77,26 +82,21 @@ function SchoolDetail() {
                                 <p>工科在校生</p>
                             </div>
                         </div>
-                        <div className="detail-brief-fuller"></div>
+                        <BaseTable
+                            style={{
+                                width: '100%',
+                                overflow: 'auto',
+                                '--font-size': '1.6rem',
+                            }}
+                            {...pipeline.getProps()}
+                        />
                     </div>
-                </TabPanel>
-                <TabPanel>
-                    <div className="case-container">
-                        <img src='/assets/img/book/桂电/1.jpg'></img>
-                        <img src='/assets/img/book/桂电/2.jpg'></img>
-                        <img src='/assets/img/book/桂电/3.jpg'></img>
-                        <img src='/assets/img/book/桂电/4.jpg'></img>
-                        <img src='/assets/img/book/桂电/5.jpg'></img>
-                        <img src='/assets/img/book/桂电/6.jpg'></img>
-                        <img src='/assets/img/book/桂电/7.jpg'></img>
-                        <img src='/assets/img/book/桂电/8.jpg'></img>
-                        <img src='/assets/img/book/桂电/9.jpg'></img>
+                </div>
+                <div className={["tab", tabIndex == 1 ? 'active' : null].join(' ')}>
+                    <div className="case-container" dangerouslySetInnerHTML={{ __html: data.article }}>
                     </div>
-                </TabPanel>
-                {/* <TabPanel>
-                    <h2>案例2</h2>
-                </TabPanel> */}
-            </Tabs>
+                </div>
+            </div>
         </div>
     )
 }
@@ -124,7 +124,7 @@ function BriefDetail() {
     }
     return (
         <div className="brief-container">
-            <a className="goback" onClick={() => navigate(-1)}>
+            <a className="goback" onClick={() => navigate('/?slide=3')}>
                 <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
                 &nbsp;向上返回
             </a>

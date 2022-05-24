@@ -214,7 +214,7 @@ function GetSchool(schoolName) {
   return null
 }
 
-function GetSchoolData() {
+function GetCitySchoolData() {
   return [
     { name: "桂林电子科技大学", majorNum: 58, studentNum: 18602, city: "桂林市", },
     { name: "广西大学", majorNum: 40, studentNum: 10216, city: "南宁市", },
@@ -260,7 +260,7 @@ function GetCityData(city) {
     studentNum: 0,
     schools: [],
   }
-  GetSchoolData().map(d => {
+  GetCitySchoolData().map(d => {
     if (d.city == city) {
       data.majorNum += d.majorNum;
       data.studentNum += d.studentNum;
@@ -270,4 +270,22 @@ function GetCityData(city) {
   return data;
 }
 
-export { GetAllSchools, GetSchool, GetSchoolData, GetCityData }
+import JSON5 from 'json5'
+
+function AsyncGetSchoolData(name, callback) {
+  fetch(`/assets/data/${name}.json5`)
+    .then(resp => resp.text())
+    .then(text => {
+      let json = JSON5.parse(text);
+      console.log(json);
+      return json;
+    })
+    .then(json => {
+      callback(json);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+}
+
+export { GetAllSchools, GetSchool, AsyncGetSchoolData, GetCityData }

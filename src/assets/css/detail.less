@@ -1,6 +1,6 @@
 #detail {
-    position: relative;
-    z-index: 2;
+    // position: relative;
+    // z-index: 2;
     width: 100%;
     padding: 3rem 2.6rem;
 }
@@ -23,18 +23,53 @@
     }
 }
 
+.flex-full {
+    flex: 1;
+}
+
 .detail-container {
     .school-icon {
         width: 75%;
-        margin: .5rem auto;
+        margin: 0 auto 2rem;
         display: block;
         filter: grayscale(1) brightness(100);
     }
 
     .goback {
-        position: relative;
-        top: 2.4rem;
+        // position: relative;
+        // top: 2.4rem;
         font-size: 1.2rem;
+    }
+
+    .top-bar {
+        display: flex;
+        align-items: center;
+
+        .top-bar-tab {
+            font-size: 1.6rem;
+            background-color: #52567B;
+            width: 10rem;
+            text-align: center;
+            border: none;
+            // border-left: 1px solid transparent;
+            line-height: 2.5;
+            margin-left: 1px;
+
+            &.active {
+                background-color: #3186A2;
+            }
+        }
+    }
+
+    .tab {
+        display: none;
+        width: 100%;
+        background-color: #fff;
+        color: #000;
+
+        &.active {
+            display: block;
+        }
     }
 }
 
@@ -117,8 +152,33 @@
     }
 }
 
-.case-container img {
-    width: 100%;
+.case-container {
+    padding: 2rem 1.5rem;
+
+    h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 1.4;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: justify;
+    }
+
+    p {
+        font-size: 1.8rem;
+        text-indent: 3.6rem;
+        text-align: justify;
+    }
+
+    img {
+        width: 100%;
+        margin: 1rem auto;
+    }
 }
 
 .brief-main {

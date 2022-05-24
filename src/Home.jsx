@@ -23,7 +23,7 @@ import './assets/css/swiper.less'
 import { InitAll, StartAll } from './assets/js/main.js'
 import $ from "jquery";
 
-import { Link } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { GetAllSchools } from './Schools';
 import Background from './Components/Background';
 import useStateRef from 'react-usestateref';
@@ -49,10 +49,15 @@ function Home() {
   // let flipbook = <Flipbook books={books} />
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
+
+  const mounted = useRef(false);
   useEffect(() => {
+    mounted.current = true;
     console.log('ready');
     setTimeout(() => { InitAll(); }, 500);
-  });
+    return () => { mounted.current = false; };
+  }, []);
+
   const PlayVideo = () => {
     background.current.play();
   }
@@ -66,6 +71,16 @@ function Home() {
     StartAll();
     mainSwiperRef.current.enable();
   }
+
+  const [searchParams] = useSearchParams();
+  const slide = searchParams.get('slide');
+  if (slide) {
+    useEffect(() => {
+      Enter();
+      mainSwiperRef.current.slideTo(slide - 1);
+    });
+  }
+
   const allSchools = GetAllSchools();
   const [schools, setSchools] = useState(allSchools);
   var searchInputProps = useInput('', (schoolName) => {
@@ -317,7 +332,7 @@ function Home() {
       {/* <!-- Cursor --> */}
       {/* <div className="cursor1" id="cursor1"></div> */}
       {/* <div className="cursor" id="cursor"></div> */}
-    </div>
+    </div >
   )
 }
 
