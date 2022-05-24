@@ -71,7 +71,7 @@ function SchoolDetail() {
     <div className="detail-container">
       <img className="school-icon" src={`/assets/img/icons/with_text/${school.icon}`} alt={school.name} />
       <div className="top-bar">
-        <a className="goback flex-full" onClick={() => navigate('/?slide=4')}>
+        <a className="goback flex-full" onClick={() => navigate(-1)}>
           <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
           &nbsp;向上返回
         </a>
@@ -141,7 +141,7 @@ function BriefDetail() {
   }
   return (
     <div className="brief-container">
-      <a className="goback" onClick={() => navigate('/?slide=3')}>
+      <a className="goback" onClick={() => navigate(-1)}>
         <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
         &nbsp;向上返回
       </a>

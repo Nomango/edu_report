@@ -6,39 +6,27 @@ import { Outlet } from 'react-router-dom'
 import useStateRef from 'react-usestateref';
 import useSound from 'use-sound';
 import { toggleMuted } from './assets/js/muteSlice';
+import { InitSound } from './Components/Sound';
 
 function App() {
   const muted = useSelector((state) => state.mute.value);
   const dispatch = useDispatch();
 
-  const [play, { sound, stop }] = useSound('/assets/sound/bg.mp3', { soundEnabled: !muted, interrupt: true });
-  play();
-  // const PlayMusic = () => {
-  //   try {
-  //     sound.loop(true);
-  //     console.log('set loop success');
-  //   } catch (e) {
-  //     console.log(e);
-  //     console.log('sound', sound);
-  //     setTimeout(PlayMusic, 1000);
-  //   }
-  // }
-  // const mounted = useRef(false);
-  // useEffect(() => {
-  //   mounted.current = true;
-  //   play();
-  //   // window.addEventListener('mousedown', () => {
-  //   //   if (!playingRef) {
-  //   //     setPlaying(true);
-  //   //     setTimeout(() => {
-  //   //       console.log('play music');
-  //   //       play({ forceSoundEnabled: true });
-  //   //       PlayMusic();
-  //   //     }, 1000);
-  //   //   }
-  //   // })
-  //   return () => { mounted.current = false; };
-  // }, [])
+  const [bgMusic, setBgMusic, bgMusicRef] = useStateRef(null);
+  const bgPlaying = useRef(false);
+
+  const PlaySound = () => { if (!bgPlaying.current) { bgMusicRef.current.play(); bgPlaying.current = true; } }
+  const StopSound = () => { if (bgPlaying.current) { bgMusicRef.current.stop(); bgPlaying.current = false; } }
+  const PauseSound = () => { if (bgPlaying.current) { bgMusicRef.current.pause(); bgPlaying.current = false; } }
+
+  const mounted = useRef(false);
+  useEffect(() => {
+    mounted.current = true;
+    setBgMusic(InitSound());
+    console.log('music loaded');
+    PlaySound();
+    return () => { mounted.current = false; };
+  }, [])
   return (
     <>
       <div className='bg-all'></div>
@@ -51,17 +39,24 @@ function App() {
       <div className={['sound-logo', muted ? 'muted' : 'spinning'].join(' ')}
         onClick={() => {
           // console.log('muted', muted);
+          if (!bgMusic) {
+            return;
+          }
           if (muted) {
-            play({ forceSoundEnabled: true });
+            PlaySound();
           } else {
-            stop();
+            StopSound();
           }
           dispatch(toggleMuted());
         }}
       >
         <FontAwesomeIcon icon={faMusic}></FontAwesomeIcon>
       </div>
-      <Outlet />
+      <Outlet context={{
+        PlaySound,
+        StopSound,
+        PauseSound,
+      }} />
     </>
   )
 }

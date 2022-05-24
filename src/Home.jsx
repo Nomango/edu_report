@@ -23,7 +23,7 @@ import './assets/css/swiper.less'
 import { InitAll, StartAll } from './assets/js/main.js'
 import $ from "jquery";
 
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
 import { GetAllSchools } from './Schools';
 import Background from './Components/Background';
 import useStateRef from 'react-usestateref';
@@ -51,17 +51,27 @@ function Home() {
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const slide = searchParams.get('slide');
+
   const mounted = useRef(false);
   useEffect(() => {
     mounted.current = true;
     console.log('ready');
+    if (slide) {
+      Enter();
+      mainSwiperRef.current.slideTo(slide - 1);
+    }
     setTimeout(() => { InitAll(); }, 500);
     return () => { mounted.current = false; };
   }, []);
 
   const PlayVideo = () => {
+    PauseSound();
     background.current.play();
   }
+  const { PlaySound, PauseSound } = useOutletContext();
+
   const Enter = () => {
     $('.start-video').fadeOut();
     $('.cover-guide').hide();
@@ -71,15 +81,9 @@ function Home() {
     $('.section-title').fadeIn();
     StartAll();
     mainSwiperRef.current.enable();
-  }
-
-  const [searchParams] = useSearchParams();
-  const slide = searchParams.get('slide');
-  if (slide) {
-    useEffect(() => {
-      Enter();
-      mainSwiperRef.current.slideTo(slide - 1);
-    });
+    setTimeout(() => {
+      PlaySound();
+    }, 100);
   }
 
   const allSchools = GetAllSchools();
@@ -138,6 +142,7 @@ function Home() {
         onSwiper={(swiper) => { console.log(swiper); setMainSwiper(swiper); }}
         // controller={{ control: mainSwiper }}
         onSlideChange={(swiper) => {
+          setSearchParams({ 'slide': swiper.activeIndex + 1 });
           if (swiper.activeIndex != swiper.slides.length - 1) {
             TweenMax.to('.arrow-intro', 1, {
               autoAlpha: 1,

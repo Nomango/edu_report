@@ -40,7 +40,7 @@ class Background extends Component {
 
   render() {
     const { url, playing, controls, light, volume, muted, loop, playbackRate, pip } = this.state;
-    console.log('playing=', playing);
+    // console.log('playing=', playing);
     return (
       <ReactPlayer
         className={'start-video'}
