@@ -30,6 +30,7 @@ import useStateRef from 'react-usestateref';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
+import { Fade, Grow } from '@material-ui/core';
 
 function useInput(defValue, onValueChange) {
   const [value, setValue, valueRef] = useStateRef(defValue);
@@ -46,8 +47,14 @@ function useInput(defValue, onValueChange) {
 }
 
 function Home() {
-  // $(CreateAnimGrid);
-  // let flipbook = <Flipbook books={books} />
+  const { PlaySound, PauseSound, setLoading } = useOutletContext();
+
+  const [entered, setEntered] = React.useState(false);
+  useEffect(() => {
+    setLoading(false);
+    setEntered(true);
+  });
+
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
 
@@ -66,7 +73,6 @@ function Home() {
     return () => { mounted.current = false; };
   }, []);
 
-  const { PlaySound, PauseSound } = useOutletContext();
   const muted = useSelector((state) => state.mute.value);
 
   const Enter = () => {
@@ -103,16 +109,22 @@ function Home() {
   return (
     <div id='home'>
       <div className='cover-guide'>
-        <div className='cover-title'>
-          <h1 className='font-hei'>广西新工科教育</h1>
-          <p>Guangxi New Engineering Education</p>
-          <h1 className='font-hei spacing'>成果展</h1>
-          <p>Achievements Exhibition</p>
-        </div>
-        <div className='cover-enter' onClick={PlayVideo}>
-          <h3 className='font-hei'>进入观展</h3>
-          <p>ENTER</p>
-        </div>
+        <Grow in={entered} style={{ transitionDuration: '1s' }} {...(entered ? { timeout: 2000 } : {})}>
+          <div className='cover-title'>
+            <h1 className='font-hei'>广西新工科教育</h1>
+            <p>Guangxi New Engineering Education</p>
+            <h1 className='font-hei spacing'>成果展</h1>
+            <p>Achievements Exhibition</p>
+          </div>
+        </Grow>
+        <Grow in={entered} style={{ transitionDuration: '1s' }} {...(entered ? { timeout: 3000 } : {})}>
+          <div className='cover-enter-wrapper'>
+            <div className='cover-enter' onClick={PlayVideo}>
+              <h3 className='font-hei'>进入观展</h3>
+              <p>ENTER</p>
+            </div>
+          </div>
+        </Grow>
         <div className='cover-footer'>
           <p>广西新工科教育研究中心</p>
           <p>2022年5月</p>
