@@ -1,6 +1,13 @@
 import { Component } from 'react';
 import ReactPlayer from 'react-player';
+import { connect } from 'react-redux';
 import StartVideo from '../assets/videos/start.mp4';
+
+const mapStateToProps = (state) => {
+  return {
+    muted: state.muted
+  }
+}
 
 class Background extends Component {
   ref = player => {
@@ -46,7 +53,7 @@ class Background extends Component {
         loop={loop}
         playbackRate={playbackRate}
         volume={volume}
-        muted={muted}
+        muted={muted || this.props.muted}
 
         width={'100%'}
         height={'100%'}
@@ -119,3 +126,4 @@ class Background extends Component {
 }
 
 export default Background;
+// export default connect(mapStateToProps)(Background);

@@ -25,7 +25,8 @@ import {
 import GuangXiJSON from '../assets/json/guangxi.json'
 import React from 'react';
 import { GetCityData } from '../Schools';
-import { PlaySoundClick } from './Sound';
+import { useSelector } from 'react-redux';
+import useSound from 'use-sound';
 // const Map = require('china-echarts-map')
 
 // Register the required components
@@ -103,7 +104,16 @@ function Map(props) {
     ]
   };
   let map = React.createRef();
-  const [zoomIn, setZoomIn] = useState(false);
+  // const [zoomIn, setZoomIn] = useState(false);
+
+  const muted = useSelector((state) => state.mute.value);
+
+  const [soundClick] = useSound('/assets/sound/click.mp3');
+  const PlaySound = () => {
+    if (!muted) {
+      soundClick();
+    }
+  }
   return (
     <ReactEChartsCore
       ref={map}
@@ -127,7 +137,7 @@ function Map(props) {
       }}
       onEvents={{
         click: (params) => {
-          PlaySoundClick();
+          PlaySound();
           // console.log(params);
           // console.log(params.name);
           // console.log(map.current);

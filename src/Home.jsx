@@ -29,6 +29,7 @@ import Background from './Components/Background';
 import useStateRef from 'react-usestateref';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
 
 function useInput(defValue, onValueChange) {
   const [value, setValue, valueRef] = useStateRef(defValue);
@@ -90,6 +91,8 @@ function Home() {
     }
     setSchools(allSchools.filter(s => s.name.includes(schoolName)));
   });
+
+  const muted = useSelector((state) => state.mute.value);
   return (
     <div id='home'>
       <div className='cover-guide'>
@@ -111,6 +114,7 @@ function Home() {
       <Background
         ref={background}
         onReady={Enter}
+        muted={muted}
       />
       <div className='arrow-intro'>
         <div className='arrow-1'></div>

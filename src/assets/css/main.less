@@ -135,20 +135,24 @@ a:hover {
     }
 }
 
-.spinning {
+.logo-load.spinning {
     width: 100px;
     height: 100px;
     background: url("/assets/img/wait.svg") no-repeat center center;
     border: 0;
+    margin-left: -50px;
+    margin-top: -50px;
+    mix-blend-mode: normal
+}
+
+.spinning {
     -webkit-animation-name: spin;
     animation-name: spin;
     -webkit-animation-duration: 10s;
     animation-duration: 10s;
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
-    margin-left: -50px;
-    margin-top: -50px;
-    mix-blend-mode: normal
+    animation-timing-function: linear;
 }
 
 .bg-all {
@@ -184,6 +188,30 @@ a:hover {
     width: 100%;
     top: 0;
     left: 0;
+}
+
+.sound-logo {
+    position: fixed;
+    z-index: 999;
+    top: 3rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.6rem;
+    border: solid 2px #fff;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    mix-blend-mode: normal;
+
+    svg {
+        flex: 1;
+    }
+
+    &.muted {
+        background: linear-gradient(45deg, transparent 48%, #fff 48%, #fff 52%, transparent 52%);
+    }
 }
 
 @keyframes arrow-intro-moving {
