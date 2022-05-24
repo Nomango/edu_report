@@ -54,7 +54,7 @@ function Map(props) {
       },
       position: 'bottom',
       textStyle: {
-        fontSize: '1.4rem',
+        fontSize: '1.6rem',
         color: '#fff',
       },
       extraCssText: 'text-align: left; background: #004481;',
