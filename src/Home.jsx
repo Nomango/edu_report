@@ -66,11 +66,8 @@ function Home() {
     return () => { mounted.current = false; };
   }, []);
 
-  const PlayVideo = () => {
-    PauseSound();
-    background.current.play();
-  }
   const { PlaySound, PauseSound } = useOutletContext();
+  const muted = useSelector((state) => state.mute.value);
 
   const Enter = () => {
     $('.start-video').fadeOut();
@@ -81,9 +78,16 @@ function Home() {
     $('.section-title').fadeIn();
     StartAll();
     mainSwiperRef.current.enable();
-    setTimeout(() => {
-      PlaySound();
-    }, 100);
+    if (!muted) {
+      setTimeout(() => {
+        PlaySound();
+      }, 100);
+    }
+  }
+
+  const PlayVideo = () => {
+    PauseSound();
+    background.current.play();
   }
 
   const allSchools = GetAllSchools();
@@ -96,7 +100,6 @@ function Home() {
     setSchools(allSchools.filter(s => s.name.includes(schoolName)));
   });
 
-  const muted = useSelector((state) => state.mute.value);
   return (
     <div id='home'>
       <div className='cover-guide'>
