@@ -133,7 +133,7 @@ function Map(props) {
 
   const muted = useSelector((state) => state.mute.value);
 
-  const [soundClick] = useSound('/assets/sound/click.mp3');
+  const [soundClick] = useSound('https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/sound/click.mp3');
   const PlaySound = () => {
     if (!muted) {
       soundClick();

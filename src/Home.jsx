@@ -209,7 +209,7 @@ function Home() {
         </SwiperSlide>
         <SwiperSlide>
           <section className="brief with-cities">
-            <div className='cities'><img src="/assets/img/cities.png" alt="cities" /></div>
+            <div className='cities'><img src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/cities.png" alt="cities" /></div>
             <div className='section-content'>
               <div className='brief-buttons'>
                 <Link className='button-group' to={`/detail/brief?p=section1`}>
@@ -234,7 +234,7 @@ function Home() {
         </SwiperSlide>
         <SwiperSlide>
           <section className="cases with-cities">
-            <div className='cities'><img src="/assets/img/cities.png" alt="cities" /></div>
+            <div className='cities'><img src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/cities.png" alt="cities" /></div>
             <div className='section-content'>
               <div className='search-input'>
                 <FontAwesomeIcon className='icon' icon={faSearch} />
@@ -259,7 +259,7 @@ function Home() {
                     return (
                       <SwiperSlide key={`school-${i}`}>
                         <Link to={`/detail/${school.name}`}>
-                          <img src={`/assets/img/icons/img_only/${school.icon}`} alt={school.name} />
+                          <img src={`https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/icons/img_only/${school.icon}`} alt={school.name} />
                         </Link>
                       </SwiperSlide>
                     )
@@ -267,7 +267,7 @@ function Home() {
                 }
               </Swiper>
               <div className='inner-swiper-note'>
-                <img src="/assets/img/hand.gif" alt="hand" />
+                <img src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/hand.gif" alt="hand" />
                 <span>向左滑动查看更多</span>
               </div>
             </div>

@@ -15,7 +15,7 @@ class Background extends Component {
   }
 
   state = {
-    url: '/assets/video/start.mp4',
+    url: 'https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/video/start.mp4',
     pip: false,
     playing: false,
     controls: false,

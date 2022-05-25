@@ -61,8 +61,8 @@ function App() {
         </div>
       </Fade>
       <div className='bg-cover'>
-        <img className='bg' src='/assets/img/cover.png'></img>
-        <img className='ball' src='/assets/img/ball.png' style={{ display: showBall ? 'block' : 'none' }}></img>
+        <img className='bg' src='https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/cover.png'></img>
+        <img className='ball' src='https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/ball.png' style={{ display: showBall ? 'block' : 'none' }}></img>
       </div>
       <div className={['sound-logo', muted ? 'muted' : 'spinning'].join(' ')} onClick={toggleMuted}>
         <FontAwesomeIcon icon={faMusic}></FontAwesomeIcon>
