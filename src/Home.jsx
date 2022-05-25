@@ -84,11 +84,9 @@ function Home() {
     $('.section-title').fadeIn();
     StartAll();
     mainSwiperRef.current.enable();
-    if (!muted) {
-      setTimeout(() => {
-        PlaySound();
-      }, 100);
-    }
+    setTimeout(() => {
+      PlaySound();
+    }, 100);
   }
 
   const PlayVideo = () => {
@@ -112,16 +110,16 @@ function Home() {
         <Grow in={entered} style={{ transitionDuration: '1s' }} {...(entered ? { timeout: 2000 } : {})}>
           <div className='cover-title'>
             <h1 className='font-hei'>广西新工科教育</h1>
-            <p>Guangxi New Engineering Education</p>
+            {/* <p>Guangxi New Engineering Education</p> */}
             <h1 className='font-hei spacing'>成果展</h1>
-            <p>Achievements Exhibition</p>
+            {/* <p>Achievements Exhibition</p> */}
           </div>
         </Grow>
         <Grow in={entered} style={{ transitionDuration: '1s' }} {...(entered ? { timeout: 3000 } : {})}>
           <div className='cover-enter-wrapper'>
             <div className='cover-enter' onClick={PlayVideo}>
               <h3 className='font-hei'>进入观展</h3>
-              <p>ENTER</p>
+              {/* <p>ENTER</p> */}
             </div>
           </div>
         </Grow>
@@ -141,7 +139,7 @@ function Home() {
       </div>
       <div className='section-title'>
         <h2 className='font-hei'>广西新工科教育成果展</h2>
-        <p>Guangxi New Engineering Education</p>
+        {/* <p>Guangxi New Engineering Education</p> */}
       </div>
       <Swiper
         enabled={false}
@@ -179,8 +177,9 @@ function Home() {
               <div className="border-corner border-corner-rt"></div>
               <div className="border-corner border-corner-lb"></div>
               <div className="border-corner border-corner-rb"></div>
-              <div className='section-content-title font-kai font-bold'>【 序言 】</div>
-              <p>为主动应对新一轮科技革命与产业变革，支撑服务国家战略和广西经济发展，广西本科院校积极推进新工科教育研究与实践，建设高水平新工科人才培养体系，培养创新型、复合型和应用型新工科人才。新工科教育成果展将从广西工科教育建设进展概况和广西本科院校新工科典型案例两个角度展示广西新工科教育取得的成就，以加强高校之间的交流，共促发展。</p>
+              <div className='section-content-title font-kai font-bold'>序言</div>
+              <p>为主动应对新一轮科技革命与产业变革，支撑服务国家战略和广西经济发展，广西本科院校积极推进新工科教育研究与实践，建设高水平新工科人才培养体系，培养创新型、复合型和应用型新工科人才。</p>
+              <p>新工科教育成果展将从广西工科教育建设进展概况和广西本科院校新工科典型案例两个角度展示广西新工科教育取得的成就，以加强高校之间的交流，共促发展。</p>
             </div>
           </section>
         </SwiperSlide>
@@ -191,7 +190,7 @@ function Home() {
               <div className='nav-buttons'>
                 <a className="nav-button" onClick={() => mainSwiperRef.current.slideTo(2)}>广西新工科概况</a>
                 <br />
-                <a className="nav-button" onClick={() => mainSwiperRef.current.slideTo(3)}>广西工科高校案例展</a>
+                <a className="nav-button" onClick={() => mainSwiperRef.current.slideTo(3)}>广西高校新工科案例</a>
               </div>
             </div>
           </section>
@@ -203,19 +202,19 @@ function Home() {
               <div className='brief-buttons'>
                 <Link className='button-group' to={`/detail/brief?p=section1`}>
                   <span className='button-left'>广西高校工科专业设置</span>
-                  <span className='button-right'>点击进入</span>
+                  {/* <span className='button-right'>点击进入</span> */}
                 </Link>
                 <Link className='button-group' to={`/detail/brief?p=section2`}>
                   <span className='button-left'>广西工科专业大类布点</span>
-                  <span className='button-right'>点击进入</span>
+                  {/* <span className='button-right'>点击进入</span> */}
                 </Link>
                 <Link className='button-group' to={`/detail/brief?p=section3`}>
                   <span className='button-left'>工科分学校布点及规模</span>
-                  <span className='button-right'>点击进入</span>
+                  {/* <span className='button-right'>点击进入</span> */}
                 </Link>
                 <Link className='button-group' to={`/detail/brief?p=section4`}>
                   <span className='button-left'>广西工科优势特色专业</span>
-                  <span className='button-right'>点击进入</span>
+                  {/* <span className='button-right'>点击进入</span> */}
                 </Link>
               </div>
             </div>

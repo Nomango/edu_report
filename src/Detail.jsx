@@ -37,7 +37,7 @@ function Detail() {
     <div id="detail">
       <div className='detail-title'>
         <h3 className='font-hei'>广西新工科教育成果展</h3>
-        <p>Guangxi New Engineering Education</p>
+        {/* <p>Guangxi New Engineering Education</p> */}
         <div className="spliter"></div>
       </div>
       <Outlet />

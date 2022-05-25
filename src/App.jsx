@@ -16,7 +16,7 @@ function App() {
   const [bgMusic, setBgMusic, bgMusicRef] = useStateRef(null);
   const bgPlaying = useRef(false);
 
-  const PlaySound = () => { if (!bgPlaying.current) { bgMusicRef.current.play(); bgPlaying.current = true; } }
+  const PlaySound = () => { if (!bgPlaying.current && !muted) { bgMusicRef.current.play(); bgPlaying.current = true; } }
   const StopSound = () => { if (bgPlaying.current) { bgMusicRef.current.stop(); bgPlaying.current = false; } }
   const PauseSound = () => { if (bgPlaying.current) { bgMusicRef.current.pause(); bgPlaying.current = false; } }
 
@@ -38,7 +38,7 @@ function App() {
       {/* </Collapse> */}
       {/* <Fade in={loading} style={{ transitionDuration: '1s' }}> */}
         <div className="logo-load">
-          <h2 className='loading-text'>Loading</h2>
+          <h2 className='loading-text'>加载中</h2>
           <div className="waiting-text spinning"></div>
         </div>
       {/* </Fade> */}

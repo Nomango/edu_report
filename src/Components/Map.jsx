@@ -31,7 +31,13 @@ import useSound from 'use-sound';
 
 // Register the required components
 echarts.use(
-  [GeoComponent, TooltipComponent, CanvasRenderer, MapChart]
+  [
+    GeoComponent,
+    TooltipComponent,
+    CanvasRenderer,
+    // SVGRenderer,
+    MapChart,
+  ]
 );
 
 echarts.registerMap('guangxi', GuangXiJSON)
@@ -45,7 +51,7 @@ function Map(props) {
     tooltip: {
       show: true,
       trigger: 'item',
-      formatter: function(params) {
+      formatter: function (params) {
         // console.log(params);
         if (!params.name) {
           return `Unknown`;
@@ -64,32 +70,10 @@ function Map(props) {
     geo: {
       map: province,
       roam: false,
-      label: {
-        show: true,
-        textStyle: {
-          color: "#fffb"
-        }
-      },
       itemStyle: {
-        areaColor: "#0d0059",
+        // areaColor: "transparent",
         borderColor: "#21c2ff",
-        borderWidth: 1.5
-      },
-      emphasis: {
-        label: {
-          show: true,
-          textStyle: {
-            color: "#fff"
-          }
-        },
-        itemStyle: {
-          areaColor: "#17008d",
-          shadowOffsetX: 0,
-          shadowOffsetY: 0,
-          shadowBlur: 5,
-          borderWidth: 0,
-          shadowColor: "rgba(0, 0, 0, 0.5)"
-        }
+        borderWidth: 4
       },
     },
     series: [
@@ -99,7 +83,48 @@ function Map(props) {
         map: province,
         roam: false,
         showLegendSymbol: false, // 存在legend时显示
-        geoIndex: 0,
+        // geoIndex: 0,
+        selectedMode: 'single',
+        label: {
+          show: true,
+          textStyle: {
+            color: "#fffb"
+          }
+        },
+        itemStyle: {
+          areaColor: "#0d0059",
+          borderColor: "#21c2ff",
+          borderWidth: 1
+        },
+        emphasis: {
+          // focus: 'self',
+          label: {
+            show: true,
+            color: "#7e2c03",
+          },
+          itemStyle: {
+            areaColor: "#FFD700",
+            // borderWidth: 3,
+            // shadowColor: "rgba(0, 0, 0, 0.5)",
+            // shadowOffsetX: 0,
+            // shadowOffsetY: 20,
+            // shadowBlur: 5,
+          }
+        },
+        select: {
+          label: {
+            show: true,
+            color: "#7e2c03",
+          },
+          itemStyle: {
+            areaColor: "#FFD700",
+            // borderWidth: 3,
+            shadowColor: "rgba(0, 0, 0, 1.0)",
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowBlur: 20,
+          }
+        }
       }
     ]
   };
