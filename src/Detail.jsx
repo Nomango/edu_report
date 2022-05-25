@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { BaseTable, features, useTablePipeline } from "ali-react-table";
 import useStateRef from "react-usestateref";
-import Zmage from 'react-zmage'
+const Zmage = require('react-zmage')
 
 function Detail() {
   const { setLoading, setShowBall, setShowMuted } = useOutletContext();
