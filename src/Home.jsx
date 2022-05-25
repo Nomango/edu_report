@@ -13,14 +13,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 import "swiper/css/grid";
 
-// import './assets/css/plugin.css'
-// import './assets/css/main.css'
 import './assets/css/main.less'
-// import './assets/css/responsive.css'
-import './assets/css/anim.css'
 import './assets/css/swiper.less'
 
-import { InitAll, StartAll } from './assets/js/main.js'
 import $ from "jquery";
 
 import { Link, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
@@ -52,7 +47,7 @@ function Home() {
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
 
-  const [showArrowDown, setShowArrowDown] = useState(false);
+  const [showArrowDown, setShowArrowDown] = useState(true);
   const [showNote, setShowNote] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -277,138 +272,10 @@ function Home() {
               </div>
             </div>
           </section>
-          {/* <Swiper
-                effect={"coverflow"}
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView={"auto"}
-                coverflowEffect={{
-                  rotate: 50,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 1,
-                  slideShadows: false,
-                }}
-                mousewheel={true}
-                nested={true}
-                loop={true}
-                modules={[EffectCoverflow, Mousewheel]}
-                className={'inner-swiper'}
-              >
-                {
-                  books.map((book, i) => {
-                    return (
-                      <SwiperSlide>
-                        <BookCover book={book} key={`book-${i}`} />
-                      </SwiperSlide>
-                    )
-                  })
-                }
-              </Swiper> */}
-          {/* {
-                  books.map((book, i) => {
-                    if (i % 2 == 1)
-                      return
-                    if (i == books.length - 1) {
-                      return (
-                        <div className="col-md-6">
-                          <Book book={book} key={`book-${i}`} />
-                        </div>
-                      )
-                    }
-                    return (
-                      <div className="col-md-6">
-                        <Book book={book} key={`book-${i}`} />
-                        <Book book={books[i + 1]} key={`book-${i + 1}`} />
-                      </div>
-                    )
-                  })
-                } */}
         </SwiperSlide>
-        {/* <SwiperSlide>
-          <section className="folio-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-12">
-                  <a name="about" className="next-project centered text-center">
-                    <div className="col-md-12">
-                      <p>About</p>
-                      <h3>Sponsor</h3>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div className="footer">
-                <div className="row">
-                  <div className="col-md-12 text-center text-md-left mt-30">
-                    <div className="mail hover-target text-center"><a href="#">主办方信息</a></div>
-                  </div>
-                </div>
-                <div className="logo-foot"><img src="assets/img/logo.svg" alt="" /></div>
-                <div className="row">
-                  <div className="col-md-12 text-center mt-30">
-                    <div className="sosmed">
-                      <ul>
-                        <li className="hover-target"><a href="#">WeChat.</a></li>
-                        <li className="hover-target"><a href="#">Weibo.</a></li>
-                        <li className="hover-target"><a href="#">Website.</a></li>
-                      </ul>
-                    </div>
-                    <div className="copyright">
-                      <p>主办方 &copy;2022. All Rights Reserved</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <div className="footer">
-            <div className="container">
-              <div className="row">
-              </div>
-            </div>
-          </div>
-        </SwiperSlide> */}
       </Swiper>
-      {/* <!-- Flip book -->*/}
-      {/* {flipbook} */}
-      {/* <!-- End Content -->*/}
-      {/* <!-- Cursor --> */}
-      {/* <div className="cursor1" id="cursor1"></div> */}
-      {/* <div className="cursor" id="cursor"></div> */}
     </div >
   )
 }
 
 export default Home
-
-function Book(props) {
-  let book = props.book;
-  return (
-    <div className="folio-item">
-      <div className="img-folio cursorExplore">
-        <a role="button" onClick={() => book.open()}>
-          <img className="img-fluid" src={book.cover} draggable="false" alt={book.name} />
-        </a>
-      </div>
-      <div className="text-folio text-center">
-        <h2 className="text-1">{book.name}</h2>
-        <h2 className="text-2">{book.name}</h2>
-      </div>
-    </div>
-  )
-}
-
-function BookCover(props) {
-  let book = props.book;
-  return (
-    <Link to={`/detail/${book.name}`}>
-      <img className="cover-img" src={book.cover} draggable="false" alt={book.name} />
-      <p className="cover-text">{book.name}</p>
-    </Link>
-    //   <a href={`/detail.html?name=${book.name}`} target={'_blank'}>
-    //   <img className="cover-img" src={book.cover} draggable="false" alt={book.name} />
-    //   <p className="cover-text">{book.name}</p>
-    // </a>
-  )
-}

@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
-import StartVideo from '../assets/videos/start.mp4';
 
 const mapStateToProps = (state) => {
   return {
@@ -16,7 +15,7 @@ class Background extends Component {
   }
 
   state = {
-    url: StartVideo,
+    url: '/assets/video/start.mp4',
     pip: false,
     playing: false,
     controls: false,

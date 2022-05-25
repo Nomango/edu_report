@@ -3,7 +3,6 @@ import { GetSchool, AsyncGetSchoolData } from "./Schools";
 import React, { useEffect, useRef, useState } from 'react'
 
 import './assets/css/detail.less'
-import { InitAll } from "./assets/js/main";
 
 import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
