@@ -8,11 +8,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { BaseTable, features, useTablePipeline } from "ali-react-table";
 import useStateRef from "react-usestateref";
-import Zmage from 'react-zmage'
+import ZmageOrigin from 'react-zmage'
+
+var Zmage = ZmageOrigin
+if (process.env.NODE_ENV === 'production') {
+  Zmage = ZmageOrigin.default;
+}
 
 function Detail() {
-  console.log(Zmage);
-  console.log(Zmage.browsing);
   const { setLoading, setShowBall, setShowMuted } = useOutletContext();
 
   useEffect(() => {
