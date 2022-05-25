@@ -2,23 +2,41 @@ import { faMusic } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Collapse, Fade } from '@material-ui/core';
 import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Outlet } from 'react-router-dom'
 import useStateRef from 'react-usestateref';
 import useSound from 'use-sound';
-import { toggleMuted } from './assets/js/muteSlice';
+import { toggleMuted as toggleMutedAction } from './assets/js/muteSlice';
 import { InitSound } from './Components/Sound';
 
 function App() {
+  const store = useStore();
   const muted = useSelector((state) => state.mute.value);
   const dispatch = useDispatch();
 
   const [bgMusic, setBgMusic, bgMusicRef] = useStateRef(null);
   const bgPlaying = useRef(false);
 
-  const PlaySound = () => { if (!bgPlaying.current && !muted) { bgMusicRef.current.play(); bgPlaying.current = true; } }
+  const PlaySound = () => { if (!bgPlaying.current && !store.getState().mute.value) { console.log('play music'); bgMusicRef.current.play(); bgPlaying.current = true; } }
   const StopSound = () => { if (bgPlaying.current) { bgMusicRef.current.stop(); bgPlaying.current = false; } }
   const PauseSound = () => { if (bgPlaying.current) { bgMusicRef.current.pause(); bgPlaying.current = false; } }
+
+  const toggleMuted = () => {
+    // console.log('muted', muted);
+    if (!bgMusic) {
+      return;
+    }
+    if (muted) {
+      setTimeout(() => {
+        PlaySound();
+      }, 100);
+    } else {
+      setTimeout(() => {
+        StopSound();
+      }, 100);
+    }
+    dispatch(toggleMutedAction());
+  }
 
   const [loading, setLoading] = React.useState(true);
   const [showBall, setShowBall] = React.useState(true);
@@ -46,20 +64,7 @@ function App() {
         <img className='bg' src='/assets/img/cover.png'></img>
         <img className='ball' src='/assets/img/ball.png' style={{ display: showBall ? 'block' : 'none' }}></img>
       </div>
-      <div className={['sound-logo', muted ? 'muted' : 'spinning'].join(' ')}
-        onClick={() => {
-          // console.log('muted', muted);
-          if (!bgMusic) {
-            return;
-          }
-          if (muted) {
-            PlaySound();
-          } else {
-            StopSound();
-          }
-          dispatch(toggleMuted());
-        }}
-      >
+      <div className={['sound-logo', muted ? 'muted' : 'spinning'].join(' ')} onClick={toggleMuted}>
         <FontAwesomeIcon icon={faMusic}></FontAwesomeIcon>
       </div>
       <Outlet context={{
