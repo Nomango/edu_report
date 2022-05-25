@@ -73,6 +73,7 @@ function Home() {
       // 等待10秒后必须进入页面
       setTimeout(() => {
         setLoading(false);
+        Enter();
       }, 10000);
     }
     return () => { mounted.current = false; };
