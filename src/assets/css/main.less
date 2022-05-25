@@ -98,6 +98,11 @@ a:hover {
     text-indent: 0 !important;
 }
 
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
 .must-hidden {
     display: none !important;
 }
@@ -190,13 +195,7 @@ a:hover {
 }
 
 .bg-video {
-    opacity: 1;
     // transition: opacity .5s;
-
-    &.hidden {
-        opacity: 0;
-        pointer-events: none;
-    }
 }
 
 .hide-swiper {
@@ -229,7 +228,6 @@ a:hover {
     display: flex;
     align-items: center;
     mix-blend-mode: normal;
-    opacity: 1;
     transition: opacity 1s;
 
     svg {
@@ -238,10 +236,6 @@ a:hover {
 
     &.muted {
         background: linear-gradient(45deg, transparent 48%, #fff 48%, #fff 52%, transparent 52%);
-    }
-
-    &.hidden {
-        opacity: 0;
     }
 }
 
@@ -295,12 +289,7 @@ a:hover {
     transform: translate(-50%, -50%);
     position: fixed;
 
-    opacity: 1;
     transition: opacity .5s;
-
-    &.hidden {
-        opacity: 0;
-    }
 }
 
 .section-content {

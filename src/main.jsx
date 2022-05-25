@@ -10,8 +10,6 @@ import Home from './Home';
 import store from './assets/js/store'
 import { Provider } from 'react-redux'
 
-import Zmage from 'react-zmage'
-
 render(
   // <React.StrictMode>
   <Provider store={store}>

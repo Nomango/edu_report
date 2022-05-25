@@ -8,18 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { BaseTable, features, useTablePipeline } from "ali-react-table";
 import useStateRef from "react-usestateref";
-import ZmageOrigin from 'react-zmage'
-
-var Zmage = ZmageOrigin
-if (process.env.NODE_ENV === 'production') {
-  Zmage = ZmageOrigin.default;
-}
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 function Detail() {
   const { setLoading, setShowBall, setShowMuted } = useOutletContext();
 
   useEffect(() => {
-    console.log('ready');
     setShowBall(false);
     setLoading(false);
   });
@@ -40,6 +34,32 @@ function Detail() {
     }
   }, []);
 
+  const imageViewer = useRef(null);
+  const [imageViewerSrc, setImageViewerSrc] = useState(null);
+  const [showImageViewer, setShowImageViewer] = useState(false);
+
+  useEffect(() => {
+    const images = document.getElementById('main-container').getElementsByTagName('img');
+
+    let deconstructions = [];
+    Array.prototype.forEach.call(images, (image) => {
+      // console.log(image);
+      const l = (e) => {
+        setImageViewerSrc(image.src);
+        setShowImageViewer(true);
+        imageViewer.current.resetTransform();
+        imageViewer.current.centerView();
+      };
+      image.addEventListener('click', l);
+      deconstructions.push(() => image.removeEventListener('click', l));
+    })
+    return () => {
+      deconstructions.forEach((f) => {
+        f();
+      });
+    }
+  });
+
   return (
     <div id="detail">
       <div className='detail-title'>
@@ -48,6 +68,19 @@ function Detail() {
         <div className="spliter"></div>
       </div>
       <Outlet />
+      <div
+        className={["image-viewer-bg", showImageViewer ? null : 'hidden'].join(' ')}
+        style={{ transition: 'opacity .8s' }}
+        onClick={() => {
+          setShowImageViewer(false);
+        }}
+      >
+        <TransformWrapper onInit={(ref) => { imageViewer.current = ref }}>
+          <TransformComponent>
+            <img src={imageViewerSrc} alt="image-viewer" />
+          </TransformComponent>
+        </TransformWrapper>
+      </div>
     </div>
   )
 }
@@ -85,29 +118,6 @@ function SchoolDetail() {
     });
     return () => { mounted.current = false; };
   }, []);
-
-  useEffect(() => {
-    const openZmage = (image) => Zmage.browsing({ src: image.src, zIndex: 999, backdrop: '#000' });
-    const images = document.getElementById('main-container').getElementsByTagName('img');
-
-    const addListener = (image) => {
-      const l = (e) => openZmage(image);
-      image.addEventListener('click', l);
-      return () => image.removeEventListener('click', l);
-    }
-    let deconstructions = [];
-    Array.prototype.forEach.call(images, (image) => {
-      // console.log(image);
-      const l = (e) => openZmage(image);
-      image.addEventListener('click', l);
-      deconstructions.push(() => image.removeEventListener('click', l));
-    })
-    return () => {
-      deconstructions.forEach((f) => {
-        f()
-      });
-    }
-  });
   return (
     <div className="detail-container">
       <img className="school-icon" src={`https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/icons/with_text_white/${school.icon}`} alt={school.name} />
@@ -184,35 +194,15 @@ function BriefDetail() {
   const navigate = useNavigate();
   let [searchParams, setSearchParams] = useSearchParams();
 
+  const mounted = useRef(false);
   useEffect(() => {
+    mounted.current = true;
     let p = searchParams.get('p');
     if (p) {
       ScrollToAnchor(p);
     }
-  });
-
-  useEffect(() => {
-    const openZmage = (image) => Zmage.browsing({ src: image.src, zIndex: 999, backdrop: '#000' });
-    const images = document.getElementById('main-container').getElementsByTagName('img');
-
-    const addListener = (image) => {
-      const l = (e) => openZmage(image);
-      image.addEventListener('click', l);
-      return () => image.removeEventListener('click', l);
-    }
-    let deconstructions = [];
-    Array.prototype.forEach.call(images, (image) => {
-      // console.log(image);
-      const l = (e) => openZmage(image);
-      image.addEventListener('click', l);
-      deconstructions.push(() => image.removeEventListener('click', l));
-    })
-    return () => {
-      deconstructions.forEach((f) => {
-        f()
-      });
-    }
-  });
+    return () => { mounted.current = false; };
+  }, []);
   return (
     <div className="brief-container">
       <a className="goback" onClick={() => navigate('/?slide=3')}>
