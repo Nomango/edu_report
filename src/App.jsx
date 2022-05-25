@@ -21,7 +21,7 @@ function App() {
   const PauseSound = () => { if (bgPlaying.current) { bgMusicRef.current.pause(); bgPlaying.current = false; } }
 
   const [loading, setLoading] = React.useState(true);
-
+  const [showBall, setShowBall] = React.useState(true);
 
   const mounted = useRef(false);
   useEffect(() => {
@@ -33,18 +33,18 @@ function App() {
   }, [])
   return (
     <>
-      {/* <Collapse in={loading} > */}
+      <Collapse in={loading} >
         <div className='bg-all'></div>
-      {/* </Collapse> */}
-      {/* <Fade in={loading} style={{ transitionDuration: '1s' }}> */}
+      </Collapse>
+      <Fade in={loading} style={{ transitionDuration: '1s' }}>
         <div className="logo-load">
           <h2 className='loading-text'>加载中</h2>
           <div className="waiting-text spinning"></div>
         </div>
-      {/* </Fade> */}
+      </Fade>
       <div className='bg-cover'>
         <img className='bg' src='/assets/img/cover.png'></img>
-        <img className='ball' src='/assets/img/ball.png'></img>
+        <img className='ball' src='/assets/img/ball.png' style={{ display: showBall ? 'block' : 'none' }}></img>
       </div>
       <div className={['sound-logo', muted ? 'muted' : 'spinning'].join(' ')}
         onClick={() => {
@@ -66,7 +66,9 @@ function App() {
         PlaySound,
         StopSound,
         PauseSound,
+        loading,
         setLoading,
+        setShowBall,
       }} />
     </>
   )

@@ -1,4 +1,4 @@
-import { useParams, BrowserRouter, Routes, Route, Outlet, useNavigate, useSearchParams } from "react-router-dom";
+import { useParams, BrowserRouter, Routes, Route, Outlet, useNavigate, useSearchParams, useOutletContext } from "react-router-dom";
 import { GetSchool, AsyncGetSchoolData } from "./Schools";
 import React, { useEffect, useRef, useState } from 'react'
 
@@ -9,12 +9,16 @@ import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { BaseTable, features, useTablePipeline } from "ali-react-table";
+import useStateRef from "react-usestateref";
 
 function Detail() {
+  const { setLoading, setShowBall } = useOutletContext();
+
   useEffect(() => {
     console.log('ready');
-    $('.bg-cover .ball').hide();
-    setTimeout(() => { InitAll(); }, 500);
+    setShowBall(false);
+    setLoading(false);
+    // setTimeout(() => { InitAll(); }, 500);
   });
 
   const bindHandleScroll = () => {
@@ -56,15 +60,24 @@ function SchoolDetail() {
   const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(0);
 
-  const [data, setData] = useState({ data: [], columns: [], article: '' });
+  const [data, setData, dataRef] = useStateRef({ buttons: [], tables: [], article: '' });
+  const [tableData, setTableData] = useState({ data: [], columns: [] });
+
+  const switchTable = (i) => {
+    setTableData({ data: dataRef.current.tables[i].data, columns: dataRef.current.tables[i].columns });
+  }
+
   let pipeline = useTablePipeline()
-    .input({ dataSource: data.data, columns: data.columns })
+    .input({ dataSource: tableData.data, columns: tableData.columns })
     .use(features.autoRowSpan());
 
   const mounted = useRef(false);
   useEffect(() => {
     mounted.current = true;
-    AsyncGetSchoolData(school.name, (data) => setData(data));
+    AsyncGetSchoolData(school.name, (data) => {
+      setData(data);
+      switchTable(0);
+    });
     return () => { mounted.current = false; };
   }, [])
   return (
@@ -82,22 +95,19 @@ function SchoolDetail() {
         <div className={["tab", tabIndex == 0 ? 'active' : null].join(' ')}>
           <div className="detail-brief-container">
             <div className="detail-brief-items">
-              <div className="detail-brief-item">
-                <div className="detail-brief-item-num">51</div>
-                <p>工科专业</p>
-              </div>
-              <div className="detail-brief-item">
-                <div className="detail-brief-item-num">12</div>
-                <p>工科大类</p>
-              </div>
-              <div className="detail-brief-item">
-                <div className="detail-brief-item-num">20</div>
-                <p>优势专业</p>
-              </div>
-              <div className="detail-brief-item">
-                <div className="detail-brief-item-num">15513</div>
-                <p>工科在校生</p>
-              </div>
+              {
+                data.buttons.map((button, i) => {
+                  return (
+                    <div className="detail-brief-item"
+                      onClick={() => switchTable(i)}
+                      key={`button-${i}`}
+                    >
+                      <div className="detail-brief-item-num">{button.num}</div>
+                      <p>{button.name}</p>
+                    </div>
+                  )
+                })
+              }
             </div>
             <BaseTable
               style={{

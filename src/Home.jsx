@@ -47,13 +47,7 @@ function useInput(defValue, onValueChange) {
 }
 
 function Home() {
-  const { PlaySound, PauseSound, setLoading } = useOutletContext();
-
-  const [entered, setEntered] = React.useState(false);
-  useEffect(() => {
-    setLoading(false);
-    setEntered(true);
-  });
+  const { PlaySound, PauseSound, loading, setLoading } = useOutletContext();
 
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
@@ -69,7 +63,8 @@ function Home() {
       Enter();
       mainSwiperRef.current.slideTo(slide - 1);
     }
-    setTimeout(() => { InitAll(); }, 500);
+    setLoading(false);
+    // setTimeout(() => { InitAll(); }, 500);
     return () => { mounted.current = false; };
   }, []);
 
@@ -82,7 +77,7 @@ function Home() {
     $('.arrow-intro').fadeIn();
     $('.main-swiper').fadeIn();
     $('.section-title').fadeIn();
-    StartAll();
+    // StartAll();
     mainSwiperRef.current.enable();
     setTimeout(() => {
       PlaySound();
@@ -107,7 +102,7 @@ function Home() {
   return (
     <div id='home'>
       <div className='cover-guide'>
-        <Grow in={entered} style={{ transitionDuration: '1s' }} {...(entered ? { timeout: 2000 } : {})}>
+        <Grow in={!loading} style={{ transitionDuration: '1s' }} {...(!loading ? { timeout: 2000 } : {})}>
           <div className='cover-title'>
             <h1 className='font-hei'>广西新工科教育</h1>
             {/* <p>Guangxi New Engineering Education</p> */}
@@ -115,7 +110,7 @@ function Home() {
             {/* <p>Achievements Exhibition</p> */}
           </div>
         </Grow>
-        <Grow in={entered} style={{ transitionDuration: '1s' }} {...(entered ? { timeout: 3000 } : {})}>
+        <Grow in={!loading} style={{ transitionDuration: '1s' }} {...(!loading ? { timeout: 3000 } : {})}>
           <div className='cover-enter-wrapper'>
             <div className='cover-enter' onClick={PlayVideo}>
               <h3 className='font-hei'>进入观展</h3>
