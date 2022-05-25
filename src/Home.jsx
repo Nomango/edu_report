@@ -16,8 +16,6 @@ import "swiper/css/grid";
 import './assets/css/main.less'
 import './assets/css/swiper.less'
 
-import $ from "jquery";
-
 import { Link, useOutletContext, useParams, useSearchParams } from 'react-router-dom';
 import { GetAllSchools } from './Schools';
 import Background from './Components/Background';
@@ -42,7 +40,7 @@ function useInput(defValue, onValueChange) {
 }
 
 function Home() {
-  const { PlaySound, PauseSound, loading, setLoading } = useOutletContext();
+  const { PlaySound, PauseSound, loading, setLoading, setShowBall } = useOutletContext();
 
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
@@ -75,27 +73,24 @@ function Home() {
 
   const muted = useSelector((state) => state.mute.value);
   const [entered, setEntered, enteredRef] = useStateRef(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   const Enter = () => {
     if (enteredRef.current) {
       return;
     }
     setEntered(true);
-    $('.start-video').fadeOut();
-    $('.cover-guide').hide();
-    $('.bg-cover .ball').hide();
-    $('.arrow-intro').fadeIn();
-    $('.main-swiper').fadeIn();
-    $('.section-title').fadeIn();
-    // StartAll();
-    mainSwiperRef.current.enable();
+    setShowVideo(false);
+    setShowBall(false);
+    setShowArrowDown(true);
     setTimeout(() => {
       PlaySound();
     }, 5000);
+    mainSwiperRef.current.enable();
   }
 
   const PlayVideo = () => {
-    $('.start-video').show();
+    setShowVideo(true);
     PauseSound();
     background.current.play();
     // 开始播放8秒后必须进入主页
@@ -119,7 +114,7 @@ function Home() {
 
   return (
     <div id='home'>
-      <div className='cover-guide'>
+      <div className={['cover-guide', entered ? 'must-hidden' : null].join(' ')}>
         <Grow in={!loading} style={{ transitionDuration: '1s' }} {...(!loading ? { timeout: 2000 } : {})}>
           <div className='cover-title'>
             <h1 className='font-hei'>广西新工科教育</h1>
@@ -142,6 +137,7 @@ function Home() {
         </div>
       </div>
       <Background
+        className={['bg-video', showVideo ? null : 'hidden'].join(' ')}
         ref={background}
         onReady={() => setLoading(false)}
         onFinished={Enter}
@@ -151,11 +147,13 @@ function Home() {
         <div className='arrow-1'></div>
         <div className='arrow-2'></div>
       </div>
-      <div className='section-title'>
+      <div className={['section-title', entered ? null : 'hidden'].join(' ')}>
         <h2 className='font-hei'>广西新工科教育成果展</h2>
         {/* <p>Guangxi New Engineering Education</p> */}
       </div>
+      <div className={['hide-swiper', showVideo ? 'active' : null].join(' ')}></div>
       <Swiper
+        className={'main-swiper'}
         enabled={false}
         direction={"vertical"}
         mousewheel={true}
@@ -163,20 +161,23 @@ function Home() {
           clickable: true,
         }}
         style={{
-          display: 'none',
+          display: entered ? 'block' : 'none',
         }}
         modules={[Controller, Mousewheel, Pagination]}
         onSwiper={(swiper) => { console.log(swiper); setMainSwiper(swiper); }}
         // controller={{ control: mainSwiper }}
         onSlideChange={(swiper) => {
-          setSearchParams({ 'slide': swiper.activeIndex + 1 });
+          if (swiper.activeIndex == 0) {
+            setSearchParams({ 'slide': '' });
+          } else {
+            setSearchParams({ 'slide': swiper.activeIndex + 1 });
+          }
           if (swiper.activeIndex != swiper.slides.length - 1) {
             setShowArrowDown(true);
           } else {
             setShowArrowDown(false);
           }
         }}
-        className={'main-swiper'}
       >
         <SwiperSlide>
           <section className='preface'>

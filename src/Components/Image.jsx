@@ -2,7 +2,7 @@ import Zmage from "react-zmage";
 
 function Image(props) {
     return (
-        <Zmage {...props}
+        <img {...props}
             // controller={false}
             // hotKey={false}
         />

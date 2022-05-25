@@ -40,6 +40,7 @@ function App() {
 
   const [loading, setLoading] = React.useState(true);
   const [showBall, setShowBall] = React.useState(true);
+  const [showMuted, setShowMuted] = React.useState(true);
 
   const mounted = useRef(false);
   useEffect(() => {
@@ -64,7 +65,7 @@ function App() {
         <img className='bg' src='https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/cover.png'></img>
         <img className='ball' src='https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/ball.png' style={{ display: showBall ? 'block' : 'none' }}></img>
       </div>
-      <div className={['sound-logo', muted ? 'muted' : 'spinning'].join(' ')} onClick={toggleMuted}>
+      <div className={['sound-logo', muted ? 'muted' : 'spinning', showMuted ? null : 'hidden'].join(' ')} onClick={toggleMuted}>
         <FontAwesomeIcon icon={faMusic}></FontAwesomeIcon>
       </div>
       <Outlet context={{
@@ -74,6 +75,7 @@ function App() {
         loading,
         setLoading,
         setShowBall,
+        setShowMuted,
       }} />
     </>
   )

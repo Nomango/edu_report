@@ -2,7 +2,7 @@ import { Howl, Howler } from 'howler';
 
 function InitSound(props) {
     var bgMusic = new Howl({
-        src: ['https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/assets/sound/bg.mp3'],
+        src: ['https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/sound/bg.mp3'],
         loop: true,
         ...props,
     });

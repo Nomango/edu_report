@@ -4,27 +4,25 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import './assets/css/detail.less'
 
-import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { BaseTable, features, useTablePipeline } from "ali-react-table";
 import useStateRef from "react-usestateref";
 
 function Detail() {
-  const { setLoading, setShowBall } = useOutletContext();
+  const { setLoading, setShowBall, setShowMuted } = useOutletContext();
 
   useEffect(() => {
     console.log('ready');
     setShowBall(false);
     setLoading(false);
-    // setTimeout(() => { InitAll(); }, 500);
   });
 
   const bindHandleScroll = () => {
     if (window.scrollY > 100) {
-      $('.sound-logo').fadeOut();
+      setShowMuted(false);
     } else {
-      $('.sound-logo').fadeIn();
+      setShowMuted(true);
     }
   }
 
@@ -32,7 +30,7 @@ function Detail() {
     window.addEventListener('scroll', bindHandleScroll)
     return () => {
       window.removeEventListener('scroll', bindHandleScroll)
-      $('.sound-logo').fadeIn();
+      setShowMuted(true);
     }
   }, []);
 
