@@ -28,7 +28,7 @@ import { GetAllSchools } from './Schools';
 import Background from './Components/Background';
 import useStateRef from 'react-usestateref';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faExclamationCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { Fade, Grow } from '@material-ui/core';
 
@@ -51,6 +51,8 @@ function Home() {
 
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
+
+  const [showNote, setShowNote] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const slide = searchParams.get('slide');
@@ -188,6 +190,10 @@ function Home() {
                 <a className="nav-button" onClick={() => mainSwiperRef.current.slideTo(3)}>广西高校新工科案例</a>
               </div>
             </div>
+            <p className='map-note text-center' onClick={() => setShowNote(!showNote)}>
+              *数据来源&nbsp;<FontAwesomeIcon icon={faExclamationCircle}></FontAwesomeIcon>
+              <p style={{ opacity: showNote ? 1 : 0 }}>主要是工科专业数据，来源于2021年教育部本科教学状态数据库</p>
+            </p>
           </section>
         </SwiperSlide>
         <SwiperSlide>

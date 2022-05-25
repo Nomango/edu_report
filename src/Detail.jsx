@@ -82,9 +82,9 @@ function SchoolDetail() {
   }, [])
   return (
     <div className="detail-container">
-      <img className="school-icon" src={`/assets/img/icons/with_text/${school.icon}`} alt={school.name} />
+      <img className="school-icon" src={`/assets/img/icons/with_text_white/${school.icon}`} alt={school.name} />
       <div className="top-bar">
-        <a className="goback flex-full" onClick={() => navigate(-1)}>
+        <a className="goback flex-full" onClick={() => navigate('/?slide=4')}>
           <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
           &nbsp;向上返回
         </a>
@@ -163,7 +163,7 @@ function BriefDetail() {
   }
   return (
     <div className="brief-container">
-      <a className="goback" onClick={() => navigate(-1)}>
+      <a className="goback" onClick={() => navigate('/?slide=3')}>
         <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
         &nbsp;向上返回
       </a>

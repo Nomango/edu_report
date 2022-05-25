@@ -50,7 +50,7 @@ function GetAllSchools() {
       icon: "12玉林师范学院.png",
     },
     {
-      name: "桂林电子信息科技学院",
+      name: "桂林信息科技学院",
       icon: "13桂林信息科技学院.png",
     },
     {

@@ -140,57 +140,59 @@ function Map(props) {
     }
   }
   return (
-    <ReactEChartsCore
-      ref={map}
-      option={opts}
-      opts={{
-        // renderer: 'svg',
-        // width: 300,
-        // height: 300,
-      }}
-      echarts={echarts}
-      style={{
-        height: '38rem',
-        width: '100%',
-        margin: 'auto',
-        // position: 'relative',
-        // display: 'fixed',
-        // top: '50%',
-        // left: '50%',
-        // transform: 'transform(-50%, -50%)',
-        zIndex: 50
-      }}
-      onEvents={{
-        click: (params) => {
-          PlaySound();
-          // console.log(params);
-          // console.log(params.name);
-          // console.log(map.current);
-          // const echartInstance = map.current.getEchartsInstance();
-          // if (!zoomIn) {
-          //   console.log('zoom in');
-          //   map.current.resize({
-          //     width: 600,
-          //     height: 600,
-          //     animation: {
-          //       duration: 2,
-          //     }
-          //   })
-          // } else {
-          //   console.log('zoom out');
-          //   map.current.resize({
-          //     width: 300,
-          //     height: 300,
-          //     animation: {
-          //       duration: 2,
-          //     }
-          //   })
-          // }
-          // // console.log(echartInstance);
-          // setZoomIn(!zoomIn);
-        }
-      }}
-    />
+    <>
+      <ReactEChartsCore
+        ref={map}
+        option={opts}
+        opts={{
+          // renderer: 'svg',
+          // width: 300,
+          // height: 300,
+        }}
+        echarts={echarts}
+        style={{
+          height: '38rem',
+          width: '100%',
+          margin: 'auto',
+          // position: 'relative',
+          // display: 'fixed',
+          // top: '50%',
+          // left: '50%',
+          // transform: 'transform(-50%, -50%)',
+          zIndex: 50
+        }}
+        onEvents={{
+          click: (params) => {
+            PlaySound();
+            // console.log(params);
+            // console.log(params.name);
+            // console.log(map.current);
+            // const echartInstance = map.current.getEchartsInstance();
+            // if (!zoomIn) {
+            //   console.log('zoom in');
+            //   map.current.resize({
+            //     width: 600,
+            //     height: 600,
+            //     animation: {
+            //       duration: 2,
+            //     }
+            //   })
+            // } else {
+            //   console.log('zoom out');
+            //   map.current.resize({
+            //     width: 300,
+            //     height: 300,
+            //     animation: {
+            //       duration: 2,
+            //     }
+            //   })
+            // }
+            // // console.log(echartInstance);
+            // setZoomIn(!zoomIn);
+          }
+        }}
+      />
+    </>
   )
 }
 
