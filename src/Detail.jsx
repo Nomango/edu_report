@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { BaseTable, features, useTablePipeline } from "ali-react-table";
 import useStateRef from "react-usestateref";
+import Zmage from 'react-zmage'
 
 function Detail() {
   const { setLoading, setShowBall, setShowMuted } = useOutletContext();
@@ -78,7 +79,30 @@ function SchoolDetail() {
       switchTable(0);
     });
     return () => { mounted.current = false; };
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    const openZmage = (image) => Zmage.browsing({ src: image.src, zIndex: 999, backdrop: '#000' });
+    const images = document.getElementById('main-container').getElementsByTagName('img');
+
+    const addListener = (image) => {
+      const l = (e) => openZmage(image);
+      image.addEventListener('click', l);
+      return () => image.removeEventListener('click', l);
+    }
+    let deconstructions = [];
+    Array.prototype.forEach.call(images, (image) => {
+      // console.log(image);
+      const l = (e) => openZmage(image);
+      image.addEventListener('click', l);
+      deconstructions.push(() => image.removeEventListener('click', l));
+    })
+    return () => {
+      deconstructions.forEach((f) => {
+        f()
+      });
+    }
+  });
   return (
     <div className="detail-container">
       <img className="school-icon" src={`https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/icons/with_text_white/${school.icon}`} alt={school.name} />
@@ -96,7 +120,7 @@ function SchoolDetail() {
           })
         }
       </div>
-      <div className="tabs">
+      <div id="main-container" className="tabs">
         <div className={["tab", tabIndex == 0 ? 'active' : null].join(' ')}>
           <div className="detail-brief-container">
             <div className="detail-brief-items">
@@ -154,19 +178,43 @@ function ScrollToAnchor(name) {
 function BriefDetail() {
   const navigate = useNavigate();
   let [searchParams, setSearchParams] = useSearchParams();
-  let p = searchParams.get('p');
-  if (p) {
-    useEffect(() => {
+
+  useEffect(() => {
+    let p = searchParams.get('p');
+    if (p) {
       ScrollToAnchor(p);
+    }
+  });
+
+  useEffect(() => {
+    const openZmage = (image) => Zmage.browsing({ src: image.src, zIndex: 999, backdrop: '#000' });
+    const images = document.getElementById('main-container').getElementsByTagName('img');
+
+    const addListener = (image) => {
+      const l = (e) => openZmage(image);
+      image.addEventListener('click', l);
+      return () => image.removeEventListener('click', l);
+    }
+    let deconstructions = [];
+    Array.prototype.forEach.call(images, (image) => {
+      // console.log(image);
+      const l = (e) => openZmage(image);
+      image.addEventListener('click', l);
+      deconstructions.push(() => image.removeEventListener('click', l));
     })
-  }
+    return () => {
+      deconstructions.forEach((f) => {
+        f()
+      });
+    }
+  });
   return (
     <div className="brief-container">
       <a className="goback" onClick={() => navigate('/?slide=3')}>
         <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
         &nbsp;向上返回
       </a>
-      <div className="brief-main">
+      <div id="main-container" className="brief-main">
         <div id="section1" className="brief-title">广西高校工科专业设置</div>
         <p>《普通高等学校本科专业目录（2021年）》在工科下设有31个专业大类，260种专业。至2022年，广西本科院校开设的工科专业已涵盖除核工程类之外的30个专业大类，共有112种专业，布点494个，专业覆盖面达43.08%。与2013年相比，新增了40种专业、276个布点。</p>
         <img src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/brief/1.png" alt="1" />
