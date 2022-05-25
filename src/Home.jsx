@@ -68,20 +68,24 @@ function Home() {
       mainSwiperRef.current.slideTo(slide - 1);
       if (slide == 4) {
         setShowArrowDown(false);
+      } else {
+        // 等待10秒后必须进入页面
+        setTimeout(() => {
+          setLoading(false);
+        }, 10000);
       }
-    } else {
-      // 等待10秒后必须进入页面
-      setTimeout(() => {
-        setLoading(false);
-        Enter();
-      }, 10000);
     }
     return () => { mounted.current = false; };
   }, []);
 
   const muted = useSelector((state) => state.mute.value);
+  const [entered, setEntered, enteredRef] = useStateRef(false);
 
   const Enter = () => {
+    if (enteredRef.current) {
+      return;
+    }
+    setEntered(true);
     $('.start-video').fadeOut();
     $('.cover-guide').hide();
     $('.bg-cover .ball').hide();
@@ -99,6 +103,13 @@ function Home() {
     $('.start-video').show();
     PauseSound();
     background.current.play();
+    // 开始播放8秒后必须进入主页
+    setTimeout(() => {
+      if (!enteredRef.current) {
+        Enter();
+        background.current.stop(); // 如果8秒后还没放完，直接停止
+      }
+    }, 8000);
   }
 
   const allSchools = GetAllSchools();

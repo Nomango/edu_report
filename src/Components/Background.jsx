@@ -33,8 +33,13 @@ class Background extends Component {
   }
 
   play() {
-    console.log('start playing');
+    console.log('start playing video');
     this.setState({ playing: true });
+  }
+
+  stop() {
+    console.log('stop playing video');
+    this.setState({ playing: false });
   }
 
   render() {
