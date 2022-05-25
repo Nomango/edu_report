@@ -83,7 +83,7 @@ function Home() {
     mainSwiperRef.current.enable();
     setTimeout(() => {
       PlaySound();
-    }, 100);
+    }, 5000);
   }
 
   const PlayVideo = () => {
