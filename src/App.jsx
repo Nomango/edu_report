@@ -52,11 +52,11 @@ function App() {
   }, [])
   return (
     <>
-      <Collapse in={loading} >
+      <Collapse in={loading}>
         <div className='bg-all'></div>
       </Collapse>
-      <Fade in={loading} style={{ transitionDuration: '1s' }}>
-        <div className="logo-load">
+      <Fade in={loading}>
+        <div className="logo-load" style={{ transition: `opacity 1s` }}>
           <h2 className='loading-text'>加载中</h2>
           <div className="waiting-text spinning"></div>
         </div>

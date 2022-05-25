@@ -115,16 +115,16 @@ function Home() {
   return (
     <div id='home'>
       <div className={['cover-guide', entered ? 'must-hidden' : null].join(' ')}>
-        <Grow in={!loading} style={{ transitionDuration: '1s' }} {...(!loading ? { timeout: 2000 } : {})}>
-          <div className='cover-title'>
+        <Grow in={!loading} {...(!loading ? { timeout: 2000 } : {})}>
+          <div className='cover-title' style={{ transition: `opacity .5s` }}>
             <h1 className='font-hei'>广西新工科教育</h1>
             {/* <p>Guangxi New Engineering Education</p> */}
             <h1 className='font-hei spacing'>成果展</h1>
             {/* <p>Achievements Exhibition</p> */}
           </div>
         </Grow>
-        <Grow in={!loading} style={{ transitionDuration: '1s' }} {...(!loading ? { timeout: 3000 } : {})}>
-          <div className='cover-enter-wrapper'>
+        <Grow in={!loading} {...(!loading ? { timeout: 2500 } : {})}>
+          <div className='cover-enter-wrapper' style={{ transition: `opacity .5s` }}>
             <div className='cover-enter' onClick={PlayVideo}>
               <h3 className='font-hei'>进入观展</h3>
               {/* <p>ENTER</p> */}
