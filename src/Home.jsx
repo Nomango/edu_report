@@ -68,12 +68,12 @@ function Home() {
       mainSwiperRef.current.slideTo(slide - 1);
       if (slide == 4) {
         setShowArrowDown(false);
-      } else {
-        // 等待10秒后必须进入页面
-        setTimeout(() => {
-          setLoading(false);
-        }, 10000);
       }
+    } else {
+      // 等待10秒后必须进入页面
+      setTimeout(() => {
+        setLoading(false);
+      }, 10000);
     }
     return () => { mounted.current = false; };
   }, []);
