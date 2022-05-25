@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { BaseTable, features, useTablePipeline } from "ali-react-table";
 import useStateRef from "react-usestateref";
-const Zmage = require('react-zmage')
+import Zmage from 'react-zmage'
 
 function Detail() {
   const { setLoading, setShowBall, setShowMuted } = useOutletContext();
@@ -214,6 +214,7 @@ function BriefDetail() {
         <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
         &nbsp;向上返回
       </a>
+      <Zmage src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/brief/1.png" alt="1" />
       <div id="main-container" className="brief-main">
         <div id="section1" className="brief-title">广西高校工科专业设置</div>
         <p>《普通高等学校本科专业目录（2021年）》在工科下设有31个专业大类，260种专业。至2022年，广西本科院校开设的工科专业已涵盖除核工程类之外的30个专业大类，共有112种专业，布点494个，专业覆盖面达43.08%。与2013年相比，新增了40种专业、276个布点。</p>
