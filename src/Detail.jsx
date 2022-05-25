@@ -60,7 +60,7 @@ function SchoolDetail() {
   const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(0);
 
-  const [data, setData, dataRef] = useStateRef({ buttons: [], tables: [], article: '' });
+  const [data, setData, dataRef] = useStateRef({ buttons: [], tables: [], articles: [] });
   const [tableData, setTableData] = useState({ data: [], columns: [] });
 
   const switchTable = (i) => {
@@ -88,8 +88,14 @@ function SchoolDetail() {
           <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
           &nbsp;向上返回
         </a>
-        <div className={["top-bar-tab", tabIndex == 0 ? 'active' : null].join(' ')} onClick={() => setTabIndex(0)}>概况</div>
-        <div className={["top-bar-tab", tabIndex == 1 ? 'active' : null].join(' ')} onClick={() => setTabIndex(1)}>案例1</div>
+        <div className={["top-bar-tab", tabIndex == 0 ? 'active' : null].join(' ')} onClick={() => setTabIndex(0)}>工科概况</div>
+        {
+          data.articles.map((article, i) => {
+            return (
+              <div className={["top-bar-tab", tabIndex == i + 1 ? 'active' : null].join(' ')} onClick={() => setTabIndex(i + 1)} key={`key-tab-${i}`}>{article.title}</div>
+            )
+          })
+        }
       </div>
       <div className="tabs">
         <div className={["tab", tabIndex == 0 ? 'active' : null].join(' ')}>
@@ -119,10 +125,16 @@ function SchoolDetail() {
             />
           </div>
         </div>
-        <div className={["tab", tabIndex == 1 ? 'active' : null].join(' ')}>
-          <div className="case-container" dangerouslySetInnerHTML={{ __html: data.article }}>
-          </div>
-        </div>
+        {
+          data.articles.map((article, i) => {
+            return (
+              <div className={["tab", tabIndex == i + 1 ? 'active' : null].join(' ')} key={`key-tab-panel-${i}`}>
+                <div className="case-container" dangerouslySetInnerHTML={{ __html: article.content }}>
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   )
@@ -159,15 +171,22 @@ function BriefDetail() {
         <div id="section1" className="brief-title">广西高校工科专业设置</div>
         <p>《普通高等学校本科专业目录（2021年）》在工科下设有31个专业大类，260种专业。至2022年，广西本科院校开设的工科专业已涵盖除核工程类之外的30个专业大类，共有112种专业，布点494个，专业覆盖面达43.08%。与2013年相比，新增了40种专业、276个布点。</p>
         <img src="/assets/img/brief/1.png" alt="1" />
+        <p className="img-alt">2013年以来广西工学专业种数与覆盖情况进展</p>
+
         <div id="section2" className="brief-title">广西工科专业大类布点</div>
         <p>近五年广西本科院校工科专业大类有所增加，从传统的工科门类逐渐转向了电子、生物等与新兴产业相关的专业。开办了与广西产业发展紧密相关的学科门类，填补了空白二级学科门类，如开设海洋工程类专业2个。全区布点最多的专业大类是计算机类专业（121个），其次是电子信息类（75个），再次是机械类（68个）。</p>
         <img src="/assets/img/brief/2.png" alt="2" />
+        <p className="img-alt">广西工学各专业大类开设专业数量</p>
+
         <div id="section3" className="brief-title">工科分学校布点及规模</div>
         <p>在广西35所本科院校中，有34所高校设置了工科专业，共设置工科专业112种，布点494个。工科专业设置最多的高校是桂林电子科技大学（58个），依次为广西大学（40个）、桂林理工大学（38个）、广西科技大学（34）、北部湾大学（29）。截至2021年底广西本科院校工科专业在校生共计15.6万余人。工科在校生最多的高校是桂林电子科技大学，其次是广西科技大学、桂林理工大学、广西大学、桂林航天工业学院、北部湾大学。</p>
         <img src="/assets/img/brief/3.png" alt="3" />
+        <p className="img-alt">广西本科高校工科专业分学校布点及在校生人数</p>
+
         <div id="section4" className="brief-title">广西工科优势特色专业</div>
         <p>在广西494个工科专业布点中，有18个入选教育部卓越工程师教育培养计划2.0专业；24个专业通过了工程教育专业认证（或住建部评估）；50个专业获批为国家级一流专业建设点；66个专业获批为区级一流专业建设点。</p>
         <img src="/assets/img/brief/4.png" alt="4" />
+        <p className="img-alt">广西工科类优势特色专业</p>
       </div>
     </div>
   )
