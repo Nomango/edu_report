@@ -63,14 +63,18 @@ function Home() {
     mounted.current = true;
     console.log('ready');
     if (slide) {
+      setLoading(false);
       Enter();
       mainSwiperRef.current.slideTo(slide - 1);
       if (slide == 4) {
         setShowArrowDown(false);
       }
+    } else {
+      // 等待10秒后必须进入页面
+      setTimeout(() => {
+        setLoading(false);
+      }, 10000);
     }
-    setLoading(false);
-    // setTimeout(() => { InitAll(); }, 500);
     return () => { mounted.current = false; };
   }, []);
 
@@ -91,6 +95,7 @@ function Home() {
   }
 
   const PlayVideo = () => {
+    $('.start-video').show();
     PauseSound();
     background.current.play();
   }
@@ -131,7 +136,8 @@ function Home() {
       </div>
       <Background
         ref={background}
-        onReady={Enter}
+        onReady={() => setLoading(false)}
+        onFinished={Enter}
         muted={muted}
       />
       <div className='arrow-intro' style={{ opacity: showArrowDown ? 1 : 0 }}>

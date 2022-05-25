@@ -16,7 +16,7 @@ class Background extends Component {
   }
 
   state = {
-    url: null,
+    url: StartVideo,
     pip: false,
     playing: false,
     controls: false,
@@ -30,12 +30,11 @@ class Background extends Component {
 
   constructor(props) {
     super(props);
-    this.onReady = props.onReady;
   }
 
   play() {
     console.log('start playing');
-    this.setState({ playing: true, url: StartVideo });
+    this.setState({ playing: true });
   }
 
   render() {
@@ -57,6 +56,11 @@ class Background extends Component {
 
         width={'100%'}
         height={'100%'}
+        onReady={() => {
+          setTimeout(() => {
+            this.props.onReady();
+          }, 500);
+        }}
         // onStart={() => {
         //   if (this.state.firstDone) {
         //     setTimeout(() => {
@@ -73,8 +77,8 @@ class Background extends Component {
           if (this.state.firstDone && state.playedSeconds >= 5.0) {
             console.log('start video first done');
             this.setState({ firstDone: false });
-            if (this.onReady) {
-              this.onReady();
+            if (this.props.onFinished) {
+              this.props.onFinished();
             }
           }
         }}
@@ -96,13 +100,9 @@ class Background extends Component {
           }, 100);
         }}
         style={{
+          display: 'none',
           position: 'fixed',
-          // top: '50%',
-          // left: '50%',
           zIndex: 5,
-          // height: '100vh',
-          // width: '100%',
-          // transform: 'translate(-50%, -50%)',
           pointerEvents: 'none',
         }}
         config={{
