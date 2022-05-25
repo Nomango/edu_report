@@ -63,8 +63,10 @@ function SchoolDetail() {
   const [data, setData, dataRef] = useStateRef({ buttons: [], tables: [], articles: [] });
   const [tableData, setTableData] = useState({ data: [], columns: [] });
 
+  const tableIndex = useRef(0);
   const switchTable = (i) => {
     setTableData({ data: dataRef.current.tables[i].data, columns: dataRef.current.tables[i].columns });
+    tableIndex.current = i;
   }
 
   let pipeline = useTablePipeline()
@@ -104,7 +106,7 @@ function SchoolDetail() {
               {
                 data.buttons.map((button, i) => {
                   return (
-                    <div className="detail-brief-item"
+                    <div className={["detail-brief-item", tableIndex.current == i ? 'active' : null].join(' ')}
                       onClick={() => switchTable(i)}
                       key={`button-${i}`}
                     >
