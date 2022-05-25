@@ -11,6 +11,8 @@ import useStateRef from "react-usestateref";
 import Zmage from 'react-zmage'
 
 function Detail() {
+  console.log(Zmage);
+  console.log(Zmage.browsing);
   const { setLoading, setShowBall, setShowMuted } = useOutletContext();
 
   useEffect(() => {
