@@ -237,10 +237,10 @@ function Home() {
                 grabCursor={true}
                 mousewheel={true}
                 nested={true}
-                pagination={{
-                  clickable: true,
-                }}
-                modules={[Grid, Mousewheel, Pagination]}
+                // pagination={{
+                //   clickable: true,
+                // }}
+                modules={[Grid, Mousewheel]}
                 className={'inner-swiper'}
               >
                 {
@@ -255,6 +255,10 @@ function Home() {
                   })
                 }
               </Swiper>
+              <div className='inner-swiper-note'>
+                <img src="/assets/img/hand.gif" alt="hand" />
+                <span>向左滑动查看更多</span>
+              </div>
             </div>
           </section>
           {/* <Swiper
