@@ -64,6 +64,13 @@ function Home() {
     if (slide) {
       Enter();
       mainSwiperRef.current.slideTo(slide - 1);
+      if (slide == 4) {
+        // TODO
+        TweenMax.to('.arrow-intro', .5, {
+          autoAlpha: 0,
+          // y: '100',
+        })
+      }
     }
     setLoading(false);
     // setTimeout(() => { InitAll(); }, 500);
