@@ -63,10 +63,10 @@ function Home() {
         setShowArrowDown(false);
       }
     } else {
-      // 等待5秒后必须进入页面
+      // 等待4秒后必须进入页面
       setTimeout(() => {
         setLoading(false);
-      }, 5000);
+      }, 4000);
     }
     return () => { mounted.current = false; };
   }, []);
