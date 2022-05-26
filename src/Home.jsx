@@ -45,7 +45,7 @@ function Home() {
   const [mainSwiper, setMainSwiper, mainSwiperRef] = useStateRef(null);
   const background = useRef(null);
 
-  const [showArrowDown, setShowArrowDown] = useState(true);
+  const [showArrowDown, setShowArrowDown] = useState(false);
   const [showNote, setShowNote] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
