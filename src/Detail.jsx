@@ -11,7 +11,7 @@ import useStateRef from "react-usestateref";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 function Detail() {
-  const { setLoading, setShowBall, setShowMuted } = useOutletContext();
+  const { PlaySound, PauseSound, setLoading, setShowBall, setShowMuted } = useOutletContext();
 
   useEffect(() => {
     setShowBall(false);
@@ -45,18 +45,47 @@ function Detail() {
     imageViewer.current.centerView();
   };
 
-  useEffect(() => {
-    const images = document.getElementById('main-container').getElementsByTagName('img');
-    let viewImages = Array.prototype.filter.call(images, image => !image.className.includes('long-image'));
-    viewImages.forEach((image) => {
+  const setupAllImageViewer = () => {
+    const images = document.getElementById('main-container').getElementsByClassName('image-view');
+    Array.prototype.forEach.call(images, image => {
+      // console.log(image);
       image.addEventListener('click', openImageViewer);
     })
     return () => {
-      viewImages.forEach((image) => {
+      Array.prototype.forEach.call(images, image => {
         image.removeEventListener('click', openImageViewer);
       })
     }
-  });
+  }
+
+  const setupAllVideoPlay = () => {
+    const videos = document.getElementById('main-container').getElementsByTagName('video');
+    Array.prototype.forEach.call(videos, video => {
+      // console.log(video);
+      video.addEventListener('play', PauseSound);
+      video.addEventListener('pause', PlaySound);
+      video.addEventListener('ended', PlaySound);
+    });
+    return () => {
+      Array.prototype.forEach.call(videos, video => {
+        video.removeEventListener('play', PauseSound);
+        video.removeEventListener('pause', PlaySound);
+        video.removeEventListener('ended', PlaySound);
+      })
+    }
+  }
+
+  const onPageChange = () => {
+    setupAllImageViewer();
+    setupAllVideoPlay();
+  }
+
+  const mounted = useRef(false);
+  useEffect(() => {
+    mounted.current = true;
+    onPageChange();
+    return () => { mounted.current = false; };
+  }, []);
 
   return (
     <div id="detail">
@@ -65,7 +94,7 @@ function Detail() {
         {/* <p>Guangxi New Engineering Education</p> */}
         <div className="spliter"></div>
       </div>
-      <Outlet />
+      <Outlet context={{ onPageChange }} />
       <div
         className={["image-viewer-bg", showImageViewer ? null : 'hidden'].join(' ')}
         style={{ transition: 'opacity .3s' }}
@@ -93,6 +122,7 @@ function SchoolDetail() {
   }
   const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(0);
+  const { onPageChange } = useOutletContext();
 
   const [data, setData, dataRef] = useStateRef({ tables: [], articles: [] });
   const [tableData, setTableData] = useState({ data: [], columns: [] });
@@ -101,6 +131,9 @@ function SchoolDetail() {
   const switchTable = (i) => {
     setTableData({ data: dataRef.current.tables[i].data, columns: dataRef.current.tables[i].columns });
     tableIndex.current = i;
+    setTimeout(() => {
+      onPageChange();
+    }, 100);
   }
 
   let pipeline = useTablePipeline()
@@ -178,8 +211,20 @@ function SchoolDetail() {
           data.articles.map((article, i) => {
             return (
               <div className={["tab", tabIndex == i + 1 ? 'active' : null].join(' ')} key={`key-tab-panel-${i}`}>
-                <div className={["case-container", article.long ? 'long-image' : null].join(' ')} dangerouslySetInnerHTML={{ __html: article.content }}>
-                </div>
+                {
+                  article.custom
+                    ?
+                    (
+                      <div className={"case-container"} dangerouslySetInnerHTML={{ __html: article.content }}>
+                      </div>
+                    )
+                    :
+                    (
+                      <div className={"case-container long-image"}>
+                        <img className="long-image" src={(import.meta.env.DEV ? '' : 'https://gxnee.oss-cn-guangzhou.aliyuncs.com') + `/assets/img/detail/${school.name}.png`} />
+                      </div>
+                    )
+                }
               </div>
             )
           })
