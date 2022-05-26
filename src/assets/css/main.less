@@ -109,14 +109,7 @@ a:hover {
 
 #root {
     width: 100%;
-    max-width: 500px;
     margin: 0 auto;
-}
-
-@media only screen and (min-width: 800px) {
-    #root {
-        min-height: 800px;
-    }
 }
 
 #home {
@@ -269,25 +262,25 @@ a:hover {
 }
 
 .arrow-intro {
-    display: none;
-}
+    // display: none;
 
-.arrow-intro div {
-    position: fixed;
-    z-index: 1;
-    bottom: 0;
-    margin-bottom: 3rem;
-    width: 1rem;
-    height: 1rem;
-    border-top: 2px solid #fff;
-    border-right: 2px solid #fff;
-    transform: translate(-50%, -50%) rotate(135deg);
-    left: 50%;
-    animation: arrow-intro-moving 1s infinite ease-in-out;
-}
+    div {
+        position: fixed;
+        z-index: 1;
+        bottom: 0;
+        margin-bottom: 3rem;
+        width: 1rem;
+        height: 1rem;
+        border-top: 2px solid #fff;
+        border-right: 2px solid #fff;
+        transform: translate(-50%, -50%) rotate(135deg);
+        left: 50%;
+        animation: arrow-intro-moving 1s infinite ease-in-out;
+    }
 
-.arrow-intro div:last-child {
-    bottom: .8rem;
+    div:last-child {
+        bottom: .8rem;
+    }
 }
 
 .swiper-slide section {
@@ -612,5 +605,28 @@ a:hover {
         margin-bottom: 2rem;
         width: 100%;
         text-align: center;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    #root {
+        height: 100%;
+        max-width: 60vh;
+    }
+
+    .bg-cover {
+        max-width: 60vh;
+    }
+    
+    .bg-cover .ball {
+        max-width: 60vh;
+    }
+
+    .section-title {
+        top: 6%;
+    }
+
+    .echarts-for-react {
+        height: 40vh !important;
     }
 }
