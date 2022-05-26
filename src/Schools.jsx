@@ -209,7 +209,7 @@ function GetCityData(city) {
 import JSON5 from 'json5'
 
 function AsyncGetSchoolData(name, callback) {
-  let url = `/assets/data/${name}.json5`;
+  let url = `/assets/data/${name}.json5?t=${new Date().getTime()}`;
   if (!import.meta.env.DEV) {
     url = 'https://gxnee.oss-cn-guangzhou.aliyuncs.com' + url
   }
