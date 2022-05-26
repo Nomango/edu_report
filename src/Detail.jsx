@@ -117,6 +117,13 @@ function SchoolDetail() {
         }
         return s;
       });
+      // 修复合计数位置
+      data.tables = data.tables.map(t => {
+        if (t.name == '工科大类') {
+          t.data.splice(t.data.length - 1, 1, { c1: '合计', c2: t.num });
+        }
+        return t;
+      })
       setData(data);
       switchTable(0);
     });
