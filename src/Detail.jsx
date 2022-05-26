@@ -47,11 +47,12 @@ function Detail() {
 
   useEffect(() => {
     const images = document.getElementById('main-container').getElementsByTagName('img');
-    Array.prototype.forEach.call(images, (image) => {
+    let viewImages = Array.prototype.filter.call(images, image => !image.className.includes('long-image'));
+    viewImages.forEach((image) => {
       image.addEventListener('click', openImageViewer);
     })
     return () => {
-      Array.prototype.forEach.call(images, (image) => {
+      viewImages.forEach((image) => {
         image.removeEventListener('click', openImageViewer);
       })
     }
@@ -110,6 +111,12 @@ function SchoolDetail() {
   useEffect(() => {
     mounted.current = true;
     AsyncGetSchoolData(school.name, (data) => {
+      data.articles = data.articles.map(s => {
+        if (import.meta.env.DEV) {
+          s.content = s.content.replaceAll('https://gxnee.oss-cn-guangzhou.aliyuncs.com', '');
+        }
+        return s;
+      });
       setData(data);
       switchTable(0);
     });
@@ -164,7 +171,7 @@ function SchoolDetail() {
           data.articles.map((article, i) => {
             return (
               <div className={["tab", tabIndex == i + 1 ? 'active' : null].join(' ')} key={`key-tab-panel-${i}`}>
-                <div className="case-container" dangerouslySetInnerHTML={{ __html: article.content }}>
+                <div className={["case-container", article.long ? 'long-image' : null ].join(' ')} dangerouslySetInnerHTML={{ __html: article.content }}>
                 </div>
               </div>
             )
