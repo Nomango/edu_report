@@ -171,7 +171,7 @@ function SchoolDetail() {
           data.articles.map((article, i) => {
             return (
               <div className={["tab", tabIndex == i + 1 ? 'active' : null].join(' ')} key={`key-tab-panel-${i}`}>
-                <div className={["case-container", article.long ? 'long-image' : null ].join(' ')} dangerouslySetInnerHTML={{ __html: article.content }}>
+                <div className={["case-container", article.long ? 'long-image' : null].join(' ')} dangerouslySetInnerHTML={{ __html: article.content }}>
                 </div>
               </div>
             )
@@ -213,8 +213,12 @@ function BriefDetail() {
         <FontAwesomeIcon icon={faAnglesLeft}></FontAwesomeIcon>
         &nbsp;向上返回
       </a>
-      <div id="main-container" className="brief-main">
-        <div id="section1" className="brief-title">广西高校工科专业设置</div>
+      <div id="main-container" className="brief-main long-image">
+        <img id="section1" className="long-image" src={(import.meta.env.DEV ? '' : 'https://gxnee.oss-cn-guangzhou.aliyuncs.com') + "/assets/img/brief/long/1.png"} alt="1" />
+        <img id="section2" className="long-image" src={(import.meta.env.DEV ? '' : 'https://gxnee.oss-cn-guangzhou.aliyuncs.com') + "/assets/img/brief/long/2.png"} alt="2" />
+        <img id="section3" className="long-image" src={(import.meta.env.DEV ? '' : 'https://gxnee.oss-cn-guangzhou.aliyuncs.com') + "/assets/img/brief/long/3.png"} alt="3" />
+        <img id="section4" className="long-image" src={(import.meta.env.DEV ? '' : 'https://gxnee.oss-cn-guangzhou.aliyuncs.com') + "/assets/img/brief/long/4.png"} alt="4" />
+        {/* <div id="section1" className="brief-title">广西高校工科专业设置</div>
         <p>《普通高等学校本科专业目录（2021年）》在工科下设有31个专业大类，260种专业。至2022年，广西本科院校开设的工科专业已涵盖除核工程类之外的30个专业大类，共有112种专业，布点494个，专业覆盖面达43.08%。与2013年相比，新增了40种专业、276个布点。</p>
         <img src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/brief/1.png" alt="1" />
         <p className="img-alt">2013年以来广西工学专业种数与覆盖情况进展</p>
@@ -232,7 +236,7 @@ function BriefDetail() {
         <div id="section4" className="brief-title">广西工科优势特色专业</div>
         <p>在广西494个工科专业布点中，有18个入选教育部卓越工程师教育培养计划2.0专业；24个专业通过了工程教育专业认证（或住建部评估）；50个专业获批为国家级一流专业建设点；66个专业获批为区级一流专业建设点。</p>
         <img src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/brief/4.png" alt="4" />
-        <p className="img-alt">广西工科类优势特色专业</p>
+        <p className="img-alt">广西工科类优势特色专业</p> */}
       </div>
     </div>
   )

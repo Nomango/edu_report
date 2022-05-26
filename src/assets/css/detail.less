@@ -137,8 +137,8 @@
 
     &.long-image {
         padding: 0;
-        box-shadow: #5f5089 0 0 20px;
-        background-color: #5f5089;
+        box-shadow: var(--highlight-background-color) 0 0 20px;
+        background-color: var(--background-color);
     }
 
     h1 {
@@ -182,15 +182,16 @@
 
         &.long-image {
             margin: 0;
+            box-shadow: none;
         }
     }
 }
 
 .brief-main {
     margin-top: 1rem;
-    background-color: #eee;
+    background-color: #065c82;
     color: #000;
-    box-shadow: #eee 0 0 20px;
+    box-shadow: #065c82 0 0 20px;
 
     .brief-title {
         background: center / contain no-repeat url(https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/button.png);
@@ -226,6 +227,11 @@
         width: 100%;
         margin-bottom: 1rem;
         box-shadow: #0003 0 0 10px;
+
+        &.long-image {
+            margin: 0;
+            box-shadow: none;
+        }
     }
 }
 
