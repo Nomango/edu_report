@@ -96,7 +96,7 @@ function SchoolDetail() {
   const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(0);
 
-  const [data, setData, dataRef] = useStateRef({ buttons: [], tables: [], articles: [] });
+  const [data, setData, dataRef] = useStateRef({ tables: [], articles: [] });
   const [tableData, setTableData] = useState({ data: [], columns: [] });
 
   const tableIndex = useRef(0);
@@ -140,14 +140,14 @@ function SchoolDetail() {
           <div className="detail-brief-container">
             <div className="detail-brief-items">
               {
-                data.buttons.map((button, i) => {
+                data.tables.map((table, i) => {
                   return (
                     <div className={["detail-brief-item", tableIndex.current == i ? 'active' : null].join(' ')}
                       onClick={() => switchTable(i)}
                       key={`button-${i}`}
                     >
-                      <div className="detail-brief-item-num">{button.num}</div>
-                      <p>{button.name}</p>
+                      <div className="detail-brief-item-num">{table.num}</div>
+                      <p>{table.name}</p>
                     </div>
                   )
                 })
