@@ -15,7 +15,7 @@ class Background extends Component {
   }
 
   state = {
-    url: 'https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/video/start2.mp4',
+    url: (import.meta.env.DEV ? '' : 'https://gxnee.oss-cn-guangzhou.aliyuncs.com') + '/assets/video/start3.mp4',
     pip: false,
     playing: false,
     controls: false,
@@ -106,6 +106,8 @@ class Background extends Component {
           style={{
             // display: 'none',
             position: 'fixed',
+            top: 0,
+            left: 0,
             zIndex: 5,
             pointerEvents: 'none',
           }}
