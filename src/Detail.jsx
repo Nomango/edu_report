@@ -38,25 +38,22 @@ function Detail() {
   const [imageViewerSrc, setImageViewerSrc] = useState(null);
   const [showImageViewer, setShowImageViewer] = useState(false);
 
+  const openImageViewer = (e) => {
+    setImageViewerSrc(e.target.src);
+    setShowImageViewer(true);
+    imageViewer.current.resetTransform();
+    imageViewer.current.centerView();
+  };
+
   useEffect(() => {
     const images = document.getElementById('main-container').getElementsByTagName('img');
-
-    let deconstructions = [];
     Array.prototype.forEach.call(images, (image) => {
-      // console.log(image);
-      const l = (e) => {
-        setImageViewerSrc(image.src);
-        setShowImageViewer(true);
-        imageViewer.current.resetTransform();
-        imageViewer.current.centerView();
-      };
-      image.addEventListener('click', l);
-      deconstructions.push(() => image.removeEventListener('click', l));
+      image.addEventListener('click', openImageViewer);
     })
     return () => {
-      deconstructions.forEach((f) => {
-        f();
-      });
+      Array.prototype.forEach.call(images, (image) => {
+        image.removeEventListener('click', openImageViewer);
+      })
     }
   });
 
@@ -70,7 +67,7 @@ function Detail() {
       <Outlet />
       <div
         className={["image-viewer-bg", showImageViewer ? null : 'hidden'].join(' ')}
-        style={{ transition: 'opacity .8s' }}
+        style={{ transition: 'opacity .3s' }}
         onClick={() => {
           setShowImageViewer(false);
         }}
