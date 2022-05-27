@@ -564,8 +564,8 @@
       custom: true,
       title: '成果展示',
       content: '\
-      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学-1.png" />
-      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学-2.png" />
+      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学-1.png" />\
+      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学-2.png" />\
     '
     },
 ]

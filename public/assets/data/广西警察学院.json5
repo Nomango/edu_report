@@ -205,9 +205,9 @@
       custom: true,
       title: '成果展示',
       content: '\
-      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西警察学院-1.png" />
+      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西警察学院-1.png" />\
       <div class="video-box"><video src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西警察学院/视频.mp4" preload="auto" controls controlslist="nodownload"></video></div>\
-      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西警察学院-2.png" />
+      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西警察学院-2.png" />\
     '
     },
 ]

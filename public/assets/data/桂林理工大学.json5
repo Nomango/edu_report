@@ -677,14 +677,14 @@
       custom: true,
       title: '成果展示1',
       content: '\
-    <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林理工大学-1.png" />
+    <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林理工大学-1.png" />\
     '
     },
     {
       custom: true,
       title: '成果展示2',
       content: '\
-    <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林理工大学-2.png" />
+    <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林理工大学-2.png" />\
     '
     },
 ]
