@@ -561,27 +561,11 @@
 ],
   articles: [
     {
+      custom: true,
       title: '成果展示',
       content: '\
-    <h1>“产教科融合、校地企协同”培养高素质复合应用型新工科人才</h1>\
-    <p>学校近年来以新工科建设为契机，紧盯区域产业重大发展战略布局，围绕地方支柱与战略新兴产业，突破高校与产业的隔阂，全面提升人才培养供给侧与柳州区域产业“智造”转型发展需求侧的匹配度。通过布局“数据科学与大数据技术”、“网络空间安全”、“虚拟现实技术”、“智能制造”等专业，同时围绕汽车制造、工程机械和钢铁冶金等地方优势产业链的数字化、智能化改造需求，将软件工程、土木工程、机械工程等传统工科向新工科融合发展，输出与地方产业战略发展布局相匹配的新工科人才。</p>\
-    <p>学校聚合教育与产业体系各种资源要素，打造“产学研转创用”融合的育人生态体系，构建“产学研转创用”一体化的产教科融合实践教学平台，校地企三方协同，创立共享机制、搭建共享平台、遵循共享原则、拥有共享资源、收获共享成果。校地企共同打造了启迪创客孵化器、创客咖啡、创客实验室三大众创平台，吸引外部协同育人资源向校内双创人才培养平台集聚，为师生研学初创团队提供科教融合项目孵化对接等实质性帮扶。建设广西科技大学启迪数字科技园双创加速平台，形成“学校-政府-企业”循环互动、“专业-平台-产业”螺旋发展的科技成果转移运营体系和公共服务支撑平台，加速融入地方产业数字化转型的融合创新生态模式。将高素质复合应用型人才培养、产教融合双师队伍建设、学生实习实训与双创实践、师生科研成果转化、引资引智服务双创等功能在平台上进行环环相扣、链式集成。</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学/1.png" alt="1" />\
-    <p class="img-alt">图1：校地企合作孵化器</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学/2.png" alt="2" />\
-    <p class="img-alt">图2：广科大启迪数字科技园通过“柳企云运营</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学/3.png" alt="3" />\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学/4.png" alt="4" />\
-    <p class="img-alt">图3：广科大启迪科技园获评“自治区小型微型企业创业创新示范基地”</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学/5.png" alt="5" />\
-    <p class="img-alt">图4：签订校企合作协议共建校内协同育人基地</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学/6.png" alt="6" />\
-    <p class="img-alt">图5：相关学科获奖</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学/7.png" alt="7" />\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学/8.png" alt="8" />\
-    <p class="img-alt">图5（续）：相关学科获奖</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学/9.png" alt="9" />\
-    <p class="img-alt">图5（续）：相关学科获奖</p>\
+      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学-1.png" />
+      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西科技大学-2.png" />
     '
     },
 ]
