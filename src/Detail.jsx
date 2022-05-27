@@ -215,7 +215,7 @@ function SchoolDetail() {
                   article.custom
                     ?
                     (
-                      <div className={"case-container"} dangerouslySetInnerHTML={{ __html: article.content }}>
+                      <div className={"case-container long-image"} dangerouslySetInnerHTML={{ __html: article.content }}>
                       </div>
                     )
                     :
