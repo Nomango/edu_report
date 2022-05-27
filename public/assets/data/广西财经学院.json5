@@ -154,61 +154,17 @@
 ],
   articles: [
     {
+      custom: true,
       title: '成果展示1',
       content: '\
-    <h1>多学科交叉 科教创融合 校企政协同<br/>培养复合应用型信息技术类人才</h1>\
-    <p class="text-center">广西财经学院 信息与统计学院</p>\
-    <p>广西财经学院对接国家及自治区新一代信息技术产业和数字经济产业发展需求，积极探索财经院校背景下“多学科交叉、科教创融合、校企政协同”的“新工科”人才培养模式，取得丰硕成果。</p>\
-    <h3>一、组建多学科专业群</h3>\
-    <p>以培养信息技术类复合应用型信息技术行业人才为导向，开展多学科交叉融合的专业群建设，优化并形成多学科交叉的专业群课程体系。专业群包括数据科学与大数据技术、人工智能、计算机科学与技术、电子商务、信息管理与信息系统、数字媒体技术等专业。其中，电子商务专业为广西高校优势特色专业，数字媒体技术专业与英国奇切斯特大学开展中外合作办学。</p>\
-    <h3>二、搭建科教创融合平台</h3>\
-    <p>开展科教创一体化建设，依托广西财经大数据重点实验、广西跨境电商信息智能处理重点实验室等学科平台，与广州粤嵌等公司共建“众创空间”，与华为、腾讯、Oracle等国内外知名企业建立系列平台。</p>\
-    <h3>三、开展校企政协同育人</h3>\
-    <p>建立校企政信息融通、资源共享的协同育人体系，与华为、腾讯等公司合作建立产学协同育人基地，成功承办首届中国</p>\
-    <h3>四、培育创新创业型师资团队</h3>\
-    <p>组建由多学科专业人才组成的创新创业团队，拥有中国“互联网+”大学生创新创业大赛优秀创业导师10多名，广西商务厅电子商务进农村讲师团讲师2名；获自治区级“互联网+”创新创业教学团队，获省级优秀创新创业导师库人选3名。</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/1.png" />\
-    <p class="img-alt">图1-学校拥有自治区级重点实验（广西科技厅，2021）</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/2.png" />\
-    <p class="img-alt">图2-学校拥有自治区级重点实验室（广西跨境电商智能信息处理重点实验，2016）</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/3.png" />\
-    <p class="img-alt">图3-学校与匈牙利德布勒森大学共建大数据联合研究中心</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/4.png" />\
-    <p class="img-alt">图4-学校与广州粤嵌通信股份有限公司共建“众创空间”（设在学校内）</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/5.png" />\
-    <p class="img-alt">图5学校承办2021中国-东盟数字创新大赛（广西大数据局主办）</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/6.png" />\
-    <p class="img-alt">图6学校承办第十一届全国大学生电子商务“三创赛”广西赛区省级选拔赛</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/7.png" />\
-    <p class="img-alt">图7学校承办2021广西数字经济人才培养学术研讨会暨跨境电商师资培训班</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/8.png" />\
-    <p class="img-alt">图7学校承办2020大数据发展论坛（中国计算机学会主办）</p>\
+      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院-1.png" />
     '
     },
     {
+      custom: true,
       title: '成果展示2',
       content: '\
-    <h1>面向东盟 “工+文”融合 培养创新型工程造价人才</h1>\
-    <p class="text-center">广西财经学院 管理科学与工程学院</p>\
-    <p>广西财经学院工程造价专业立足广西、服务东盟，采用产教融合方式，培养具有良好道德品质，践行社会主义核心价值观，既有理工技能，又有经管素养，勤于实践，勇于创新，具有国际视野的复合应用型人才。</p>\
-    <h3>一、深化产教融合，促进城校共生发展</h3>\
-    <p>面向产业和区域发展需求，积极融入经济社会转型发展，加强与行业企业的紧密联系，持续推进产教协同育人。已建立9个实验平台，与行业企业合作建设42个实训基地并合作完成多项工程项目，毕业生在本地建筑企业就业形势良好。工程造价专业于2018年获批广西本科高校特色专业及实验实训教学基地（中心）建设项目，2019年获批广西一流本科专业建设点。</p>\
-    <h3>二、加强财经素养，提高人才培养质量</h3>\
-    <p>借助互联网+手段，加强财经管理、理工学科交叉融合，重构课程体系和授课流程，推进教学改革，激发学生潜能，提高新工科应用型人才培养质量。开设《管理学》《会计学》等财管课程，通过项目式教学、“卓越班”、“五位一体”导师制等方式，搭建大学生创新创业与社会需求对接平台，鼓励学生跨专业组建创新创业团队，重点培养学生“创业、创新、创优”能力。</p>\
-    <h3>三、面向东盟开放合作，开拓师生国际视野</h3>\
-    <p>立足广西，面向东盟，加强交流合作，建立与东盟国家高校的合作交流长效机制，鼓励师生到东盟国家高校学习交流任教，50余名师生到东盟国家访学进修；开设具有东盟元素的课程，增强学生东盟背景知识储备，开拓学生国际视野，超过百名毕业生参与东盟工程项目或被派驻东盟国家工作。</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/11.png" />\
-    <p class="img-alt">图1 师生国内（中南大学）访学</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/12.png" />\
-    <p class="img-alt">图2 学生国外（泰国暹罗大学）访学开班典礼</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/13.png" />\
-    <p class="img-alt">图3 学生国外（泰国暹罗大学）访学结业典礼</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/14.png" />\
-    <p class="img-alt">图4 教师代表团赴泰国暹罗大学开展学术交流活动</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/15.png" />\
-    <p class="img-alt">图5 职业岗位及建筑工法认知VR实验实训基地</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院/16.png" />\
-    <p class="img-alt">图6 学生参与项目式教学</p>\
+      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/广西财经学院-2.png" />
     '
     },
 ]

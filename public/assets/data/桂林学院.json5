@@ -156,29 +156,9 @@
     {
       title: '成果展示',
       content: '\
-    <h1>以现代产业学院破局，桂林学院新工科建设的探索与实践</h1>\
-    <h3>一、民办本科高校新工科建设的困局</h3>\
-    <p>民办本科高校作为高等教育重要的组成部分，截止到2022年3月，全国民办本科高校412所，在本科高校中占比接近1/3。但民办本科高校因自主筹资办学缺乏财政经费支持、教师队伍流动性较大导致师资力量薄弱等原因，新工科建设相对缓慢，桂林学院也面临同样问题。</p>\
-    <h3>二、桂林学院新工科建设的探索与实践</h3>\
-    <p>面对困局，桂林学院以服务地方经济为根本出发点，以信息技术类专业群为突破口，根据产出导向的教育理念，积极对接产业，大力引进行业内优质企业，通过共建现代产业学院的形式，加快新工科建设。</p>\
-    <p>从2019年开始，桂林学院与广州粤嵌通信科技股份有限公司、东软教育科技集团、中软国际教育科技集团分别建立了粤嵌电子工程学院、东软软件学院、中软国际大数据产业学院等，目的是培养社会急需的新工科人才，打造从定制培养、集中实训、顶岗实习到人才输出的完整生态链，实现人才培养与产业需求的无缝对接。目前3个产业学院涵盖电子信息工程、软件工程、数据科学与大数据技术等6个信息技术类专业，在校生近700人。依托校企深度融合，产业学院获教育部高教司产学合作协同育人项目6项、学生司公需对接就业育人项目1项、广西教改项目5项，学生学科竞赛获得区级以上奖项30余项、软件著作权15项。</p>\
-    <p>未来桂林学院将按照新工科建设、广西普通本科高校示范性现代产业学院建设管理办法等要求，进一步完善产业学院的管理及运行机制，扎实推进产教融合及政校企合作，为地方经济培养更多高质量的应用型人才。</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院/1.jpg" />\
-    <p class="img-alt">广西师范大学漓江学院“东软软件学院” 揭牌</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院/2.jpg" />\
-    <p class="img-alt">广西师范大学漓江学院“东软软件学院”新生就业保障协议签约现场</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院/3.jpg" />\
-    <p class="img-alt">广西师范大学漓江学院“粤嵌电子工程学院” 揭牌</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院/4.jpg" />\
-    <p class="img-alt">广西师范大学漓江学院“粤嵌电子工程学院”新生就业保障协议签约合影</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院/5.jpg" />\
-    <p class="img-alt">广西师范大学漓江学院与大连东软教育科技集团签约共建“东软软件学院”</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院/6.jpg" />\
-    <p class="img-alt">广西师范大学漓江学院与中软国际教育科技集团签约共建“中软国际大数据产业学院”</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院/7.jpg" />\
-    <p class="img-alt">广西师范大学漓江学院与中软国际教育科技集团签约共建“中软国际大数据产业学院”合影</p>\
-    <img class="image-view" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院/8.jpg" />\
-    <p class="img-alt">杨庆庆副校长参加2020年东软论坛并作主旨演讲</p>\
+      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院-1.png" />
+      <div class="video-box"><video src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院/video.mp4" preload="auto" controls controlslist="nodownload"></video></div>\
+      <img class="long-image" src="https://gxnee.oss-cn-guangzhou.aliyuncs.com/assets/img/detail/桂林学院-2.png" />
     '
     },
 ]
